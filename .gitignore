@@ -51,8 +51,8 @@ node_modules/
 .cache/
 
 # Theme components (if managing themes as git submodules)
-themes/*
-!themes/.gitkeep
+# themes/*
+# !themes/.gitkeep
 
 # Logs
 *.log
