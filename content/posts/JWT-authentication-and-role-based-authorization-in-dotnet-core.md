@@ -51,9 +51,9 @@ Now we have created the desired solution.
 **Book-Store-Spa-Backend** is our root folder, inside it we have a
 **sln** file and 2 different projects.
 
-**(i) BookStore.Api (UI layer)**
+(i) BookStore.Api (UI layer)
 
-**(ii) BookStore.Data (Data layer)**
+(ii) BookStore.Data (Data layer)
 
 **⚠️** Now add the reference of **BookStore.Data** in **BookStore.Api ⚠️**
 
@@ -97,7 +97,7 @@ connect with database.
 
 **ValidIssuer** is the issuer of token
 
-Note: "**https://localhost:7062**\" is the url of our app that will run
+Note: `https://localhost:7062` is the url of our app that will run
 on kestrel server. You can find it in
 **_Bookstore.Api/Properties/appsettings.json._**
 
@@ -550,7 +550,7 @@ you have set `[AllowAnonymous]` to this resource.
 To access protected route like api/fruits, we need to login first. So
 lets create a new user with registration.
 
-👉**_https://localhost:7062/api/authentication/registeration_**
+👉 `https://localhost:7062/api/authentication/registeration`
 
 pass this payload in body.
 
@@ -605,7 +605,7 @@ jwt token, and we will pass it in protected route (api/fruits)
 
 👉[**_https://localhost:7062/api/fruits_**](https://localhost:7062/api/fruits)
 
-**(with jwt token)**
+### with jwt token
 
 ![api_fruits_token](/images/api_fruits_token.png)
 
@@ -634,7 +634,7 @@ We are changing the role from User to Admin. After registering admin,
 change back to normal , change role back to the user, because we do not
 want to make public api for creating admin. Test registration api again
 
-👉**_https://localhost:7062/api/authentication/registeration_**
+👉 `https://localhost:7062/api/authentication/registeration`
 
 ```json
 {
