@@ -1,0 +1,48 @@
+baseURL = 'https://rd003.github.io/'
+languageCode = 'en-us'
+title = 'Ravindra Devrani'
+theme = 'beautiful-hugo'
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+[Params] 
+  subtitle="I write blog posts about .NET, C#, SQL and OOA&D"
+  readingTime=true
+  wordCount=true
+  disclaimerText="My views are my own and not my employer's"
+  logo= "images/myPic.png"
+  favicon = "images/favicon.ico"
+  favicon16 = "images/favicon-16x16.png"
+  favicon32 = "images/favicon-32x32.png"
+  apple_touch_icon = "images/apple-touch-icon.png"
+  socialShare = true
+  socialShareTwitter = true
+  socialShareLinkedin = true
+  socialShareFacebook = true
+  socialShareReddit = true
+  socialShareEmail = true
+  [Params.author]
+    name = "Ravindra Devrani"
+    github = "rd003"
+    twitter = "ravi_devrani"
+    youtube = "@ravindradevrani"
+[services]
+  [services.disqus]
+    shortname = ''    
