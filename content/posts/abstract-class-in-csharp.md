@@ -57,11 +57,11 @@ class Square : Shape
 
 class Program
 {
- static void Main()
- {
- Shape circle = new Circle();
- circle.Draw(); // Drawing a circle
- circle.Display(); //Displaying shape...
+    static void Main()
+    {
+        Shape circle = new Circle();
+        circle.Draw(); // Drawing a circle
+        circle.Display(); //Displaying shape...
 
         Shape square = new Square();
         square.Draw();  // Drawing a square
