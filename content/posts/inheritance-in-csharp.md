@@ -1,7 +1,7 @@
 +++
 date = '2025-02-20T19:49:18+05:30'
 draft = false
-title = 'Inheritance in Csharp'
+title = 'Inheritance in C#'
 tags = ['oops']
 categories=['programming'] 
 +++
@@ -35,14 +35,41 @@ class DerivedClass: BaseClass
 
 Let’s understand it with example.
 
+```mermaid
+classDiagram
+    Phone <|-- Smartphone
+    Phone <|-- BasicPhone
+
+    class Phone {
+        +string Brand
+        +string Model
+        +int Year
+        +Call()
+        +Text()
+        +virtual DisplayInfo()
+    }
+
+    class Smartphone {
+        +string OperatingSystem
+        +override DisplayInfo()
+        +BrowseInternet()
+    }
+
+    class BasicPhone {
+        +bool HasPhysicalKeypad
+        +override DisplayInfo()
+        +MakeSimpleCall()
+    }
+```
+
 **👉Base class:** Phone
 
 ```cs
 public class Phone
 {
- public string Brand { get; set; }
- public string Model { get; set; }
- public int Year { get; set; }
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
 
     public void Call()
     {
@@ -69,7 +96,7 @@ public class Phone
 ```cs
 public class Smartphone : Phone
 {
- public string OperatingSystem { get; set; }
+    public string OperatingSystem { get; set; }
 
     public override void DisplayInfo()
     {
@@ -90,7 +117,7 @@ public class Smartphone : Phone
 ```cs
 public class BasicPhone : Phone
 {
- public bool HasPhysicalKeypad { get; set; }
+    public bool HasPhysicalKeypad { get; set; }
 
     public override void DisplayInfo()
     {

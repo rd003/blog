@@ -1,7 +1,7 @@
 +++
 date = '2025-02-20T19:09:36+05:30'
 draft = false
-title = 'Abstraction in Csharp'
+title = 'Abstraction in C#'
 tags = ['oops']
 categories=['programming'] 
 +++

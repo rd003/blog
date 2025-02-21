@@ -1,7 +1,7 @@
 +++
 date = '2025-02-21T10:20:08+05:30'
 draft = false
-title = 'Private Constructor in Csharp'
+title = 'Private Constructor in C#'
 tags = ['csharp']
 categories = ['programming']
 +++

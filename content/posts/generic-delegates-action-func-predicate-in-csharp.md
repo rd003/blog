@@ -1,7 +1,7 @@
 +++
 date = '2025-02-21T09:54:50+05:30'
 draft = false
-title = 'Generic Delegates (Action, Func & Predicates) in Csharp'
+title = 'Generic Delegates (Action, Func & Predicates) in C#'
 +++
 
 ![Generic delegate c#, action func predicate in c#](/images/1_Fd96UK0xih85jyUlAiBDAg.png)

@@ -1,7 +1,7 @@
 +++
 date = '2025-02-20T17:40:42+05:30'
 draft = false
-title = 'Csharp Dictionary and Its Use Cases'
+title = 'C# Dictionary and Its Use Cases'
 tags = ['csharp']
 categories=['programming']
 +++

@@ -1,7 +1,7 @@
 +++
 date = '2025-02-21T09:20:13+05:30'
 draft = false
-title = 'Abstract Class in Csharp'
+title = 'Abstract Class in C#'
 tags = ['csharp']
 categories= ['programming']
 +++
