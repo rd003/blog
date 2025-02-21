@@ -8,6 +8,8 @@ categories=['programming']
 
 ![encapsulation in c#](/images/csharp-encapsulation.png)
 
+📢 Updated and refinded at : 21-feb-2025
+
 **Bundling the data member and member function into a single unit** is called **encapsulation**. Remember the term **“capsule”**. We put all the medicine inside a wrapper and call it capsule. Similarly, wrap the data members and member functions together is called encapsulation.
 
 Now we need to understand few terms.
@@ -24,6 +26,18 @@ Now we need to understand few terms.
 - [Inheritance in c#](/posts/inheritance-in-csharp/)
 
 Let’s understand Encapsulation with an example.
+
+```mermaid
+---
+title: Encapsulation
+---
+classDiagram
+   class Student{
+    +string name
+    +int age
+    +PrintDetails()
+   }
+```
 
 ```cs
 public class Student
@@ -58,7 +72,7 @@ That is all you need to know about **encapsulation**. If you want to know more a
 
 ---
 
-## Benefits of Encapsulation:
+## Benefits of Encapsulation
 
 ### 1. Data Hiding
 
@@ -71,7 +85,25 @@ In the previous example, **Student** have two public attributes (**name** and **
 - **Name:** User can enter the name with any length. There is no restriction. What if he enters 2000 character long name.
 - **Age:** What if user enters the age in negative numbers or 0.
 
-So, you need some kind of restrictions in that data. Let’s see how we can do it in c#.
+So, you need some kind of restrictions in that data.
+
+```mermaid
+---
+title: Data hiding, to validate `_name` and `_age`, we are hiding `_name` and `_age` from users.
+---
+
+classDiagram
+  class Student{
+     -string name
+     -int age
+     +SetName(string)
+     +GetName() string
+     +SetAge(int)
+     +GetName() int
+  }
+```
+
+Let’s see how we can do it in c#.
 
 ```cs
 public class Student
@@ -178,12 +210,14 @@ Some time you want the **readonly** data in your class.
 public string MyProperty { get; }
 ```
 
-These were some of the benefits of encapsulation.
+## Summary
+
+- Wrapping up data into a single unit is called encapsulation.
+- Encapsulation helps to achieve `data hiding`, that helps us to set the validation rules for our data members or fields.
+- Encapsulation also helps us to define readonly members.
 
 ---
 
-Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [January 31, 2024](https://medium.com/p/cd6d61aa2c3d).
+Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [January 31, 2024](https://medium.com/@ravindradevrani/encapsulation-in-c-cd6d61aa2c3d). Updated and refinded at : 21-feb-2025.
 
 [Canonical link](https://medium.com/@ravindradevrani/encapsulation-in-c-cd6d61aa2c3d)
-
-Exported from [Medium](https://medium.com) on February 19, 2025.

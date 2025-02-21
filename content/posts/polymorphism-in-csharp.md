@@ -8,7 +8,9 @@ categories=['programming']
 
 ![polymorphism in csharp](/images/polymorphism.png)
 
-Polymorphism is one of the core concept of object oriented programming. Word **polymorphism = poly (many) + morphism (forms)**. As it’s name suggesting polymorphism means, an entity can have multiple forms.
+Polymorphism is one of the core concept of object oriented programming. Word **polymorphism = poly (many) + morphism (forms)**. As its name suggesting polymorphism means, an entity can have multiple forms.
+
+📢 Updated and refinded at : 21-feb-2025
 
 **Other oops core concepts :**
 
@@ -404,17 +406,70 @@ Dog dog = new Dog(); // This is not polymorphism
 Animal dog = new Dog(); // This is polymorphism
 ```
 
+```mermaid
+---
+title: Polymorphism through abstract class where `Animal` is an `abstract class`.
+---
+classDiagram
+    class Animal {
+        <<abstract class>>
+        +string Name
+        +string Breed
+        +string Color
+        +Sleep()
+        Eat()*
+        MakeSound()*
+    }
+
+    class Cat {
+        +Eat()
+        +MakeSound()
+    }
+
+    class Dog {
+        +Eat()
+        +MakeSound()
+    }
+
+    Animal <|-- Cat
+    Animal <|-- Dog
+
+```
+
 Let’s understand it in simpler terms.
 
 ![some image](/images/1_evWYiuwo-wgw3uoa3f_czQ.png)
 
 ---
 
-### Polymorphism through interfaces
+## Polymorphism through interfaces
 
 **⚠️Note:** Polymorphism can also be achieved through interfaces. Simply replace the base class with an interface.
 
-For example:
+```mermaid
+---
+title: Polymorphism throw interfaces
+---
+classDiagram
+    class INotification {
+        <<interface>>
+        Send()
+    }
+
+    class EmailNotification {
+        +Send()
+    }
+
+    class SmsNotification {
+        +Send()
+    }
+
+    INotification <|.. EmailNotification
+    INotification <|.. SmsNotification
+
+```
+
+C# implementation:
 
 ```cs
 public interface INotification
@@ -478,12 +533,29 @@ class Calculator
 
 In this example, the `Add` method is overloaded to handle both integer and double parameters. Calculator class have two Add methods but with different number of arguments.
 
-### TLDR
+## Summary
 
-Polymorphism, a core concept in object-oriented programming, allows an entity to take multiple forms. In a pet shop system, this is demonstrated by creating a base `Animal` class and derived `Dog` and `Cat` classes, allowing for flexible handling of different animals. The `Animal` class's `Eat()` and `MakeSound()` methods are made abstract to be overridden in derived classes. Polymorphism can also be achieved through interfaces, providing further flexibility. Additionally, method overloading, though debatable as a form of polymorphism, allows multiple methods with the same name but different parameters in a single class.
+- An entity can have multiple forms, eg. `Animal` can have many forms like `Cat` and `Dog`.
+
+```mermaid
+---
+title: Polymorphism
+---
+
+classDiagram
+  class Animal{
+    <<abstract class>>
+    MakeSound()*
+  }
+
+  Animal <|-- Dog
+  Animal <|-- Cat
+```
+
+- Polymorphism is achieved through either an `abstract class` or an `interface`.
+- It is also called `run time polymorphism` or `late binding`, because till the run time it does not which `MakeSound()` method it is using. Is it a dog's bark or cat's meaw.
+- Additionally, there is also a term called `method overloading`. It allows multiple methods with the same name but different parameters in a single class. Some consider it as a `early binding` or `compile time polymorphism` and some don't consider it as a polymorphism at all.
 
 ---
 
-Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [February 5, 2024](https://medium.com/p/ea312521d050). [Canonical link](https://medium.com/@ravindradevrani/polymorphism-in-c-ea312521d050)
-
-Exported from [Medium](https://medium.com) on February 19, 2025.
+Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [February 5, 2024](https://medium.com/p/ea312521d050). Updated and refinded at : 21-feb-2025. [Canonical link](https://medium.com/@ravindradevrani/polymorphism-in-c-ea312521d050).

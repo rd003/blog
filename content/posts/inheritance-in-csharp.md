@@ -8,6 +8,8 @@ categories=['programming']
 
 ![inheritance csharp](/images/1_8OZ9YKcL2dZb_z79HSS0cw.png)
 
+📢 Updated and refinded at : 21-feb-2025
+
 Inheritance is a fundamental concept in OOPs that allows a class to inherit properties and behaviors of another class. We have two key terms are here **base class/superclass** and **derived class/subclass.**
 
 - **Base class / super-class:** Whose members and functionality are inherited (Giver).
@@ -167,13 +169,38 @@ myBasicPhone.MakeSimpleCall();
 **😎Let’s Break it down:**
 
 - Every phone have some common features like (Brand, Model, Year, Call, Text). If we have two classes **BasicPhone** and **SmartPhone**, we need to write these features in both classes, which leads to unnecessary code redundancy. It is beneficial to create one Base-Class (Phone) and put all the common functionality there(in Phone class). Both classes (**BasicPhone** and **SmartPhone**) will re-use the common f functionality by inheritance. Now **BasicPhone** and **SmartPhone** will not have any redundant code.
-- **Phone** is a base class. **BasicPhone** and **SmartPhone** are derived classes.
-- **Extending Functionality:** The subclass can extend or override the functionality of the superclass. It can add new methods or properties, or override existing ones to suit its specific needs. In the above example , derived classes are overriding the **DisplayInfo()** method.
+- `Phone` is a base class. `BasicPhone` and `SmartPhone` are derived classes.
 
-**Commonly known inheritance:**
+- **Extending Functionality:** The subclass can extend or override the functionality of the superclass. It can add new methods or properties, or override existing ones to suit its specific needs. In the above example , derived classes are overriding the `DisplayInfo()` method.
 
-- **Single inheritance:** Previous example was single inheritance . **BasicPhone** class inherit the **Phone class.**
-- **Multilevel inheritance: Animal** is inherited by **Mammal** and **Mammal** is inherited by **Dog**
+## Commonly known inheritance
+
+### Single inheritance
+
+Previous example was single inheritance . `BasicPhone` class inherits the `Phone class`.
+
+### Multilevel inheritance
+
+```mermaid
+---
+title: multi level inheritance
+---
+classDiagram
+   class Animal{
+    +Eat()
+   }
+   class Mammal{
+    +GiveBirth()
+   }
+   class Dog{
+    +Bark()
+   }
+
+   Animal<|-- Mammal
+   Mammal<|-- Dog
+```
+
+`Animal` is inherited by `Mammal` and `Mammal` is inherited by `Dog`
 
 ```cs
 // Base class
@@ -213,17 +240,21 @@ class Program
 
 **Eg.** `Class C` inherits both `Class A` and `Class B` (C:A,B)
 
-⚠️Multiple inheritance is **_not allowed_** in c#. Why? Because of **diamond problem.**
+⚠️Multiple inheritance is **not allowed** in c#. Why? Because of `diamond problem`.
 
 **✏️Diamond Problem:** Multiple inheritance can lead to a situation known as the “diamond problem.” This occurs when a class inherits from two classes that have a common ancestor. If there are conflicting methods or members in the common ancestor, it becomes ambiguous for the derived class to determine which implementation to use. This can result in confusion and errors.
 
 ```cs
 // Diamond problem example (not allowed in C#)
-class A { public void DoSomething() {  ...  } }
-class B : A { public void DoSomethingElse() { ...  } }
-class C : A { public void DoYetAnotherThing() {  ...  } }
+class A { public void DoSomething() {} }
+class B : A { public void DoSomethingElse() {} }
+class C : A { public void DoYetAnotherThing() {} }
 class D : B, C { } // Ambiguity arises here
 ```
+
+Pictorial representation
+
+![diamond_problem](/images/diamond_problem.png)
 
 `Class B` inherits `class A`, which have `DoSomething()` method. `Class C` also inherits `class A`. If `D` inherits `B` and `C`, it will get two `DoSomething()` methods which is ambiguous. That’s why multiple inheritance is not allowed in c#.
 
@@ -239,12 +270,26 @@ class Shape : IDrawable, IResizable {
 }
 ```
 
-That’s all about inheritance.
-
 ---
 
-Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [February 2, 2024](https://medium.com/p/08327a9efee5).
+## Summary
+
+- A class can access the features of another class called inheritance.
+- Giver : Base Class or Super class
+- Taker : Derived Class or Sub Class
+- Multiple inheritance is not allowed in C#, because of diamond problem.
+- Diamond problem :
+
+```cs
+Class A {MethodA()}
+Class B: A {MethodB()}
+Class C: A {MethodC()}
+Class D: B,C {}
+// D have multiple methods with name `MethodA`, which leads to ambiguity.
+```
+
+- To address the issue of diamond problem, we need to use interface. Since interfaces does not have method defintion, there won't be any ambiguity.
+
+Original post by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [February 2, 2024](https://medium.com/p/08327a9efee5). Updated and refinded at : 21-feb-2025
 
 [Canonical link](https://medium.com/@ravindradevrani/inheritance-in-c-08327a9efee5)
-
-Exported from [Medium](https://medium.com) on February 19, 2025.

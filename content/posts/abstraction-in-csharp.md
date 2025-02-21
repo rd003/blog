@@ -8,6 +8,8 @@ categories=['programming']
 
 ![abstraction in oops c#](/images/1_6CWERFGOQbJWr-R6wNi2oA.png)
 
+📢 Updated and refinded at : 21-feb-2025
+
 **Abstraction** allows you to focus on the relevant details of an object while ignoring unnecessary complexities.  
 This is achieved by defining a simplified representation of an object that **hides the implementation details and exposes only the necessary features**.  
 In practical terms, **abstraction is implemented through abstract classes and interfaces in languages like C#**.
@@ -20,10 +22,25 @@ In practical terms, **abstraction is implemented through abstract classes and in
 
 Let’s implement abstraction by using **interface**. In the real world projects, we use interfaces more often.
 
+```mermaid
+classDiagram
+  class ICar{
+    <<interface>>
+    int Speed
+    Accelerate()
+    Brake()
+    Refuel()
+  }
+  note for ICar "Abstraction"
+
+```
+
+Or code representation:
+
 ```cs
 public interface ICar
 {
- int Speed { get; set; }
+    int Speed { get; set; }
 
     void Accelerate();
 
@@ -42,10 +59,40 @@ Abstraction is like looking at these things from a high level without worrying a
 
 We are creating a class `Sedan`, which is implementing `ICar` interface. In this class, we are defining the `Accelarate(),Brake() and Refuel()` feature according to the sedan cars.
 
+```mermaid
+classDiagram
+  class ICar{
+    <<interface>>
+    int Speed
+    Accelerate()
+    Brake()
+    Refuel()
+  }
+
+  class Sedan{
+     +int Speed
+     +Accelerate()
+     +Brake()
+     +Refuel()
+  }
+
+  class SUV{
+     +int Speed
+     +Accelerate()
+     +Brake()
+     +Refuel()
+  }
+  note for ICar "Abstraction"
+  ICar <|-- Sedan
+  ICar <|-- SUV
+```
+
+C# implementation:
+
 ```cs
 public class Sedan : ICar
 {
- public int Speed { get; set; }
+    public int Speed { get; set; }
 
     public void Accelerate()
     {
@@ -71,51 +118,53 @@ public class Sedan : ICar
 
 ---
 
-## Why would I take extra steps to create the interface?
+## Why would I take an extra step to create the interface?
 
 Now, you might be wondering that, why do we create an interface and implement it in a class. We can avoid the extra step of creating the interface and define all the methods in the class. As shown in the example below.
 
 ```cs
 public class Sedan
 {
- public int Speed { get; set; }
+    public int Speed { get; set; }
 
-    public void Accelerate()
-    {
-        // Implementation for accelerating a sedan
-    }
+    public void Accelerate() {}
 
-    public void Brake()
-    {
-        // Implementation for braking a sedan
-    }
+    public void Brake() {}
 
-    public void Refuel()
-    {
-        // Implementation for refueling a sedan
-    }
+    public void Refuel() {}
 
 }
 ```
 
 Here we are not using any interface and still achieving the same result. Let’s see what are the benefits.
 
-**1. Abstraction:** It helps to look things from high level without worrying about specific details. For example , what are features you need in a car. Just the higher level overview and no need to worry about actual functionality.
+1.It enforces a contract to maintain the code consistency.
 
-**2. Code Consistency:** Using interfaces promotes consistency in your code. If you have multiple classes implementing the same interface, you can use them interchangeably, leading to a more cohesive and predictable codebase.
+**2. 🔖Makes system extensible:** You can easily swap implementation which are implementing the same abstraction. If you need to add new types of cars in the future, you can easily create additional classes that implement the existing `ICar` interface. This extension doesn’t require changes to existing code that uses the interface.
 
-**3. Ease of Extension:** If you need to add new types of cars in the future, you can easily create additional classes that implement the existing ICar interface. This extension doesn’t require changes to existing code that uses the interface.
+**3. Testing and Mocking:** Interfaces make it easier to write unit tests and use mocking frameworks. When you do unit testing in C# using (MOQ or nsubstitute) will find the benefits of using interfaces.
 
-**4. Testing and Mocking:** Interfaces make it easier to write unit tests and use mocking frameworks. When you do unit testing, will find the benefits of using interfaces.
+## Summary
 
-**5. Enforces Contract:** It forces you to use all the features of an interface.
+- Abstraction allows to focus on what is necessary while ignoring about the complexities like implementation details.
+- In c# it is achieved through either `Abstract class` or `interface`.
+- In simpler terms, **Abstraction**: interface or abstract class. **Implementation**: class that is derived or implemented from abstraction.
 
-**6. Makes your system loosely coupled.**
+```mermaid
+ classDiagram
+    Abstraction <|-- Implementation1
+    Abstraction <|-- Implementation2
+    Abstraction <|-- Implementation3
+```
+
+- Its benefits:
+  - You can define things in the higher level without worrying about the implementation
+  - Enforces a contract, which leads to consitency
+  - Makes your system extensible. You can easily swap implementations which are implementing the same abstraction. If we take a look at above diagram, each implementations are swapable because they all are implemented from the same Abstraction.
+  - Most of the mocking framework relies only on interfaces.
 
 ---
 
-Originally posted by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [January 30, 2024](https://medium.com/p/c3d4c832942a).
+Originally posted by [Ravindra Devrani](https://medium.com/@ravindradevrani) on [January 30, 2024](https://medium.com/p/c3d4c832942a). Updated and refinded at : 21-feb-2025.
 
 [Canonical link](https://medium.com/@ravindradevrani/abstraction-in-c-c3d4c832942a)
-
-Exported from [Medium](https://medium.com) on February 19, 2025.
