@@ -448,7 +448,7 @@ Let’s understand it in simpler terms.
 
 ```mermaid
 ---
-title: Polymorphism throw interfaces
+title: Polymorphism through interfaces
 ---
 classDiagram
     class INotification {
@@ -464,8 +464,8 @@ classDiagram
         +Send()
     }
 
-    INotification <|.. EmailNotification
-    INotification <|.. SmsNotification
+    INotification <|-- EmailNotification
+    INotification <|-- SmsNotification
 
 ```
 
