@@ -12,9 +12,9 @@ Polymorphism is one of the core concept of object oriented programming. Word **p
 
 **Other oops core concepts :**
 
-- [Abstraction in c#](https://medium.com/@ravindradevrani/abstraction-in-c-c3d4c832942a)
-- [Encapsulation in c#](https://medium.com/@ravindradevrani/encapsulation-in-c-cd6d61aa2c3d)
-- [Inheritance in c#](https://ravindradevrani.medium.com/inheritance-in-c-08327a9efee5)
+- [Abstraction in C#](/posts/abstraction-in-csharp/)
+- [Encapsulation in C#](/posts/encapsulation-in-csharp/)
+- [Inheritance in c#](/posts/inheritance-in-csharp/)
 
 Let’s learn polymorphism through mistakes.
 

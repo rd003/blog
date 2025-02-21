@@ -14,9 +14,9 @@ In practical terms, **abstraction is implemented through abstract classes and in
 
 **📺Other OOPs related articles :**
 
-- [Encapsulation in C#](https://ravindradevrani.medium.com/encapsulation-in-c-cd6d61aa2c3d)
-- [Inheritance in C#](https://ravindradevrani.medium.com/inheritance-in-c-08327a9efee5)
-- [Polymorphism in C#](https://medium.com/@ravindradevrani/polymorphism-in-c-ea312521d050)
+- [Encapsulation in C#](/posts/encapsulation-in-csharp/)
+- [Polymorphism in C#](/posts/polymorphism-in-csharp/)
+- [Inheritance in c#](/posts/inheritance-in-csharp/)
 
 Let’s implement abstraction by using **interface**. In the real world projects, we use interfaces more often.
 

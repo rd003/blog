@@ -243,7 +243,7 @@ class Program
 
 ---
 
-[Generic Delegates (Action, Func, Predicate)In C#](https://ravindradevrani.medium.com/generic-delegates-action-unc-predicate-in-c-100c5251e554)
+[Generic Delegates (Action, Func, Predicate)In C#](/posts/generic-delegates-action-func-predicate-in-csharp/)
 
 ---
 

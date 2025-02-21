@@ -15,9 +15,9 @@ Inheritance is a fundamental concept in OOPs that allows a class to inherit prop
 
 **📺Other oops concepts:**
 
-- [Abstraction in C#](https://medium.com/@ravindradevrani/abstraction-in-c-c3d4c832942a)
-- [Encapsulation in C#](https://medium.com/@ravindradevrani/encapsulation-in-c-cd6d61aa2c3d)
-- [Polymorphism in C#](https://medium.com/@ravindradevrani/polymorphism-in-c-ea312521d050)
+- [Abstraction in C#](/posts/abstraction-in-csharp/)
+- [Encapsulation in C#](/posts/encapsulation-in-csharp/)
+- [Polymorphism in C#](/posts/polymorphism-in-csharp/)
 
 **Syntax of inheritance:**
 

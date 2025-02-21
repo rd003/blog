@@ -19,9 +19,9 @@ Now we need to understand few terms.
 
 ## 📺 Other OOPs Related articles
 
-- [Abstraction in C#.](https://medium.com/@ravindradevrani/abstraction-in-c-c3d4c832942a)
-- [Inheritance in C#](https://ravindradevrani.medium.com/inheritance-in-c-08327a9efee5)
-- [Polymorphism in C#](https://medium.com/@ravindradevrani/polymorphism-in-c-ea312521d050)
+- [Abstraction in C#](/posts/abstraction-in-csharp/)
+- [Polymorphism in C#](/posts/polymorphism-in-csharp/)
+- [Inheritance in c#](/posts/inheritance-in-csharp/)
 
 Let’s understand Encapsulation with an example.
 
