@@ -24,7 +24,7 @@ You can definitely save the image in the database in the binary format, base-64 
 
 ## Project Structure
 
-![project structure](/images/1_NMahFsCf04hXNJpWGVhhZQ.jpeg)
+![project structure](/images/1_NMahFsCf04hXNJpWGVhhZQ.jpg)
 
 I am assuming that, you know how to create a solution file, with multiple projects.
 
@@ -96,7 +96,7 @@ public class ApplicationDbContext: DbContext
 
 ## appsettings.json file
 
-Add connection string in appsettings.json file
+Add connection string in `appsettings.json` file
 
 ```json
 "ConnectionStrings": {
@@ -169,7 +169,7 @@ public class ProductUpdateDTO
 }
 ```
 
-👉 **IFormFile** comes under the **Microsoft.AspNetCore.Http** namespace and this namespace does not included in project by default. You have to add it manually. So open the **ImageManipulation.Data.csproj** file or double click on **ImageManipulation.Data** project, which is shown in solution explorer. Add follwing line in the file inside the **ItemGroup** tag.
+👉 `IFormFile` comes under the `Microsoft.AspNetCore.Http` namespace and this namespace does not included in project by default. You have to add it manually. So open the `ImageManipulation.Data.csproj` file or double click on `ImageManipulation.Data` project, which is shown in solution explorer. Add follwing line in the file inside the `ItemGroup` tag.
 
 `<FrameworkReference Include=”Microsoft.AspNetCore.App” />`
 
@@ -178,12 +178,12 @@ public class ProductUpdateDTO
 
 //..... existing lines
 
-<ItemGroup\>
+<ItemGroup>
  // ...... previous lines
 
  // new line 👇
- <FrameworkReference Include\="Microsoft.AspNetCore.App" />
-</ItemGroup\>
+ <FrameworkReference Include="Microsoft.AspNetCore.App" />
+</ItemGroup>
 
 // ..... ..... existing lines
 ```
@@ -347,9 +347,9 @@ app.UseCors(); // for enabling cross origin requests
 // .... other lines
 ```
 
-Actual file path is **basePath/uploads/imageName.extension**
+Actual file path is `basePath/uploads/imageName.extension`
 
-Our files will be saved in `Uploads` folder, but will not expose this name to the client. But, we have mapped **Uploads** to **Resources**. So file path for client will be **basePath/resources/imageName.extension**
+Our files will be saved in `Uploads` folder, but will not expose this name to the client. But, we have mapped `Uploads` to `Resources`. So file path for client will be `basePath/resources/imageName.extension`
 
 ## Controllers
 
@@ -494,11 +494,11 @@ public class ProductController(IFileService fileService, IProductRepository prod
 }
 ```
 
-**⚠️ Note:** When you are using **post** and **put** apis, then please make sure to pass your data from the **\`Form\`.** Since we posting the file too, our content type must be **multipart/form-data.**
+**⚠️ Note:** When you are using `post` and `put` APIs, then please make sure to pass your data from the `Form`. Since we posting the file too, our content type must be `multipart/form-data`.
 
 ## Test the Post API with swagger
 
-![post api swagger](/images/1_aa-CIyPUC4TXkoUJd-YLcg.jpeg)
+![post api swagger](/images/1_aa-CIyPUC4TXkoUJd-YLcg.jpg)
 
 ---
 
