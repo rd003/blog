@@ -3,7 +3,7 @@ date = '2025-02-22T21:35:42+05:30'
 draft = false
 title = 'The Interface Segregation Principle (ISP)'
 tags = ['design-patterns','SOLID']
-category = ['programming']
+categories = ['programming']
 +++
 
 ![what is Interface Segregation Principle?](/images/ISP.jpg)

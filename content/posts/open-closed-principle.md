@@ -3,7 +3,7 @@ date = '2025-02-22T19:24:26+05:30'
 draft = false
 title = 'Open Closed Principle (OCP)'
 tags = ['design-patterns','SOLID']
-category = ['programming']
+categories = ['programming']
 +++
 
 ![open closed principle in c#](/images/1_WDgbogkM-XrxUPlXfOX2Zg.webp)

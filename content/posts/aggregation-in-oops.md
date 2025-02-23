@@ -3,7 +3,7 @@ date = '2025-02-23T08:37:49+05:30'
 draft = false
 title = 'Understanding Aggregation: How It Differs from Composition'
 tags = ['oops']
-categoris=['programming']
+categories=['programming']
 +++
 
 ![Aggregation in oops. Aggregation vs Composition.](/images/1_NYnlRXKiuSdrYvLcRGGchQ.png)

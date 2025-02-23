@@ -3,7 +3,7 @@ date = '2025-02-22T20:58:52+05:30'
 draft = false
 title = 'The Liskov Substitution Principle (LSP)'
 tags = ['design-patterns','SOLID']
-category = ['programming']
+categories = ['programming']
 +++
 
 ![What is Liskov substitution principle](/images/1_RdNrcbPpOQ1z5b9crorp2Q.webp)

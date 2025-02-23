@@ -3,7 +3,7 @@ date = '2025-02-23T08:19:49+05:30'
 draft = false
 title = 'Composition:  What, Why And When?'
 tags = ['oops']
-categoris=['programming']
+categories=['programming']
 +++
 
 ![what is composition?](/images/1_YArOSlj41qOCfuCBcvZ_5w.png)

@@ -3,7 +3,7 @@ date = '2025-02-22T21:50:00+05:30'
 draft = false
 title = 'The Dependency Inversion Principle (DIP)'
 tags = ['design-patterns','SOLID']
-category = ['programming']
+categories = ['programming']
 +++
 
 ![Dependency Inversion Principle in c#](/images/1_FjEBNQw1jozLAACTbGgs7w.webp)

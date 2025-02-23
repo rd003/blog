@@ -3,7 +3,7 @@ date = '2025-02-22T19:03:39+05:30'
 draft = false
 title = 'Single Responsibility Principle (SRP)'
 tags = ['design-patterns','SOLID']
-category = ['programming']
+categories = ['programming']
 +++
 
 ![Single Responsibility Principle in c#](/images/1_fMWZxD6bOsVnbkiwt1X4MA.webp)
