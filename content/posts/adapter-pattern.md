@@ -2,6 +2,8 @@
 date = '2025-02-23T11:23:31+05:30'
 draft = false
 title = 'Adapter Pattern: Bridging the gap between incompatible interfaces'
+tags = ['design-patterns']
+categories = ['programming']
 +++
 
 ![The Adapter pattern in c#](/images/1_8nYA7mo3pjhJZT1F2nBSOg.png)
