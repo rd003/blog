@@ -1,7 +1,9 @@
 +++
 date = '2025-02-22T21:50:00+05:30'
-draft = true
+draft = false
 title = 'The Dependency Inversion Principle (DIP)'
+tags = ['design-patterns','SOLID']
+category = ['programming']
 +++
 
 ![Dependency Inversion Principle in c#](/images/1_FjEBNQw1jozLAACTbGgs7w.webp)
@@ -15,7 +17,10 @@ The **Dependency Inversion Principle** states that:
 
 Other SOLID Principles
 
-TODO: Define links
+- [Single Responsibility Principle](/posts/single-responsibility-principle/)
+- [Open Closed Principle](/posts/open-closed-principle/)
+- [Liskov Substitution Problem](/posts/liskov-substitution-principle/)
+- [Interface Segregation Principle](/posts/interface-segregation-principle/)
 
 ## Example without DIP
 

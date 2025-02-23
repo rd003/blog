@@ -14,12 +14,13 @@ The `Single Responsibility Principle (SRP)` is a cornerstone of object-oriented 
 
 The principle asserts that **a class should do only one thing and do it very well**. This doesn’t imply that a class should have only one method or behavior, but rather that it should contain a cohesive set of behaviors related to a single responsibility.
 
-### Other SOLID principles
+Other SOLID principles
 
-- [Open Closed Principle]()
-- [Liskov Substitution Problem]()
-- [Interface Segregation Principle]()
-- [Dependency Inversion Principle]()
+- [Single Responsibility Principle](/posts/single-responsibility-principle/)
+- [Open Closed Principle](/posts/open-closed-principle/)
+- [Liskov Substitution Problem](/posts/liskov-substitution-principle/)
+- [Interface Segregation Principle](/posts/interface-segregation-principle/)
+- [Dependency Inversion Principle](/posts/dependency-inversion-principle/)
 
 Let’s explore SRP with an example.
 
@@ -88,7 +89,7 @@ Adding new features, like `exporting the book to a PDF`, increases the complexit
 **4. Testing complexity:**  
 A class with multiple responsibilities can lead to complex unit tests, as tests must account for various concerns.
 
-### Problems of Not Following SRP
+### Problems Of Not Following SRP
 
 - **Harder to Maintain:** Changes to one responsibility might break others, making the code harder to maintain.
 - **Understanding challenges**: New developers might struggle to understand a class with multiple responsibilities.
@@ -129,26 +130,26 @@ Here is the refactored code.
 // Book.cs
 public class Book
 {
- public string Title { get; set; }
- public string Author { get; set; }
+    public string Title { get; set; }
+    public string Author { get; set; }
 }
 
 // BookPrinter.cs
 public class BookPrinter
 {
- public void Print(Book book)
- {
- Console.WriteLine($"Printing Book: {book.Title} by {book.Author}");
- }
+    public void Print(Book book)
+    {
+        Console.WriteLine($"Printing Book: {book.Title} by {book.Author}");
+    }
 }
 
 // BookRepository.cs
 public class BookRepository
 {
- public void SaveBook(Book book, string filePath)
- {
- Console.WriteLine("Saving book to file: " + filePath);
- }
+    public void SaveBook(Book book, string filePath)
+    {
+        Console.WriteLine("Saving book to file: " + filePath);
+    }
 }
 ```
 

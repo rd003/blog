@@ -8,13 +8,16 @@ category = ['programming']
 
 ![what is Interface Segregation Principle?](/images/ISP.jpg)
 
-> Clients should not be forced to depend on interfaces they do not use.
+📢 Clients should not be forced to depend on interfaces they do not use.
 
 In simpler terms, this principle suggests that an interface should not include methods that implementing classes don’t need. It Encourages us to create smaller interfaces over the big fat interface.
 
-## Other SOLID principles
+Other SOLID principles
 
-TODO: define links
+- [Single Responsibility Principle](/posts/single-responsibility-principle/)
+- [Open Closed Principle](/posts/open-closed-principle/)
+- [Liskov Substitution Problem](/posts/liskov-substitution-principle/)
+- [Dependency Inversion Principle](/posts/dependency-inversion-principle/)
 
 ## Violating example
 

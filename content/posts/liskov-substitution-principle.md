@@ -18,9 +18,12 @@ In simpler terms, if you ask for an animal which eat, sleep and makeSound then y
 
 So, that is basically the LSP. LSP is all about having well-designed polymorphic classes. Let’s understand what constitutes bad polymorphic design.
 
-### Other SOLID principles
+Other SOLID principles
 
-TODO: Define these links
+- [Single Responsibility Principle](/posts/single-responsibility-principle/)
+- [Open Closed Principle](/posts/open-closed-principle/)
+- [Interface Segregation Principle](/posts/interface-segregation-principle/)
+- [Dependency Inversion Principle](/posts/dependency-inversion-principle/)
 
 ### A code that is violating the LSP
 

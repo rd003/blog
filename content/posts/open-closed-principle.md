@@ -18,7 +18,10 @@ Create a new class by extending (inheriting) the existing class and introduce th
 
 ### Other SOLID principles
 
-TODO: Define those links
+- [Single Responsibility Principle](/posts/single-responsibility-principle/)
+- [Liskov Substitution Problem](/posts/liskov-substitution-principle/)
+- [Interface Segregation Principle](/posts/interface-segregation-principle/)
+- [Dependency Inversion Principle](/posts/dependency-inversion-principle/)
 
 ### Example that violates OCP
 
