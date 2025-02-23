@@ -1,7 +1,7 @@
 +++
 date = '2025-02-19T17:40:41+05:30'
 title = 'Write dapper effectively with generic methods'
-tags= ["dotnet"]
+tags= ["dotnet","dapper"]
 categories = ["programming"]
 canonical_url = "https://medium.com/@ravindradevrani/write-dapper-effectively-with-generic-methods-f3aa257cc3a3"
 +++
