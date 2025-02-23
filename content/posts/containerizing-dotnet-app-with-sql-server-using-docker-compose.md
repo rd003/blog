@@ -1,6 +1,6 @@
 +++
 date = '2025-02-23T13:57:05+05:30'
-draft = true
+draft = false
 title = 'Containerizing Dotnet App With Sql Server Using Docker Compose'
 tags = ['dotnet','docker']
 categories = ['programming']
@@ -184,7 +184,7 @@ However, you can also verify it in the docker desktop.
 
 To test the application, open a web browser and type the url `[http://localhost:8080/weatherforecast](http://localhost:8080/weatherforecast)`. As a result, you should see the following response in the browser.
 
-![response1](https://cdn-images-1.medium.com/max/800/1*qKVhg2cNtjj26USci_lXeg.png)
+![response1](/images/1_qKVhg2cNtjj26USci_lXeg.png)
 
 This indicates that our application is working perfectly.
 
@@ -198,19 +198,23 @@ by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
 
 If you encounter this error, which means we are trying to access a database that does not exist yet. I have defined a database initializer functionality in the `Program.cs` file, which creates the database and adds some data to the `Person` table when the application runs for the first time. Ideally, this should have worked automatically when we served the URL `http://localhost:8080` for the first time. However, it did not happen in my case, possibly due to a permission-related issue in Docker. I couldn’t find the actual reason. If you face the same problem, you can follow these steps:
 
-1\. Open the integrated terminal of visual studio code.
+1. Open the integrated terminal of visual studio code.
 
-2\. Change the directory location to **DotnetDockerDemo.Api**
+2. Change the directory location to **DotnetDockerDemo.Api**
 
+```sh
 cd DotnetDockerDemo.Api
+```
 
-3\. Run the following command.
+3. Run the following command.
 
+```sh
 dotnet run
+```
 
 As a result, you will see something like this in the terminal.
 
-![](https://cdn-images-1.medium.com/max/800/1*-rmky9CEjrN91w0K9VL-JA.jpeg)
+![](/images/1_-rmky9CEjrN91w0K9VL-JA.jpg)
 
 My application is running at `[http://localhost:5241](http://localhost:5241/api/people)` , and yours might be too, but confirm it first.
 
@@ -224,7 +228,7 @@ As I have mentioned earlier, I have defined a **database initializer** functiona
 
 Now, our application is ready to serve. Open the web browser and enter the url `[http://localhost:8080/api/people](http://localhost:8080/api/people/)` . As a resuld, you should see the follwoing response.
 
-![response 3](https://cdn-images-1.medium.com/max/800/1*bGmP05GR4SecF12R1ttX-w.png)
+![response 3](/images/1_bGmP05GR4SecF12R1ttX-w.png)
 
 response of the endpoint `[http://localhost:8080/api/people](http://localhost:8080/api/people/)`
 
@@ -238,18 +242,4 @@ I have created a separate branch which contains the **dockerfile** and **compose
 
 ---
 
-Please consider to clap and share if this post helped you.
-
-### Connect with me
-
-👉 [YouTube](https://youtube.com/@ravindradevrani)  
-👉 [Twitter](https://twitter.com/ravi_devrani)  
-👉 [GitHub](https://github.com/rd003)
-
-[**Become a supporter**](https://www.buymeacoffee.com/ravindradevrani) **🍵**
-
-By [Ravindra Devrani](https://medium.com/@ravindradevrani) on [August 19, 2024](https://medium.com/p/d04b0c4ff4d1).
-
 [Canonical link](https://medium.com/@ravindradevrani/containerize-your-net-application-with-sql-server-using-docker-compose-d04b0c4ff4d1)
-
-Exported from [Medium](https://medium.com) on February 19, 2025.
