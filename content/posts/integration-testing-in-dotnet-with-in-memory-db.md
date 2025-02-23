@@ -168,7 +168,7 @@ using (var scope = app.Services.CreateScope())
  var context = scope.ServiceProvider.GetService<PersonContext>();
  if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory" && context.Database.GetPendingMigrations().Any())
  {
- context.Database.Migrate();
+    context.Database.Migrate();
  }
 }
 ```
