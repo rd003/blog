@@ -32,7 +32,7 @@ public interface ICheckbox
 }
 ```
 
-Each **family** will consist of **two** products **button** and **checkbox** (i.e `**IButton**` and `**ICheckBox**`).
+Each **family** will consist of **two** products **button** and **checkbox** (i.e `IButton` and `ICheckBox`).
 
 ### Concrete Products
 
