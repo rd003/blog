@@ -23,7 +23,7 @@ theme = 'beautiful-hugo'
     url = "/tags/"
     weight = 3
 [Params] 
-  subtitle="I write blog posts about .NET, C#, SQL and OOA&D"
+  subtitle="I write blog posts and make youtube videos on .NET, C#, SQL and OOA&D"
   readingTime=true
   wordCount=true
   disclaimerText="My views are my own and not my employer's"
