@@ -121,8 +121,6 @@ Each component (Engine, Wheel, Car) can be developed and tested independently, e
 Composition is when an object is composed of one or more objects. Use **composition** if you want to reuse the functionality of a class and do not want subtype polymorphism. If you need to reuse the functionality of a class and you also want to use subtype polymorphism then consider the **inheritance.**
 
 [**Understanding Aggregation: How It Differs from Composition**  
-Aggregation is when an object is made up of one or more objects, but those objects can live outside the main object. It…]()
-
-TODO: define links
+Aggregation is when an object is made up of one or more objects, but those objects can live outside the main object. It…](/posts/aggregation-in-oops)
 
 [Canonical link](https://medium.com/@ravindradevrani/composition-what-why-and-when-aa43cebb3494)
