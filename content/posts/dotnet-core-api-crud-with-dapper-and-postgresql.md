@@ -2,7 +2,7 @@
 date = '2025-02-23T18:00:17+05:30'
 draft = false
 title = 'Dotnet Core Api CRUD With Dapper and PostgreSql'
-tags = ['dotnet','crud','dapper']
+tags = ['dotnet','dapper']
 categories = ['programming']
 +++
 

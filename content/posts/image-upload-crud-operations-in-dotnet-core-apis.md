@@ -2,7 +2,7 @@
 date = '2025-02-22T18:28:32+05:30'
 draft = false
 title = 'Image Upload CRUD Operations in .NET Core WebAPIs'
-tags = ['dotnet','image-upload']
+tags = ['dotnet']
 categories=['programming']
 +++
 

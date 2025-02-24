@@ -1,10 +1,12 @@
 +++
-date = '2025-02-02T15:28:41+05:30'
-title = 'Understaning LINQ Zip() Method'
-tags= ["c#","linq","dotnet"]
+date = '2025-02-24T18:32:41+05:30'
+title = 'LINQ: Zip() operator'
+tags= ["csharp","linq"]
 categories = ["programming"]
 draft= true
 +++
+
+![zip() operator in](/images/zip.png)
 
 Let's understand it with example.
 
