@@ -1,4 +1,4 @@
-baseURL = 'https://rd003.github.io/'
+baseURL = 'https://ravindradevrani.com/'
 languageCode = 'en-us'
 title = 'Ravindra Devrani'
 theme = 'beautiful-hugo'
@@ -28,7 +28,7 @@ theme = 'beautiful-hugo'
   wordCount=true
   disclaimerText="My views are my own and not my employer's"
   logo= "images/myPic.png"
-  favicon = "images/favicon.ico"
+  favicon = "images/favicon.png"
   favicon16 = "images/favicon-16x16.png"
   favicon32 = "images/favicon-32x32.png"
   apple_touch_icon = "images/apple-touch-icon.png"

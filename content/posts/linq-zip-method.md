@@ -1,9 +1,9 @@
 +++
-date = '2025-02-24T18:32:41+05:30'
+date = '2025-02-25T10:10:41+05:30'
 title = 'LINQ: Zip() operator'
 tags= ["csharp","linq"]
 categories = ["programming"]
-draft= true
+draft= false
 +++
 
 ![zip() operator in](/images/zip.png)
