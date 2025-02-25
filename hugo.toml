@@ -43,6 +43,5 @@ theme = 'beautiful-hugo'
     github = "rd003"
     twitter = "ravi_devrani"
     youtube = "@ravindradevrani"
-[services]
-  [services.disqus]
-    shortname = ''    
+  giscusTheme="preferred_color_scheme"
+  disableComments=false

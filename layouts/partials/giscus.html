@@ -1,0 +1,20 @@
+{{- if (eq (.Site.Params.disableComments | default false) false) -}} {{- if (eq
+(.Params.disableComments | default false) false) -}}
+<script
+  src="https://giscus.app/client.js"
+  data-repo="rd003/blog-comments"
+  data-repo-id="R_kgDON_HsdA"
+  data-category="General"
+  data-category-id="DIC_kwDON_HsdM4CnTr9"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="{{ .Site.Params.giscusTheme }}"
+  data-loading="lazy"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+></script>
+{{- end -}} {{- end -}}
