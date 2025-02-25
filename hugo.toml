@@ -38,6 +38,7 @@ theme = 'beautiful-hugo'
   socialShareFacebook = true
   socialShareReddit = true
   socialShareEmail = true
+  rss=true
   [Params.author]
     name = "Ravindra Devrani"
     github = "rd003"
