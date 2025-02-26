@@ -1,7 +1,7 @@
 +++
 date = '2025-02-26T07:29:14+05:30'
 draft = false
-title = 'Dotnet Service Lifetime (AddTransient(), AddScoped(), AddSingleton())'
+title = 'Dotnet Service Lifetime : AddTransient(), AddScoped(), AddSingleton()'
 tags = ['dotnet']
 categories = ['programming']
 +++
@@ -37,7 +37,7 @@ public class MyService : IMyService
 }
 ```
 
-`IMyService` have an readonly property named InstanceId of type Guid, which is set from the constructor.
+`IMyService` have a readonly property named `InstanceId` of type `Guid`, which is set from the constructor.
 We are logging inside the constructor, so that we can get notified whenever the new instance is created.
 
 ## Creating a middleware
@@ -70,7 +70,7 @@ app.MapGet("/test", (IMyService service1,IServiceProvider serviceProvider) =>
 });
 ```
 
-## 📢 At how many places we are requesting for the instance of IMyService
+## 📢 At how many places we are requesting for the instance of IMyService?
 
 At 3 places.
 
@@ -98,7 +98,7 @@ At endpoint-  InstanceId1:93021022-6d9f-4243-867b-454d09825dcf
 At endpoint-  InstanceId2:8ea09c7f-955c-44c3-b684-4cc14ac873ca
 ```
 
-Each time we are requesting for the service, we are getting a new instance. Exactly 3 instances for one http request, 1 for middleware, 2 for the endpoints.
+Each time we are requesting for the service, we are getting a new instance. Exactly 3 instances in one http request : 1 for the middleware and 2 for the endpoints.
 
 ## AddScoped
 
@@ -141,7 +141,7 @@ As you have noticed, the instance of `IMyService` is created once per http reque
 builder.Services.AddSingleton<IMyService, MyService>();
 ```
 
-Let's run the application an hit the enpoint `{baseUrl}/test`.
+Let's run the application and hit the enpoint `{baseUrl}/test`.
 
 ```bash
 ==> Service created with InstanceId: 7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
@@ -164,12 +164,12 @@ At endpoint-  InstanceId1:7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
 At endpoint-  InstanceId2:7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
 ```
 
-As you have noticed, instance of the IMyService is created once and shared with subsequent requests.
+As you have noticed, instance of the `IMyService` is created once and shared with subsequent requests.
 
 ## Summary
 
 - **AddTransient**: Instance is created each time when the service is requested.
 
-- **AddScoped** : Instance is created once per scope and shared across the scope.
+- **AddScoped** : Instance is created once per scope (or http request) and shared across the scope. In the case of web apis, scope is equivalent to http request.
 
 - **AddSingleton** : Instance is created once per application lifetime and shared across the application lifetime.
