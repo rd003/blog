@@ -22,19 +22,25 @@ theme = 'beautiful-hugo'
     identifier = "free-courses"
     name= "Free Courses"
     url = "/free-courses/"
-    weight=3 
+    weight= 3 
 
   [[menu.main]]
     name= "Hands on projects"
     url = "/free-courses/project-tutorials/"
     parent= "free-courses"  
-    weight =1
+    weight = 1
+  
+  [[menu.main]]
+    name= "Free Courses"
+    url = "/free-courses/"
+    parent= "free-courses"  
+    weight = 2
 
   [[menu.main]]
     name = "Tags"
     url = "/tags/"
     weight = 4
-
+  
   [[menu.main]]
     name = "Categories"
     url = "/categories/"
