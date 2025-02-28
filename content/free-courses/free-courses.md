@@ -1,7 +1,7 @@
 +++
 title = "Free Courses"
 draft = false
-layout= "free-courses"
+layout= "courses"
 +++
 
 - [.NET Core Web APIs](https://youtu.be/0T8CAdx3sFs?si=FTMAsb1o-SlXwzG7)

@@ -32,7 +32,7 @@ theme = 'beautiful-hugo'
   
   [[menu.main]]
     name= "Free Courses"
-    url = "/free-courses/"
+    url = "/free-courses/free-courses/"
     parent= "free-courses"  
     weight = 2
 
