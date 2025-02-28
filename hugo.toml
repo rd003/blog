@@ -17,11 +17,28 @@ theme = 'beautiful-hugo'
     name = "About"
     url = "/about/"
     weight = 2
+  
+  [[menu.main]]
+    identifier = "free-courses"
+    name= "Free Courses"
+    url = "/free-courses/"
+    weight=3 
+
+  [[menu.main]]
+    name= "Hands on projects"
+    url = "/free-courses/project-tutorials/"
+    parent= "free-courses"  
+    weight =1
 
   [[menu.main]]
     name = "Tags"
     url = "/tags/"
-    weight = 3
+    weight = 4
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 5  
 [Params] 
   subtitle="I write blog posts and make youtube videos on .NET, C#, SQL and OOA&D"
   readingTime=true
