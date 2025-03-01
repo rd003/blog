@@ -25,13 +25,13 @@ theme = 'beautiful-hugo'
     weight= 3 
 
   [[menu.main]]
-    name= "Hands on projects"
+    name= "Hands on projects(YT)"
     url = "/free-courses/project-tutorials/"
     parent= "free-courses"  
     weight = 1
   
   [[menu.main]]
-    name= "Free Courses"
+    name= "Free Courses(YT)"
     url = "/free-courses/free-courses/"
     parent= "free-courses"  
     weight = 2

@@ -1,5 +1,5 @@
 +++
-title = "Project tutorials"
+title = "Project tutorials on my youtube channel"
 draft = false
 layout= "courses"
 +++
@@ -10,6 +10,6 @@ layout= "courses"
 
 - [Chatroom with SignalR,html,css,js](https://youtu.be/XECRfpM3P4M?si=E3OGQEGj4EUiAL7L) (level: beginner)
 
-- [Activity Tracker](https://youtu.be/jofW-25Iews?si=zrpuqq2tf1oJarjC) (level: beginner)
+- [Activity Tracker](https://youtu.be/jofW-25Iews?si=zrpuqq2tf1oJarjC) (level: beginner | tech: blazor, sql server)
 
 - [Ecommerce app for books](https://youtu.be/R4ZLWD89R5w?si=qu_B44pFTBPehIZT) (level: beginner-intermediate | tech-stack: .net core mvc, sql server)

@@ -1,5 +1,5 @@
 +++
-title = "Free Courses"
+title = "Free Courses on Youtube channel"
 draft = false
 layout= "courses"
 +++
