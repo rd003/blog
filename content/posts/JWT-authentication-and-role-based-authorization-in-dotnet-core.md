@@ -336,7 +336,7 @@ namespace BookStore.Api.Services
             if (!await roleManager.RoleExistsAsync(role))
                 await roleManager.CreateAsync(new IdentityRole(role));
 
-            userManager.AddToRoleAsync(user, role);
+            await userManager.AddToRoleAsync(user, role);
 
             return (1,"User created successfully!");
         }
