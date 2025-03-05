@@ -41,10 +41,6 @@ theme = 'beautiful-hugo'
     url = "/tags/"
     weight = 4
   
-  [[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 5  
 [Params] 
   subtitle="I write blog posts and make youtube videos on .NET, C#, SQL and OOA&D"
   readingTime=true
