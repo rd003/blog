@@ -1,12 +1,14 @@
 +++
 date = '2025-03-07T10:41:02+05:30'
-draft = true
+draft = false
 title = 'Rest Api Best Practices Design'
 tags = ['dotnet']
 categories = ['programming']
 +++
 
 There are some common practices one should take care of while designing REST APIs.
+
+![rest_api_design_practices](/images/rest_api_design_practices.webp)
 
 ### 1. Use descriptive names for resources
 
