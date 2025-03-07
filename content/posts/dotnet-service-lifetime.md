@@ -37,7 +37,7 @@ public class MyService : IMyService
 }
 ```
 
-`IMyService` have a readonly property named `InstanceId` of type `Guid`, which is set from the constructor.
+`IMyService` have a read-only property named `InstanceId` of type `Guid`, which is set from the constructor.
 We are logging inside the constructor, so that we can get notified whenever the new instance is created.
 
 ## Creating a middleware
@@ -85,9 +85,9 @@ Let's register our service as transient.
 builder.Services.AddTransient<IMyService, MyService>();
 ```
 
-Let's run the application an hit the enpoint `{baseUrl}/test`.
+Let's run the application an hit the endpoint `{baseUrl}/test`.
 
-Open the console and you will notice these logs
+Open the console and you will notice these logs:
 
 ```bash
 ==> Service created with InstanceId: 486bc64a-b0d4-4216-9b36-3ca97b7fa5cd
@@ -106,7 +106,7 @@ Each time we are requesting for the service, we are getting a new instance. Exac
 builder.Services.AddScoped<IMyService, MyService>();
 ```
 
-Let's run the application an hit the enpoint `{baseUrl}/test`.
+Let's run the application and hit the endpoint `{baseUrl}/test`.
 
 ```bash
 ==> Service created with InstanceId: 58f6af3f-cdd7-44be-bb11-65653d958848
@@ -115,7 +115,7 @@ At endpoint-  InstanceId1:58f6af3f-cdd7-44be-bb11-65653d958848
 At endpoint-  InstanceId2:58f6af3f-cdd7-44be-bb11-65653d958848
 ```
 
-Let's hit the enpoint `{baseUrl}/test` one more time.
+Let's hit the endpoint `{baseUrl}/test` one more time.
 
 ```bash
 ## this log is from the previous request
@@ -141,7 +141,7 @@ As you have noticed, the instance of `IMyService` is created once per http reque
 builder.Services.AddSingleton<IMyService, MyService>();
 ```
 
-Let's run the application and hit the enpoint `{baseUrl}/test`.
+Let's run the application and hit the endpoint `{baseUrl}/test`.
 
 ```bash
 ==> Service created with InstanceId: 7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
@@ -150,7 +150,7 @@ At endpoint-  InstanceId1:7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
 At endpoint-  InstanceId2:7d80f0bb-110c-4bc4-ac72-4f6f0f7ee2fd
 ```
 
-Let's hit the enpoint `{baseUrl}/test` one more time.
+Let's hit the endpoint `{baseUrl}/test` one more time.
 
 ```bash
 ## req 1
