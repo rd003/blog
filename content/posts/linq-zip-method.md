@@ -8,9 +8,9 @@ draft= false
 
 ![zip() operator in](/images/zip.png)
 
-Let's understand it with example.
+> There is also a [video version](https://youtu.be/p1SXSMe0wk8?si=8p2ZptMcPrI_fodS) of this tutorial.
 
-{{< youtube id="p1SXSMe0wk8" autoplay="false" >}}
+Let's understand it with example.
 
 ```cs
 int[] nums1 = [1, 2, 3, 4];

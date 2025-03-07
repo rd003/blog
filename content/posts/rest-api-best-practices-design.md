@@ -1,12 +1,14 @@
 +++
 date = '2025-03-07T10:41:02+05:30'
 draft = false
-title = 'Rest Api Best Practices Design'
+title = 'Rest Api Designing Best Practices' 
 tags = ['dotnet']
 categories = ['programming']
 +++
 
 There are some common practices one should take care of while designing REST APIs.
+
+> There is also a [video version](https://youtu.be/6vWdSQ3iZ2E?si=V3CBjc_ZHLz_4AKS) of this post.
 
 ![rest_api_design_practices](/images/rest_api_design_practices.webp)
 
@@ -57,7 +59,7 @@ There are some common practices one should take care of while designing REST API
 | PUT        | /api/books/{id} | Indicates updating a resource    |
 | DELETE     | /api/books/{id} | Indicates deleting a resource    |
 
-### 7. Use HttpStatus Codes Correctly
+### 7. Use Http StatusCodes Correctly
 
 These are the most commonly used status codes.
 
@@ -86,7 +88,7 @@ Now, it is up to the consumer whether one uses the created resource or not.
 
 #### One more example
 
-This one is absolute fie and widely practiced:
+This one is absolute fine and widely practiced:
 
 ![deletewith204](/images/deletewith204.jpg)
 
@@ -123,7 +125,7 @@ This one is a generic error. It does not clearly demonstrate the error.
 
 This one is more clear.
 
-You can also use a modern approach by using **Problem Details** which is, introduced in [rfc7807](https://datatracker.ietf.org/doc/html/rfc7807):
+You can also use a modern approach by using **Problem Details**, which is introduced in [rfc7807](https://datatracker.ietf.org/doc/html/rfc7807):
 
 ```json
 {
