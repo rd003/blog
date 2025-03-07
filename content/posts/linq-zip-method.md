@@ -10,6 +10,8 @@ draft= false
 
 Let's understand it with example.
 
+{{< youtube id="p1SXSMe0wk8" autoplay="false" >}}
+
 ```cs
 int[] nums1 = [1, 2, 3, 4];
 int[] nums2 = [3, 4, 5, 6];
@@ -33,8 +35,6 @@ products = [
     4*6=24
 ];
 ```
-
-It took each item from
 
 Let's take another example.
 
@@ -68,7 +68,7 @@ StudetGrade { Student = Tim, Score = 90, Grade = A }
 
 ## Caveats
 
-It Stops at the Shortest Sequence.
+It stops at the Shortest Sequence.
 
 ```cs
 string[] letters = ["A", "B", "C", "D"];
