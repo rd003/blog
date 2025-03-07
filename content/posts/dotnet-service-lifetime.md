@@ -74,7 +74,7 @@ app.MapGet("/test", (IMyService service1,IServiceProvider serviceProvider) =>
 
 At 3 places.
 
-- At middleware
+- Once at middleware
 - Twice at `/test` endpoint
 
 ## AddTransient
@@ -85,7 +85,7 @@ Let's register our service as transient.
 builder.Services.AddTransient<IMyService, MyService>();
 ```
 
-Let's run the application an hit the endpoint `{baseUrl}/test`.
+Let's run the application and hit the endpoint `{baseUrl}/test`.
 
 Open the console and you will notice these logs:
 
