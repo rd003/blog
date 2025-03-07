@@ -8,9 +8,11 @@ categories= ['database']
 
 ## Table structure and total records
 
-![book_structure](/images/need_for_covering_index.jpg)
+Let's look at our table structure as shown in the left panel of the picture
 
-**Note:** There is a non clustered index on the `Title` column.
+![book_structure](/images/total_number_of_books.jpg)
+
+**Note:** There is a `non-clustered index` on the `Title` column of the `Book` table, which has a total of 1 million records.
 
 ```sql
 select
@@ -60,7 +62,7 @@ Execution plan:
 
 ![with_covering_index](/images/with_covering_index.jpg)
 
-Now, the `Key lookup` is gone. All the queried columns are present in the non-clustered index.
+Now, the `Key lookup` is gone. All the queried columns are present in the `non-clustered` index.
 
 ## Downsides
 
