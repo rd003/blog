@@ -46,6 +46,8 @@ OFFSET @__p_0 ROWS
 FETCH NEXT @__p_1 ROWS ONLY
 ```
 
+**Note:** In every pagination logic, ordering must be unique. In our case we are using `Id` which is unique.
+
 Let's execute this endpoint.
 
 ![offset_pagination_page_1](/images/offset_pagination_page_1.jpg)
@@ -111,7 +113,9 @@ public async Task<IActionResult> GetBooksWithKeyset(int limit = 10, int lastId =
 }
 ```
 
-Which translates to following sql:
+We simply need to remember the lastId. We fetch the n records (in our case 10) whose Id > lastId. If lastId is 10, page limit is 10, then it will fetch the next 10 records whose id > 10 (11 to 20).
+
+It translates to the following sql:
 
 ```sql
 SELECT
