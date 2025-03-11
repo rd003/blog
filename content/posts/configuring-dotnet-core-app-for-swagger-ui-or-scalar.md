@@ -1,6 +1,6 @@
 +++
-date = '2025-03-11T13:16:37+05:30'
-draft = false
+date = '2025-03-21T13:16:37+05:30'
+draft = true
 title = 'Configuring dotnet core apps for OpenApi with SwaggerUi or Scalar'
 tags = ['dotnet']
 categories = ['programming']
@@ -29,7 +29,7 @@ code .
 
 Now, this project is opened in the vs code. If you use other IDE/Editor then open it there.
 
-I have cleaned up some boilerplate from the Program.cs and make it look like this.
+I have cleaned up some boilerplate from the `Program.cs` and make it look like this:
 
 ```cs
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +52,11 @@ app.Run();
 ## Adding some endpoints
 
 ```cs
+app.MapGet("/api/people", () =>
+{
+    return Results.Ok("People list");
+});
+
 app.MapPost("/api/people", () =>
 {
     return Results.Ok("Resource is created");
