@@ -1,12 +1,12 @@
 +++
-date = '2025-03-21T13:16:37+05:30'
-draft = true
+date = '2025-03-11T13:16:37+05:30'
+draft = false
 title = 'Configuring dotnet core apps for OpenApi with SwaggerUi or Scalar'
 tags = ['dotnet']
 categories = ['programming']
 +++
 
-![dotnet core apps for OpenApi with Scalar](/images/open_api_thumb.png)
+![dotnet core apps for OpenApi with Scalar](/images/open_api_thumb.webp)
 
 `SwaggerUI`, which was previously bundled with .NET Core APIs, has been dropped in .NET 9. However, .NET Core Web APIs still support generating `OpenAPI` documents. .NET Core apps have built-in support for generating information about endpoints and it uses `Microsoft.AspNetCore.OpenApi` package for that. To configure interactive UIs for these OpenAPI documents, we have several options. We are going to explore these two:
 
@@ -117,11 +117,11 @@ Your code should look like this:
 
 Now run the project as shown below:
 
-![run_project_1](/images/run_project_1.jpg)
+![run_project_1](/images/run_project_1.webp)
 
 Our old buddy swagger ui is back
 
-![swagger_swashbuckle](/images/swashbuckle.jpg)
+![swagger_swashbuckle](/images/swashbuckle.webp)
 
 ## Option 2: Using Scalar
 
@@ -163,7 +163,7 @@ Your code should look like this:
 
 Now run the project and play around scalar.
 
-![scalar_v1](/images/scalar_v1.jpg)
+![scalar_v1](/images/scalar_v1.webp)
 
 ---
 
