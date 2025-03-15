@@ -1,10 +1,12 @@
 +++
-date = '2025-03-14T19:16:37+05:30'
-draft = true
+date = '2025-03-15T9:50:37+05:30'
+draft = false
 title = 'Keyset Pagination In Entity Framework Core'
 tags = ['dotnet']
 categories = ['programming']
 +++
+
+![keyset pagination in .net core](/images/keyset.webp)
 
 First we need to know about the traditional offset based pagination and the problems it introduces.
 
@@ -138,6 +140,7 @@ ORDER BY [b].[Id]
 ![keyset_pagination](/images/keyset_pagination.jpg)
 
 It is taking 11ms. It takes approximately same amount of time for the first 10 records and for the last 10 records.
+We are also utilizing the index with this approach. This approach performs an index seek, that is why it is also called a `seek based pagination`.
 
 **The only downside of this approach is, you can not jump into the particular page, you have to use the next-previous approach.**
 
