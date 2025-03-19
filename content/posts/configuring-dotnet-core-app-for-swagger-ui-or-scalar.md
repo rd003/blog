@@ -1,5 +1,5 @@
 +++
-date = '2025-03-12T13:16:37+05:30'
+date = '2025-03-21T9:16:37+05:30'
 draft = true
 title = 'Configuring dotnet core apps for OpenApi with SwaggerUi or Scalar'
 tags = ['dotnet']
