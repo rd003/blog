@@ -2,7 +2,7 @@
 date = '2025-03-20T09:39:47+05:30'
 draft = false
 title = 'Transactions in Dapper'
-tags = ['dotnet']
+tags = ['dotnet','dapper']
 categories = ['programming']
 +++
 
