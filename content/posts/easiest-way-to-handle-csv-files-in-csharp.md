@@ -55,7 +55,7 @@ static void WriteToCsv(string filePath)
             }
 
 
-            List&lt;Person&gt; people = new List&lt;Person&gt;
+            List<Person> people = new List<Person>
         {
           new Person { Name = "Jane", Age = 25, Country = "UK" },
           new Person { Name = "Any", Age = 30, Country = "Canada" },
@@ -107,7 +107,7 @@ var configPersons = new CsvConfiguration(CultureInfo.InvariantCulture)
  };
 ```
 
-👉Here we are gonna write some configuration for csv helper,   
+👉 Here we are gonna write some configuration for csv helper,   
 To this object we are passing a value, **CultureInfo.InvariantCulture**, it means we are not culture dependent right now.
 
 ```cs
@@ -170,7 +170,7 @@ static void ReadFromCsv(string filePath)
                 {
 
                     // Read records from the CSV file
-                    IEnumerable&lt;Person&gt; records = csvReader.GetRecords&lt;Person&gt;();
+                    IEnumerable<Person> records = csvReader.GetRecords<Person>();
 
                     // Process each record
                     foreach (Person person in records)
