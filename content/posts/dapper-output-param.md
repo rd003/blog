@@ -1,5 +1,5 @@
 +++
-date = '2025-03-22T00:00:00+05:30'
+date = '2025-03-23T00:00:00+05:30'
 draft = false
 title = 'Dapper: Output Parameter'
 tags = ['dotnet','dapper']
@@ -26,7 +26,7 @@ END
 
 We have a stored procedure that returns `TrackEntryId` as an output parameter. Let's see how can we execute it from the dapper?
 
-```cs
+```cs {hl_lines=["13","17"]}
 using IDbConnection connection = new SqlConnection(_connectionString);
 
 var parameters = new DynamicParameters(trackEntryToCreate);
