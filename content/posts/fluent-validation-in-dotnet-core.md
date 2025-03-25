@@ -10,15 +10,15 @@ categories=['programming']
 
 ## Fluent validation
 
-Fluent validation is a third party library for validating your models in .NET . It is totally free.
+Fluent validation is an open source library for validating the models, which is free as of I am writing this article.
 
-📢 📝 Last Updated: 21-August-2024
+📢 📝 **Last Updated:** 25-March-2025
 
 ## Why fluent validation?
 
-If you already have used data annotation for validation, then you must be aware of validation in .NET. So you might be thinking why do we need fluent validation.
+If you already have used data annotation for validation, then you must be aware of the validation in .NET. So you might be thinking why do we need a `fluent validation` then.
 
-Fluent validation helps you to separate validation logic from your models. That makes you code clean. If you have complex validation logic, then you want to define it separately rather than making your model unreadable.
+`Fluent validation` helps you to separate validation logic from your models. That makes your code clean. If you have complex validation logic, then you want to define it separately rather than making your model unreadable.
 
 If you have small scale project and does not have complex validation logic, then using data annotation makes more sense.
 
@@ -26,13 +26,15 @@ You can use the hybrid validation, it is totally up to you and what suits you be
 
 ## 💻Source Code
 
-👉Branch : [**Fluent-Validation**](https://github.com/rd003/net9demo/tree/Fluent-Validation)
+👉Branch : [`Fluent-Validation`](https://github.com/rd003/net9demo/tree/Fluent-Validation)
 
 ## Create a project or use existing one
 
-We will create a .net core project with template .Net Core Web Api. If you have existing project (for practicing) , then it is good. Don’t waste your precious time on creating a new one.
+We will create a .net core project with template `.Net Core Web Api`. It must be controller based APIs. If you have an existing project (for practicing) , then it is good. **Life is short and don’t waste your precious time** on creating the new projects for every demo.
 
 ![fluent_validation_project_type](/images/fluent_validation_project_type.jpg)
+
+**Note:** The updated blog post is based on the .net 9.0. I have to update this blog post because I was using `FluentValidation.AspNetCore` and it no more recommended for various reasons.
 
 ## Folder structure
 
@@ -44,57 +46,67 @@ We will create a .net core project with template .Net Core Web Api. If you hav
 // Models/Person.cs
 public class Person
 {
- public int Id { get; set; }
+ public int? Id { get; set; }
  public string ? Name { get; set; }
  public string? Email { get; set; }
- public int Age { get; set; }
+ public int? Age { get; set; }
 }
 ```
 
-## Easiest way (Data annotation)
+## The easiest way (Data annotation)
 
-Data annotation is the easiest way to validate your models..Nothing is wrong with it. It is fast and well suited for small projects. You must be familiar it with. Below is the example of it.
+`Data annotation` is the easiest way to validate your models. Nothing is wrong with it. It is fast and well suited for small projects. You must be familiar it with. Below is the example of it:
 
 ```cs
 // Models/Person.cs
 public class Person
 {
- public int Id { get; set; }
+ [Required]
+ public int? Id { get; set; }
  [Required]
  [MaxLength(50)]
  public string ? Name { get; set; }
  [Required]
  [MaxLength(50)]
  public string? Email { get; set; }
- public int Age { get; set; }
+ [Required]
+ public int? Age { get; set; }
 }
 ```
 
-## Fluent Validation
+## Required nuget package(s)
 
-Fluent validation is a third party library which is free. So you need to install it first.
+Let's install this package in our project.
 
-👉 `install-package FluentValidation.DependencyInjectionExtensions`
+For PMC:
 
-👉 Remove all the data annotation from Person.cs (If you are using)
+```bash
+install-package FluentValidation.DependencyInjectionExtensions
+```
+
+For .NET CLI:
+
+```bash
+dotnet add package FluentValidation.DependencyInjectionExtensions
+```
+
+👉 Remove all the data annotations (if you are using) from the `Person.cs`
 
 ```cs
 // Models/Person.cs
 
 public class Person
 {
- public int Id { get; set; }
+ public int? Id { get; set; }
  public string ? Name { get; set; }
  public string? Email { get; set; }
- public int Age { get; set; }
+ public int? Age { get; set; }
 }
 ```
 
 ## Validator
 
-We will create a separate class **PersonValidator** inside **Validators** directory. There we will define all the validation logic.
-
-👉 Validators/PersonValidator.cs
+We will create a separate class `PersonValidator` inside the `Validators` directory/folder. We will define all the validation logic there.
 
 ```cs
 //Validators/PersonValidator.cs
@@ -108,39 +120,49 @@ public class PersonValidator: AbstractValidator<Person>
 {
  public PersonValidator()
  {
- RuleFor(person=>person.Name).NotNull().MaximumLength(50);
- RuleFor(person=>person.Email).NotNull().MaximumLength(50);
+    RuleFor(person=>person.Id).NotNull();
+    RuleFor(person=>person.Name).NotNull().MaximumLength(50);
+    RuleFor(person=>person.Email).NotNull().MaximumLength(50);
+    RuleFor(person=>person.Age).NotNull();
  }
 }
 ```
 
-These rules are self explanatory
-
-👉First & Second rule, **Name** and **Email** can not be null (but they can be empty string), empty and their maximum length should be 50 characters.
+- Make sure to inherit the `AbstractValidator<T>` class.
+- Validation rules are self explanatory.
+- `Id` and `Age` can not be null.
+- `Name` and `Email` can not be null (but they can be an empty string) and their `maximum length` should be `50` characters.
 
 ## Program.cs
 
-You need some configuration in Program.cs to make validation work.
+You need some configuration in `Program.cs` to make validation work.
 
 ```cs
-builder.Services.AddScoped<IValidator<Person\>, PersonValidator>();
+builder.Services.AddScoped<IValidator<Person>, PersonValidator>();
 ```
 
 ## Adding validation errors to ModelState
 
-Create a folder named “Extensions”, inside this folder create a class named “Extensions”.
+Create a folder named `Extensions` and create a `static` class named `ModelValidationExtension` within the folder. Add the following extension method to it :
 
 ```cs
 public static void AddToModelState(this ValidationResult result, ModelStateDictionary modelState)
 {
- foreach (var error in result.Errors)
- {
- modelState.AddModelError(error.PropertyName, error.ErrorMessage);
- }
+     foreach (var error in result.Errors)
+     {
+        modelState.AddModelError(error.PropertyName, error.ErrorMessage);
+     }
 }
 ```
 
-`AddToModelState` method will add all errors to the ModelState.
+- Make sure to add these lines at the top:
+
+```cs
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+```
+
+- `AddToModelState` method will add all errors to the `ModelState`.
 
 ## Person Controller
 
@@ -157,39 +179,39 @@ namespace net9demo.Controllers;
 [ApiController]
 public class PersonController : ControllerBase
 {
- private readonly IValidator<Person> _validator;
- private readonly IPersonRepository personRepository;
- private readonly ILogger<PersonController> logger;
+private readonly IValidator<Person> _validator;
+private readonly IPersonRepository personRepository;
+private readonly ILogger<PersonController> logger;
 
-    public PersonController(IValidator<Person> validator, IPersonRepository personRepository, ILogger<PersonController> logger)
-    {
-        _validator = validator;
-        this.personRepository = personRepository;
-        this.logger = logger;
-    }
+   public PersonController(IValidator<Person> validator, IPersonRepository personRepository, ILogger<PersonController> logger)
+   {
+       _validator = validator;
+       this.personRepository = personRepository;
+       this.logger = logger;
+   }
 
 
-    [HttpPost]
-    public async Task<IActionResult> AddPerson(Person person )
-    {
-        // checking validation
-        var personValidator = await _validator.ValidateAsync(person);
-        if (!personValidator.IsValid)
-        {
-            personValidator.AddToModelState(ModelState);
-            return UnprocessableEntity(ModelState);
-        }
+   [HttpPost]
+   public async Task<IActionResult> AddPerson(Person person )
+   {
+       // checking validation
+       var personValidator = await _validator.ValidateAsync(person);
+       if (!personValidator.IsValid)
+       {
+           personValidator.AddToModelState(ModelState);
+           return UnprocessableEntity(ModelState);
+       }
 
-        try
-        {
-            return CreatedAtAction(nameof(AddPerson),person);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex.Message);
-            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-        }
-    }
+       try
+       {
+           return CreatedAtAction(nameof(AddPerson),person);
+       }
+       catch (Exception ex)
+       {
+           logger.LogError(ex.Message);
+           return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+       }
+   }
 
 }
 ```
@@ -200,17 +222,17 @@ public class PersonController : ControllerBase
 
 request
 
-![res](/images/1_xD_u3-WwGsK67ciRuvYTSA.jpg)
+![res](/images/1_xD_u3-WwGsK67ciRuvYTSA.webp)
 
 response
 
-## **Email validator**
+## Email validator
 
 ```cs
 RuleFor(person=>person.Email).NotNull().MaximumLength(50).EmailAddress();
 ```
 
-## **Regular Expression and custom message**
+## Regular Expression and custom message
 
 ```cs
 RuleFor(person => person.Password)
@@ -221,49 +243,29 @@ RuleFor(person => person.Password)
 .WithMessage("Password must contain numeric value");
 ```
 
-## Final ‘PersonValidator’ class
-
-```cs
-using FluentValidation;
-using net9demo.Models;
-
-namespace net9demo.Validators;
-
-public class PersonValidator: AbstractValidator<Person>
-{
-    public PersonValidator()
-    {
-      RuleFor(person=>person.Name).NotEmpty().NotNull().MaximumLength(50);
-      RuleFor(person=>person.Email).NotEmpty().NotNull().MaximumLength(50).EmailAddress();
-      RuleFor(person => person.Age).NotNull();
-      RuleFor(person => person.Password).NotEmpty().NotNull().MaximumLength(20).Matches("^(?=.*\\d).*$").WithMessage("Password must contain numeric value");
-    }
-}
-```
-
-## **Adding Category Validator**
+## Adding a CategoryValidator
 
 Let’s create a new validator class named `CategoryValidator` inside the `Validators` folder.
 
 ```cs
 public class CategoryValidator:AbstractValidator<Category>
 {
- public CategoryValidator()
- {
- RuleFor(c => c.Name).NotEmpty().NotNull().MinimumLength(2).MaximumLength(20);
- }
+public CategoryValidator()
+{
+RuleFor(c => c.Name).NotEmpty().NotNull().MinimumLength(2).MaximumLength(20);
+}
 }
 ```
 
-Register it in the **Program.cs**
+Register it in the `Program.cs`
 
 ```cs
-builder.Services.AddScoped<IValidator<Category\>, CategoryValidator\>();
+builder.Services.AddScoped<IValidator<Category>, CategoryValidator>();
 ```
 
-## Register all the validator at once (test them also)
+## Registering all the validator at once
 
-If we have n validators, we have to register then n-times. But we can register them all at one. Just add the following line in **Program.cs :**
+If we have n validators, we have to register them n-times. We can register them all at once. Just add the following line in `Program.cs :`
 
 ```cs
 // either comment these two lines or remove them.
@@ -273,9 +275,13 @@ If we have n validators, we have to register then n-times. But we can register t
 builder.Services.AddValidatorsFromAssemblyContaining<PersonValidator>();
 ```
 
-`builder.Services.AddValidatorsFromAssemblyContaining<PersonValidator>()`
+- This will find all the public validators in the assembly where `PersonValidator` is defined and register them with the service provider.
 
-It will register all the validators in the same assembly in which `PersonValidator` is defined.
+- By default, these will be registered as `Scoped` lifetime, but you can also use `Singleton` or `Transient`:
+
+```cs
+services.AddValidatorsFromAssemblyContaining<UserValidator>(ServiceLifetime.Transient);
+```
 
 👉For more detail please visit official docs of [fluent validation](https://fluentvalidation.net/).
 
