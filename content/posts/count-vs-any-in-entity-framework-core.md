@@ -6,6 +6,8 @@ tags = ['dotnet']
 categories=['programming']
 +++
 
+![coun_vs_any_thumb](/images/coun_vs_any_thumb.webp)
+
 Let's say you want to execute a code block when `Book` table is not empty. In Entity Framework Core, we can achieve this in two ways (there might be others but I am unaware of them):
 
 Option 1:
