@@ -1,5 +1,5 @@
 +++
-date = '2025-05-04T17:100:00+05:30'
+date = '2025-05-04T17:00:00+05:30'
 draft = false
 title = 'Bulk insert in dapper with table valued parameter'
 tags = ['dotnet','dapper']
