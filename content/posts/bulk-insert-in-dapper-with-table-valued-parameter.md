@@ -6,7 +6,7 @@ tags = ['dotnet','dapper']
 categories = ['programming']
 +++
 
-![How to insert bulk data in dapper?](/images/bulk.jpg)
+![How to insert bulk data in dapper?](/images/bulk.webp)
 
 There might be instances when you want to insert bulk data. For an instance, you want to create an order, where you need to add multiple items. Let's see how can we insert bulk data in c# using dapper.
 
