@@ -33,7 +33,7 @@ CREATE TABLE Person
 GO
 ```
 
-## Creating a table-valued paramter
+## Creating a table-valued parameter
 
 We need to create a custom type of `table` type aka `table-valued parameter`. It is needed to pass rows through stored procedure parameters.
 
