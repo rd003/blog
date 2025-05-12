@@ -16,6 +16,7 @@ layout= "courses"
 
 ## Authentication
 
+- [.Net Core API: Login, Signup, Authentication and Role based authorization, JWT and refresh tokens using Identity] (https://youtu.be/EnHrfJO0gyE?si=j1l2eGO0YglkYtLw)
 - [.NET Core identity | Role based authorization in ASP.NET Core MVC](https://youtu.be/xhCstGA9WVI)
 - [.Net Core MVC Authentication & Role Based Authorization With Auth0](https://youtu.be/JxIhMgJKqqQ)
 - [Google authentication in asp.net core mvc](https://youtu.be/gq1zNiKWCP4)
