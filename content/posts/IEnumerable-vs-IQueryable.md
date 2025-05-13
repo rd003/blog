@@ -80,7 +80,7 @@ public IActionResult GetPeople()
 }
 ```
 
-As we can see, data won't be retrieved until it is used. It is called deffered execution.
+As we can see, data won't be retrieved until it is used. It is called deferred execution.
 
 ### Real world use case of `IQueryable`
 
