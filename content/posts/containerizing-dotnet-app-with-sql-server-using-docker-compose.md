@@ -10,19 +10,23 @@ categories = ['programming']
 
 In this tutorial, we are going to containerize the .NET Web API application with docker. I am assuming you are familiar with docker. At least, you should have some understandings of how docker works. However, I have covered all the steps needed to create a docker container for your application, but I am not going to cover the [theoretical concepts](https://en.wikipedia.org/wiki/Docker_%28software%29) of docker.
 
+## Last updated on:
+
+- 19-june-2025
+
 ### 🔨Tools needed
 
 - Visual Studio Code (Free)
-- .Net 8.0 SDK (Free)
+- .Net 9.0 SDK (Free)
 - Docker desktop (Free)
 
 ### 🧑‍💻Tech used
 
-- .Net 8.0 Web APIs (controller APIs)
-- Ms SQL Server (within a container)
+- .Net 9.0 Web APIs (controller APIs)
+- Ms SQL Server 2022 (within a container)
 - Docker compose
 
-**🍵Note:** I am using windows 11 operating system.
+**🍵Note:** I am using windows 11 operating system. However, I also have tested it in the Linux mint xia and it is working fine.
 
 ### Why to chose docker compose?
 
@@ -57,7 +61,7 @@ First and foremost, create a file named **‘Dockerfile’** in the root directo
 Add the following content in the docker file.
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -71,14 +75,14 @@ WORKDIR /source/DotnetDockerDemo.Api
 RUN dotnet publish -c release -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app ./
 
 ENTRYPOINT ["dotnet", "DotnetDockerDemo.Api.dll"]
 ```
 
-This **Dockerfile** contains the instruction to create a docker image of our .net application. It is needed to build a .net application image, which will run in a container.
+This `Dockerfile` contains the instruction to create a docker image of our .net application. It is needed to build a .net application image, which will run in a container.
 
 ### Creating a compose.yaml file
 
@@ -86,33 +90,34 @@ Next, create a file name `compose.yaml` in the root directory and paste the foll
 
 ```yaml
 services:
- server:
- container_name: people-apis
- build: .
- ports:
-  - 8080:8080
- depends_on:
-  - "sql"
- sql:
- image: "mcr.microsoft.com/mssql/server:2022-latest"
- container_name: sql_server
- ports:
-  - 1433:1433
- environment:
-  - ACCEPT_EULA=y
-  - MSSQL_SA_PASSWORD=myStrong(!)Password
- volumes:
-  - sql-server-data:/var/opt/mssql
+  server:
+    container_name: people-apis
+    build: .
+    image: people-api:1.0.0
+    ports:
+      - 8080:8080
+    depends_on:
+      - "sql"
+  sql:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=y
+      - MSSQL_SA_PASSWORD=p@55w0rd
+    volumes:
+      - sql-server-data:/var/opt/mssql
 
 volumes:
- sql-server-data:
- name: sql-data
+  sql-server-data:
+    name: sql-data
 ```
 
 In this file, we have defined two services.
 
-- First, it will build a docker image of .net application and create a container for it, which will listen on the port 8080
-- Second, it will pull the sql server image from the docker hub, create the container for it which will listen in the port 1433. The image will be pulled only once; if you already have a sql server image, it won’t be pull again.
+- First, it will build a docker image of .net application named `people-api:1.0.0`  and create a container for it, which will listen on the port 8080.
+- Second, it will pull the sql server image from the docker hub, create the container for it which will listen in the port 1433. The image will be pulled only once; if you already have a sql server image with similar tag, it won’t be pull again.
 
 I have created volume in sql server section.
 
@@ -131,26 +136,29 @@ volumes:
 
 This line mounts `sql-server-data` volume to the path `/var/opt/mssql` . **By creating volumes our data persists outside the container.** If we remove the container or recreate it, our data (database, tables, procedures…everything) will persist.
 
-**Note:** The `dockerfile` and `compose.yaml` file is created at August,2024. The content present in **dockerfile** and **compose file** is valid as of now, but may not be valid if you are reading this blog post in distant future.
+**Note:** The `dockerfile` and `compose.yaml` file is created at June,19,2025. The content present in **dockerfile** and **compose file** is valid as of now, but may not be valid if you are reading this blog post in distant future.
 
-#### Open the appsettings.json
+#### Update the appsettings.json
 
 ```json
 "ConnectionStrings": {
- "default": "Server=192.168.x.x,1433;Database=DotnetDockerDemo;User Id=sa;Password=myStrong(!)Password;encrypt=false"
+ "default": "Server=sql,1433;Database=DotnetDockerDemo;User Id=sa;Password=myStrong(!)Password;encrypt=false"
  }
 ```
 
-You may have noticed, I have defined **‘server ’** as **‘192.168.x.x,1433’.** Here’s what it means:
+You may have noticed, I have defined **‘server ’** as **‘sql,1433’.** Here’s what it means:
 
-- **192.168.x.x** represents the IP address of your host machine (the machine you are currently using)
-- **1433** is the **port of sql server** which is running in a container. We have defined this port in the`compose.yaml` file.
+- `sql` represents the name of service defined in `compose.yaml`. Look at the snippet below:
 
-To proceed, follow these steps:
+```txt
+// compose.yaml
 
-- Open the **terminal** and run the command `ipconfig`
-- Copy the **IPv4** address, which would be something like **192.168.x.x**
-- Replace the `Server=192.168.x.x,1433` with `Server=your_ip_address,1433`
+ sql:  <==== It is the name, I am refering in connection string
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server
+```
+
+- `1433` is the **port of sql server** which is running in a container. We have defined this port in the`compose.yaml` file.
 
 #### Run docker compose
 
@@ -160,7 +168,7 @@ We need to run the following command
 docker compose up -d
 ```
 
-`-d` flag indicates that container is running in the detached mode. This command will execute the `compose.yaml` file and create the container for the .net application and sql server.
+`-d` flag indicates that container is running in the `detached mode`. This command will execute the `compose.yaml` file and create the container for the .net application and sql server.
 
 As a result of the command, you should see something like this in your terminal.
 
@@ -190,56 +198,21 @@ This indicates that our application is working perfectly.
 
 ### Testing the endpoints using sql server
 
-Type the url `[http://localhost:8080/api/people/](http://localhost:8080/api/people/)` in the browser and as a result you might receive the person array or **an error** (as I am currently getting).
+Type the url `[http://localhost:8080/api/people/](http://localhost:8080/api/people/)` in the browser and as a result you might receive the person array.
 
-Internal server error: An exception has been raised that is likely  
-due to a transient failure. Consider enabling transient error resiliency  
-by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+## Removing composed containers
 
-If you encounter this error, which means we are trying to access a database that does not exist yet. I have defined a database initializer functionality in the `Program.cs` file, which creates the database and adds some data to the `Person` table when the application runs for the first time. Ideally, this should have worked automatically when we served the URL `http://localhost:8080` for the first time. However, it did not happen in my case, possibly due to a permission-related issue in Docker. I couldn’t find the actual reason. If you face the same problem, you can follow these steps:
-
-1. Open the integrated terminal of visual studio code.
-
-2. Change the directory location to **DotnetDockerDemo.Api**
-
-```sh
-cd DotnetDockerDemo.Api
+```bash
+docker compose down
 ```
 
-3. Run the following command.
+## 💻 Code with Dockerfile and compose.yaml
 
-```sh
-dotnet run
-```
+I have created a separate branch which contains the dockerfile and `compose.yaml` file. To get the source code with these file, you need to checkout the branch container .
 
-As a result, you will see something like this in the terminal.
+**Url:** https://github.com/rd003/DotnetDockerDemo/tree/container
 
-![](/images/1_-rmky9CEjrN91w0K9VL-JA.jpg)
-
-My application is running at `[http://localhost:5241](http://localhost:5241/api/people)` , and yours might be too, but confirm it first.
-
-3\. Enter the url `[http://localhost:5241/api/people](http://localhost:5241/api/people)` in the browser and you will see an array of person as a response.
-
-#### What was actually happened, when we ran the application locally?
-
-As I have mentioned earlier, I have defined a **database initializer** functionality in the`Program.cs` file, which will create a database and add some data to the **Person** table when we ran the application for the first time.
-
-### What next ?
-
-Now, our application is ready to serve. Open the web browser and enter the url `[http://localhost:8080/api/people](http://localhost:8080/api/people/)` . As a resuld, you should see the follwoing response.
-
-![response 3](/images/1_bGmP05GR4SecF12R1ttX-w.png)
-
-response of the endpoint `[http://localhost:8080/api/people](http://localhost:8080/api/people/)`
-
-By using docker compose, we have easily containerized our dotnet application with SQL Server.
-
-### 💻 Code with Dockerfile and compose.yaml
-
-I have created a separate branch which contains the **dockerfile** and **compose.yaml** file. To get the source code with these file, you need to checkout the branch `container` .
-
-**Url:** [https://github.com/rd003/DotnetDockerDemo/tree/container](https://github.com/rd003/DotnetDockerDemo/tree/container)
-
+To get this branch along in your cloned project, you need to run `git checkout container`.
 ---
 
-[Canonical link](https://medium.com/@ravindradevrani/containerize-your-net-application-with-sql-server-using-docker-compose-d04b0c4ff4d1)
+Originally published by me at [medium.com](https://medium.com/@ravindradevrani/containerize-your-net-application-with-sql-server-using-docker-compose-d04b0c4ff4d1)
