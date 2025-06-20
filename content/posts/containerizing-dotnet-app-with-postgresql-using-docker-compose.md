@@ -13,16 +13,16 @@ In this tutorial, we are going to **containerize the .NET Web API application w
 ### 🔨Tools needed
 
 - Visual Studio Code (Free)
-- .Net 8.0 SDK (Free)
+- .Net 9.0 SDK (Free)
 - Docker desktop (Free)
 
 ### 🧑‍💻Tech used
 
-- .Net 8.0 Web APIs (controller APIs)
+- .Net 9.0 Web APIs (controller APIs)
 - Postgres (within a container)
 - Docker compose
 
-**🍵Note:** I am using windows 11 operating system.
+**🍵Note:** I have tested it in windows 11 and linux mint xia.
 
 ### Why to chose docker compose?
 
@@ -61,7 +61,7 @@ A **dockerfile** in the root directory
 Add the following content in the docker file.
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -75,7 +75,7 @@ WORKDIR /source/DotnetApiPostgres.Api
 RUN dotnet publish -c release -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app ./
 
@@ -90,25 +90,33 @@ Next, create a file name `compose.yml` in the root directory and paste the follo
 
 ```yml
 services:
- web_api:
- container_name: perons_api_app
- build: .
- ports:
-  - 8080:8080
- depends_on:
-  - "db"
- db:
- image: postgres
- container_name: postgres_db
- ports:
-  - 5432:5432
- environment:
- POSTGRES_PASSWORD: Ravindra@123
- volumes:
-  - postgres_data:/var/lib/postgresql/data
-
+  web_api:
+    container_name: person_api_app
+    build: .
+    image: people-api:1.0.0
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+  db:
+    image: postgres
+    container_name: postgres_db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: p@55w0rd
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 volumes:
- postgres_data:
+  postgres_data:
 ```
 
 In this file, we have defined two services.
@@ -116,11 +124,18 @@ In this file, we have defined two services.
 - First, it will build a docker image of .net application and create a container for it, which will listen on the port 8080
 - Second, it will pull the postgres image from the docker hub, create the container for it which will listen in the port 5432. The image will be pulled only once; if you already have a postgres image, it won’t be pull again.
 
-In the service named `web_api` , I have defined a a property or key named `depends_on` with the value `db` . It means `web_api` service is depends on the service `db` . `**web_api**` will wait until `db` is up and running before starting. However, it is not necessary, because our project is not depending on the db on the startup, so use can remove this key.
+In the service named `web_api` , I have defined a a property or key named `depends_on` with the value `db` . It means `web_api` service is depends on the service `db` . `web_api` will wait until `db` is up and running before starting.
 
-You may have noticed, I have defined a `volume` with name `postgres_data` in `Volumes` section. I have linked this volume with my db service and bind the path `/var/lib/postgresql/data` to it. By doing so, our database has become persistent. If we delete the postgeress container, our database and all of its data still persists.
+Service order will be:
 
-**Note:** The `dockerfile` and `compose.yaml` file is created at August,2024. The content present in **dockerfile** and **compose file** is valid as of now, but may not be valid if you are reading this blog post in distant future.
+- db
+- web_api
+
+I have one more property condition: `service_healthy` . It will do health check for the postgres data. `web_api` service won’t be created until health check of db is marked as healthy. We are basically checking, whether the postgres is running or not.
+
+You also have noticed, I have defined a `volume` with name `postgres_data` in `Volumes` section. I have linked this volume with my `db` service and bind the path `/var/lib/postgresql/data` to it. By doing so, our database has become persistent. If we delete the postgeress container, our database and all of its data still persists.
+
+**Note:** The `dockerfile` and `compose.yaml` file is created at `June,20,2025`. The content present in `dockerfile` and `compose file` is **valid as of now**, but may not be valid if you are reading this blog post in distant future.
 
 ### Move Connectionstring
 
@@ -128,29 +143,23 @@ Since container runs the published version of .net applcation, so you need to d
 
 ```cs
 "ConnectionStrings": {
- "default": "Host=192.168.x.x;Port=5432;Database=PersonDb;Username=postgres;Password=Ravindra@123"
- }
+    "default": "Host=db;Port=5432;Database=PersonDb;Username=postgres;Password=p@55w0rd"
+  }
 ```
 
-You may have noticed, I have defined **‘Host ’** as **‘192.168.x.x’.** Here’s what it means:
-
-- **192.168.x.x** represents the IP address of your host machine (the machine you are currently using).
-
-To proceed, follow these steps:
-
-- Open the **terminal** and run the command `ipconfig`
-- Copy the **IPv4** address, which would be something like **192.168.x.x**
-- Replace the `Host=192.168.x.x` with `Host=your_ip_address`
+You may have noticed, I have defined `Host` as `db`. Which is the name of the service defined in the `compose.yaml`.
 
 #### Run docker compose
 
 We need to run the following command
 
+```bash
 docker compose up -d
+```
 
 `-d` flag indicates that container is running in the detached mode. This command will execute the `compose.yml` file and create the container for the .net application and postgres.
 
-As a result of the command, you should see something like this in your terminal.
+As a result of the command, you should see something like this in your terminal:
 
 ![docker comose up -d](/images/1_OwzIi18MQT0EQlI9gBSGEQ.jpg)
 
@@ -160,41 +169,23 @@ To verify if container is running or not, run the following command:
 docker ps -a
 ```
 
-As a result, you should see something like this in your terminal.
+As a result, you should see the containers you have created.
+
+However you can also check it in the docker desktop.
 
 ![running in container](/images/1_1Lmffd5GUG0GAaFIfeSOkA.jpg)
 
-### Create database
+## Testing the application
 
-To proceed further, we need to create database in the postgres db. Follow the steps one by one.
+Our application is running at : `http://localhost:8080`
 
-```sh
-cd DotnetApiPostgres.Api
+To test the application open the browser and test this `GET` endpoint `http://localhost:8080/api/people`
 
-dotnet ef database update
+## Stop the composed container
+
+```bash
+docker compose down
 ```
-
-`dotnet ef database update` command will generate the database in the postgres db.
-
-### Testing the application
-
-Our application is running at `http://localhost:8080`
-
-To test the application open the postman and test the **POST** endpoint as shown below.
-
-**URL**: `http://localhost:8080/api/people`
-
-**Method**: POST
-
-**Body**:
-
-{  
- "name": "John Doe"  
-}
-
-![testing in postman](/images/1_kvDIybk7dsJ4I3fdZBTLUA.jpg)
-
-In this way, by using the docker compose, we can easily containerize our applications and run multiple containers with a single command.
 
 ### 💻 Code with Dockerfile and compose.yaml
 
@@ -204,4 +195,4 @@ I have created a separate branch which contains the **dockerfile** and **compose
 
 ---
 
-[Canonical link](https://medium.com/@ravindradevrani/containerizing-a-net-app-with-postgres-using-docker-compose-a35167b419e7)
+This post is originally written by me at [medium.com](https://medium.com/@ravindradevrani/containerizing-a-net-app-with-postgres-using-docker-compose-a35167b419e7)
