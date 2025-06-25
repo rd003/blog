@@ -17,6 +17,10 @@ tags = ['dotnet']
 
 ![middleware pipeline in .net core](/images/middleware-in-dotnet.webp)
 
+## Updated at
+
+- 25-june-2025
+
 ## Built-in middlewares
 
 Here are some of the built-in middlewares.
@@ -99,6 +103,87 @@ If you run the application and call the endpoint `http://localhost:5000`. You wi
 ```bash
 Before next middleware
 After next middleware
+```
+## Exploring more about middlewares
+
+Let’s explore some more things about middlewares what we have discussed in the beginning.
+
+```cs
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("===> Middleware 1 before next() (during req)");
+    await next();
+    Console.WriteLine("===> Middleware 1 after next() (during response)");
+});
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("===> Middleware 2 before next() (during req)");
+    await next();
+    Console.WriteLine("===> Middleware 2 after next() (during response)");
+});
+```
+
+Terminal logs:
+
+```bash
+===> Middleware 1 before next() (during req)
+===> Middleware 2 before next() (during req)
+===> Middleware 2 after next() (during response)
+===> Middleware 1 after next() (during response)
+```
+
+So what does this show us?
+
+- Code block before `next()` is executed while request.
+- Code block after `next()` is executed while response.
+- Response flow back in reverse order, as we have discussed in the beginning of the blog post.
+
+#### Modifying request and response
+
+Request endpoint:
+
+```cs
+app.MapGet("/greetings", () =>
+{
+    return "Hello world";
+});
+```
+
+Response:
+
+```bash
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/plain
+Date: Wed, 25 Jun 2025 16:51:51 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+X-Custom-Response: Custom Response
+
+Hello world
+Appended in middleware 2
+Appended in middleware 1...
+```
+
+Logs in terminal:
+
+```bash
+REQUEST HEADERS:
+  Accept-Encoding: gzip, deflate
+  Connection: close
+  Host: localhost:5009
+  User-Agent: vscode-restclient
+  X-Custom-Req: Custom Req
+
+RESPONSE HEADERS:
+  Connection: close
+  Content-Type: text/plain
+  Date: Wed, 25 Jun 2025 13:51:51 GMT
+  Server: Kestrel
+  Transfer-Encoding: chunked
+  X-Custom-Response: Custom Response
+===================================================
 ```
 
 ### 2. Conventional middlewares
