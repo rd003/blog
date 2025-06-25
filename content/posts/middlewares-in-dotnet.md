@@ -141,6 +141,47 @@ So what does this show us?
 
 #### Modifying request and response
 
+We can modify the request and response in the middleware. In this example, we are adding a custom request header (X-Custom-Req) and a custom response header (X-Custom-Response) and also appending some text in the response.
+
+```cs
+app.Use(async (context, next) =>
+{
+    // adding a request header
+    context.Request.Headers.Append("X-Custom-Req", "Custom Req");
+
+    // adding a response header
+    context.Response.Headers.Append("X-Custom-Response", "Custom Response");
+
+    // Request Headers
+    Console.WriteLine("\nREQUEST HEADERS:");
+    foreach (var header in context.Request.Headers.OrderBy(h => h.Key))
+    {
+        Console.WriteLine($"  {header.Key}: {string.Join(", ", header.Value.ToArray())}");
+    }
+
+    context.Response.ContentType = "text/plain";
+
+    await next();
+
+    // Response Headers
+    Console.WriteLine("\nRESPONSE HEADERS:");
+    foreach (var header in context.Response.Headers.OrderBy(h => h.Key))
+    {
+        Console.WriteLine($"  {header.Key}: {string.Join(", ", header.Value.ToArray())}");
+    }
+    Console.WriteLine("=" + new string('=', 50));
+
+    await context.Response.WriteAsync("\nAppended in middleware 1...\n");
+});
+
+app.Use(async (context, next) =>
+{
+    await next();
+
+    await context.Response.WriteAsync("\nAppended in middleware 2");
+});
+```
+
 Request endpoint:
 
 ```cs
