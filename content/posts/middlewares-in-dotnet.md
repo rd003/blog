@@ -20,6 +20,7 @@ tags = ['dotnet']
 ## Updated at
 
 - 25-june-2025
+- 26-june-2025
 
 ## Built-in middlewares
 
@@ -63,47 +64,42 @@ There are three ways to create the custom middlewares:
 ```cs
 app.Use(async (context, next) =>
 {
-    Console.WriteLine("Before next middleware");
-
-    await next();
-
-    Console.WriteLine("After next middleware");
+  Console.WriteLine("This is middleware");
+  await next();
 });
 ```
 
-**Note:** Middleware do not run until you make any http request. 
+**Note:** Middleware do not run until you make any `http` request. 
 
 Let's add an endpoint.
 
 ```cs
 var builder = WebApplication.CreateBuilder(args);
-
 var app = builder.Build();
 
 // endpoint
-app.Map("/", () =>
+app.MapGet("/", () =>
 {
     return "Hello";
 });
 
 app.Use(async (context, next) =>
 {
-    Console.WriteLine("Before next middleware");
-    // do something before next middleware
-
+    Console.WriteLine("This is middleware");
     await next();
-
-    // do something after the next middleware
-    Console.WriteLine("After next middleware");
 });
+
+app.Run();
 ```
 
 If you run the application and call the endpoint `http://localhost:5000`. You will get `Hello` as the response. If you open your console, you will notice these logs.
 
 ```bash
-Before next middleware
-After next middleware
+This is middleware
 ```
+
+Before moving to 2nd and 3rd way to create a middleware, let’s explore more about middlewares.
+
 ## Exploring more about middlewares
 
 Let’s explore some more things about middlewares what we have discussed in the beginning.
@@ -366,6 +362,249 @@ app.Run();
 
 If we run `localhost:5000`, the page will display `Hello from terminal middleware!`. It will override the response `Hello`.
 
+---
+
+## Branching the middleware pipeline
+
+There might be a situation, when you want to execute separate middleware pipeline on certain paths or on certain scenarios.
+
+### Map
+
+`Map` branches on the basis of request path.
+
+In the example below, if the request starts with `/admin` , certain middlewares will be executed.
+
+```cs
+app.Map("/admin", HandleMapAdmin);
+
+app.Run();
+
+void HandleMapAdmin(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        Console.WriteLine("===> Middleware for admin");
+        await next();
+    });
+
+    app.Run(async context =>
+    {
+        await context.Response.WriteAsync("Response from admin branch");
+    });
+}
+```
+
+If you make a request` http://localhost:5285/`
+
+```bash
+~$ curl http://localhost:5285/
+
+===> main pipeline
+```
+
+If requests are like `/admin` or `/admin/blah` (it should starts with `/admin`), you will the similar response (`Response from admin branch`).
+
+```bash
+~$ curl http://localhost:5285/admin
+Response from admin branch
+
+
+~$ curl http://localhost:5285/admin/blah
+Response from admin branch
+```
+
+Map can not join the main pipeline.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.Map("/admin", HandleMapAdmin);
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("===> main pipeline");
+});
+
+app.Run();
+
+void HandleMapAdmin(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        Console.WriteLine("===> Middleware for admin");
+        await next();
+    });
+}
+```
+
+Curl req:
+
+```bash
+~$ curl http://localhost:5285/admin -v
+* Host localhost:5285 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:5285...
+* Connected to localhost (::1) port 5285
+* using HTTP/1.x
+> GET /admin HTTP/1.1
+> Host: localhost:5285
+> User-Agent: curl/8.12.1
+> Accept: */*
+>
+< HTTP/1.1 404 Not Found
+< Content-Length: 0
+< Date: Thu, 26 Jun 2025 15:32:53 GMT
+< Server: Kestrel
+<
+* Connection #0 to host localhost left intact
+```
+
+If it has joined the main branch it would have gave the response `===> main pipeline` instead of `404 not found` status.
+
+### MapWhen
+
+Branches the request pipeline based on the result of the given predicate.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapWhen(context => context.Request.Query.ContainsKey("page"),
+    Handle);
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("===> main pipeline");
+});
+
+app.Run();
+
+void Handle(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        var page = context.Request.Query["page"];
+        Console.WriteLine($"===> Page = {page}");
+        await next();
+    });
+
+    app.Run(async context =>
+    {
+        await context.Response.WriteAsync("Response from branch");
+    });
+}
+```
+
+Request 1:
+
+```bash
+~$ curl http://localhost:5285/
+===> main pipeline
+```
+
+Request 2:
+
+```bash
+curl http://localhost:5285/something?page=22
+Response from branch
+```
+
+It went to the different branch of pipeline when it gets the query parameter page.
+
+**Note:** MapWhen can not rejoin the main pipeline.
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapWhen(context => context.Request.Query.ContainsKey("page"),
+    Handle);
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("===> main pipeline");
+});
+
+app.Run();
+
+void Handle(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        var page = context.Request.Query["page"];
+        Console.WriteLine($"===> Page = {page}");
+        await next();
+    });
+}
+```
+
+Note that, there is not any terminal middleware in Handle method, request flow must go the next middleware. We are assuming that it will go the next middleware defined in the main pipeline. Would it?? Theoretically yes… So let’s find out.
+
+```bash
+~$ curl http://localhost:5285/something?page=22 -v
+
+* Host localhost:5285 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:5285...
+* Connected to localhost (::1) port 5285
+* using HTTP/1.x
+> GET /something?page=22 HTTP/1.1
+> Host: localhost:5285
+> User-Agent: curl/8.12.1
+> Accept: */*
+>
+< HTTP/1.1 404 Not Found
+< Content-Length: 0
+< Date: Thu, 26 Jun 2025 15:34:04 GMT
+< Server: Kestrel
+<
+* Connection #0 to host localhost left intact
+```
+
+As you can see we are getting `404 not found`, but we should get `200 OK` status code and `===> main pipeline` as a response body.
+
+That’s clearly indicates that, `MapWhen` don’t re-join the main pipeline.
+
+### UseWhen
+
+Let’s replace MapWhen withUseWhen .
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.UseWhen(context => context.Request.Query.ContainsKey("page"),
+    Handle);
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("===> main pipeline");
+});
+
+app.Run();
+
+void Handle(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        var page = context.Request.Query["page"];
+        Console.WriteLine($"===> Page = {page}");
+        await next();
+    });
+}
+```
+
+Let’s make a curl request
+
+```bash
+~$ curl http://localhost:5285/something?page=22
+===> main pipeline
+```
+
+It clearly indicates that `UseWhen` can re-join the main pipeline unless you have use terminal middleware in the branch pipeline.
 ---
 
 [💻 Source Code](https://github.com/rd003/DotnetPracticeDemos/tree/master/MiddlewareDemo)
