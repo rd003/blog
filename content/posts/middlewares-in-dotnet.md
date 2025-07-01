@@ -21,6 +21,7 @@ tags = ['dotnet']
 
 - 25-june-2025
 - 26-june-2025
+- 01-July-2025
 
 ## Built-in middlewares
 
@@ -65,7 +66,7 @@ There are three ways to create the custom middlewares:
 app.Use(async (context, next) =>
 {
   Console.WriteLine("This is middleware");
-  await next();
+  await next(context);
 });
 ```
 
@@ -86,7 +87,7 @@ app.MapGet("/", () =>
 app.Use(async (context, next) =>
 {
     Console.WriteLine("This is middleware");
-    await next();
+    await next(context);
 });
 
 app.Run();
@@ -108,14 +109,14 @@ Let’s explore some more things about middlewares what we have discussed in the
 app.Use(async (context, next) =>
 {
     Console.WriteLine("===> Middleware 1 before next() (during req)");
-    await next();
+    await next(context);
     Console.WriteLine("===> Middleware 1 after next() (during response)");
 });
 
 app.Use(async (context, next) =>
 {
     Console.WriteLine("===> Middleware 2 before next() (during req)");
-    await next();
+    await next(context);
     Console.WriteLine("===> Middleware 2 after next() (during response)");
 });
 ```
@@ -157,7 +158,7 @@ app.Use(async (context, next) =>
 
     context.Response.ContentType = "text/plain";
 
-    await next();
+    await next(context);
 
     // Response Headers
     Console.WriteLine("\nRESPONSE HEADERS:");
@@ -172,7 +173,7 @@ app.Use(async (context, next) =>
 
 app.Use(async (context, next) =>
 {
-    await next();
+    await next(context);
 
     await context.Response.WriteAsync("\nAppended in middleware 2");
 });
@@ -384,7 +385,7 @@ void HandleMapAdmin(IApplicationBuilder app)
     app.Use(async (context, next) =>
     {
         Console.WriteLine("===> Middleware for admin");
-        await next();
+        await next(context);
     });
 
     app.Run(async context =>
@@ -433,7 +434,7 @@ void HandleMapAdmin(IApplicationBuilder app)
     app.Use(async (context, next) =>
     {
         Console.WriteLine("===> Middleware for admin");
-        await next();
+        await next(context);
     });
 }
 ```
@@ -487,7 +488,7 @@ void Handle(IApplicationBuilder app)
     {
         var page = context.Request.Query["page"];
         Console.WriteLine($"===> Page = {page}");
-        await next();
+        await next(context);
     });
 
     app.Run(async context =>
@@ -535,7 +536,7 @@ void Handle(IApplicationBuilder app)
     {
         var page = context.Request.Query["page"];
         Console.WriteLine($"===> Page = {page}");
-        await next();
+        await next(context);
     });
 }
 ```
@@ -592,7 +593,7 @@ void Handle(IApplicationBuilder app)
     {
         var page = context.Request.Query["page"];
         Console.WriteLine($"===> Page = {page}");
-        await next();
+        await next(context);
     });
 }
 ```
