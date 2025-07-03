@@ -2,7 +2,7 @@
 date = '2025-02-24T18:07:04+05:30'
 draft = false
 title = 'SingleAsync vs SingleOrDefaultAync vs FirstAsync vs FirstOrDefaultAsync vs FindAync'
-tags = ['dotnet','charp']
+tags = ['dotnet','csharp']
 categories = ['programming']
 +++
 
