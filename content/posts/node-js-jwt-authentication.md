@@ -801,7 +801,7 @@ login(loginData: LoginModel) {
 Note that, you have do the same, in every http request which intent to send or recieve the cookie. It is better to create an interceptor for it.
 
 
-````ts
+```ts
 // http.interceptor.ts
 
 import { HttpInterceptorFn } from '@angular/common/http';
