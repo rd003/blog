@@ -2,7 +2,7 @@
 date = '2025-02-22T19:24:26+05:30'
 draft = false
 title = 'Open Closed Principle (OCP)'
-tags = ['design-patterns','SOLID']
+tags = ['design-patterns','SOLID','oops']
 categories = ['programming']
 +++
 
