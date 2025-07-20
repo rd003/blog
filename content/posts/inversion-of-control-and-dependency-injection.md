@@ -31,7 +31,7 @@ public class EmailService : INotificationService
 }
 ```
 
-OrderService need to use the `INotificationService`. 
+`OrderService` need to use the `INotificationService`. 
 
 ```cs
 public class OrderService
@@ -61,7 +61,7 @@ public class OrderService
 }
 ```
 
-In this example, `OrderService` is not creating the instance of `INotificationService`, It is being created by the `IOC container`. `OrderService` need and instance of the `INotificationService` implemention (i.e `EmailService`), it asks `IOC container`, hey give me the instance of `EmailService` and it gets what it asked. It is called `inversion of control`. `INotificationService` is injected through the construction injection (a form of dependency injection).
+In this example, `OrderService` is not creating the instance of `INotificationService`, It is being created by the `IOC container`. `OrderService` need and instance of the `INotificationService` implemention (i.e `EmailService` or `SmsService`), it asks `IOC container`, hey give me the instance of `EmailService` and it gets what it asked. It is called `inversion of control`. `INotificationService` is injected through the construction injection (a form of dependency injection).
 
 Now our code is:
 

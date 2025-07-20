@@ -87,6 +87,7 @@ npm install -D nodemon
 
 ## Project structure
 
+```txt
 backend/
 ├── node_modules/               
 ├── package.json                
@@ -106,6 +107,7 @@ backend/
     └── routes/
         └── index.js
 		└── personRoutes.js
+```
 
 ## Create project directories and files
 
