@@ -1,7 +1,7 @@
 +++
 date = '2025-07-29T18:24:07+05:30'
 draft = false
-title = 'Asynchronous Programming in C# - Comparing it with multithreading'
+title = 'Asynchronous Programming in C# - Comparing it with multi-threading'
 categories = ['programming']
 tags = ['csharp']
 +++
@@ -10,7 +10,7 @@ tags = ['csharp']
 
 `Asynchronous task` is a **non-blocking** task. Main thread goes back to the **thread pool** (and free to do other tasks) when it reaches to await -- and new thread is assigned when wait is complete.
 
-It is different from the multithreading. In multithreding, task is divided between multiple threads. Cores of your CPU are utilized.
+It is different from the multi-threading. In multi-threding, task is divided between multiple threads. Cores of your CPU are utilized.
 
 ## Analogy
 
@@ -23,7 +23,7 @@ There are multiple ways to achieve this:
 
 1. Boil the eggs 🥚 and wait until it finishes, then clean 🧹🪣 the house. It is called `synchronous task`.
 2. You put eggs 🥚 in boiling water and set the timer ⏰. Meanwhile you finishes other works like clean a house🧹🪣. When timer ⏰ indicates, you close the lit  of boiling pan 🫕. Then again you finishes the remaining task. It is called `asynchronous task`. You are not bound to wait for the task to finish.
-3. You has asked someone to boil the eggs🫕 and you are taking care of cleaning 🧹🪣  the house. You are two people 👥 now. It is called `multithreading`, you have more workers to finish the task. 
+3. You has asked someone to boil the eggs🫕 and you are taking care of cleaning 🧹🪣  the house. You are two people 👥 now. It is called `multi-threading`, you have more workers to finish the task. 
 
 
 ## Synchronous task
@@ -62,11 +62,15 @@ Output:
 ```bash
 Main thread : 1
 Eggs are boiling...
+# wait for 2 sec
 Egg boiled by thread : 1
 Cleaning in process..
+# wait for 1.5 sec
 House cleaned by thread : 1
 All task complete by ThreadId: 1
 ```
+
+As you have noticed, all the task are finished by a single thread. 
 
 
 ## Asynchronous Task
@@ -113,10 +117,19 @@ Output:
 ```bash
 Main thread : 1
 Eggs are boiling...
+# main thread is released
+# waiting for 2 sec
+# Thread by id 5 has joined in
 Egg boiled by thread : 5
 Cleaning in process..
+# Thread 5 is released
+# wait for 1.5 sec
+# Thread 5 has joined back
 House cleaned by thread : 5
 SomeOther chore in process..
+# thread 5 is released
+# waiting for 500 ms
+# thread 5 has joined back
 SomeOther chore is completed by thread : 5
 All task completed by ThreadId: 5
 ```
@@ -136,16 +149,20 @@ output:
 
 ```bash
 Main thread : 1
+# threa 1 is released
+# waiting for all the task to finished
 Eggs are boiling...
 Cleaning in process..
 SomeOther chore in process..
+# thread 5 has joined in
+# all tasks are completed at once in the background
 SomeOther chore is completed by thread : 5
 House cleaned by thread : 5
 Egg boiled by thread : 5
 All task completed by ThreadId: 5
 ```
 
-## Multithreading
+## Multi-threading
 
 ```cs
 using System.Diagnostics.CodeAnalysis;
@@ -196,12 +213,14 @@ output:
 
 ```bash
 Main thread : 1
+# All task are running simultaniously by different thread
+# Tasks will finish in the order of shortest execution task
 Eggs are boiling...
 Cleaning in process..
 SomeOther chore in process..
-SomeOther chore is completed by thread : 6
-House cleaned by thread : 5
-Egg boiled by thread : 4
+SomeOther chore is completed by thread : 6 # It has the shortest time
+House cleaned by thread : 5 # it is second shortest
+Egg boiled by thread : 4 # it has longest time
 ```
 
 ## Real life use case of async
@@ -217,4 +236,4 @@ Egg boiled by thread : 4
 
 `Async` is useful in `IO bound tasks` like network calls, database calls or manipulating files.
 
-`Multithreading` is useful in` CPU bound tasks` like image/video processing, encryption/hashing or processing the large data.
+`multi-threading` is useful in` CPU bound tasks` like image/video processing, encryption/hashing or processing the large data.
