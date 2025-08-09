@@ -819,7 +819,7 @@ provideHttpClient(
     )
 ```
 
-### In react (fetch api)
+### FETCH API
 
 ```js
 fetch('https://your-api.com/login', {
@@ -836,4 +836,12 @@ fetch('https://your-api.com/login', {
 .then(res => res.json())
 .then(data => console.log(data))
 .catch(err => console.error(err));
+```
+
+### AXIOS
+
+```js
+await axios.post('https://your-api.com/login', loginData, {
+                withCredentials: true
+            });
 ```
