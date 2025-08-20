@@ -664,7 +664,7 @@ public string GenerateRefreshToken()
 
 Implement the `GetPrincipalFromExpiredToken` method. As name suggest we will get principal from the expired token with the help of this method.
 
-````cs
+```cs
 public ClaimsPrincipal GetPrincipalFromExpiredToken(string accessToken)
 {
     // Define the token validation parameters used to validate the token.
@@ -707,7 +707,7 @@ Now register this service.
 ```cs
 // Program.cs
 builder.Services.AddScoped<ITokenService, TokenService>();
-````
+```
 
 ## Token Model
 
