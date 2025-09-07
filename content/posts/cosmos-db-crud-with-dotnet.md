@@ -1,14 +1,24 @@
 +++
-date = '2025-09-07T11:37:42+05:30'
-draft = true
-title = 'CosmosDb For NoSql - CRUD With Dotnet'
+date = '2025-09-07T21:37:42+05:30'
+draft = false
+title = 'Cosmos DB For NoSQL - CRUD With Dotnet'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
 +++
 
+![Cosmos DB for NoSQL](/images/cosmos/cosmos_db_for_no_sql.png)
+
+`Azure Cosmos DB for NoSQL` is a fully managed and serverless `NoSQL` and `vector database` for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data. 
+
+**Soruce:** learn.microsoft.com, you can learn more about it from [here](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/overview)
+
+"OpenAI relies on Cosmos DB to dynamically scale their ChatGPT service – one of the fastest-growing consumer apps ever – enabling high reliability and low maintenance." – Satya Nadella, Microsoft chairman and chief executive officer  [Source: learn.microsoft.com](https://learn.microsoft.com/en-us/azure/cosmos-db/introduction)
+
+Let's do some real work. Most of you are not here to learn the theorotical aspects. Right? Off course.. So.. Create an azure account first, If you haven't created. You can create a trial account with some credit for 30 days. After that let's create an cosmos db resource.
+
 ## Lets create cosmos db resource in azure
 
-I am creating this resource for the demo, I am saving every penny here. You need to change the options if you are looking for a scalable production database.
+I am creating this resource for the demo, I am trying to save every penny here. You need to change the options if you are looking for a scalable production database.
 
 First and foremost, log-in to the `Azure portal`. Go to the `Databases` section and select `Azure Cosmos DB`
 
@@ -20,11 +30,26 @@ In the next step, you will notice a lot of options, we need to select `Azure Cos
 
 ![cosmos db](/images/cosmos/cosmos_3.1.png)
 
+Note that, you need to select a `resource group` if it is not already created. I have created a resource group named `rg_CosmosDemo`. You can easily cleanup the resource in this way. When you are done playing with cosmos db, just delete the resource group named `rg_CosmosDemo` and it will remove the `CosmosDb` resource along with it.
+
 ![cosmos db 3.2](/images/cosmos/cosmos_3.2.png)  
 
 **📢 Note:** I am selecting the option `serverless` for the sake of the demo. It is a very cheap option while you are learning.
 
 ![cosmos_3.3](/images/cosmos/cosmos_3.3.png) 
+
+Click on the `Create` button and the cosomos db resource will be created soon, you have to wait a bit.
+
+After that, go to that resource and let's check the security of the resource.
+
+## Securing cosmos db account
+
+Only give public access to yourself (i.e public ip address of your manchine) 
+
+![cosmos_security](/images/cosmos/cosmos_security.png)
+
+
+Now we will create a database after this.
 
 ### Create a database
 
@@ -51,12 +76,6 @@ After that, just create the container.
 ### Let's make a query to the container.
 
 ![cosmos_query](/images/cosmos/cosmos_query.png) 
-
-## Securing cosmos db account
-
-Only give public access to yourself (i.e public ip address of your manchine) 
-
-![cosmos_security](/images/cosmos/cosmos_security.png)
 
 ---
 
