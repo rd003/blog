@@ -1,6 +1,6 @@
 +++
 date = '2025-09-08T12:49:37+05:30'
-draft = true
+draft = false
 title = 'Azure Blob Storage : CRUD With AspNetCore Mvc & SQL Server'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
@@ -10,7 +10,7 @@ categories = ["programming","cloud"]
 
 `Azure blob storage` is storage solution provided by microsoft. You can store data like images, audio, video, json files, zip files etc etc in the azure.
 
-## What I am going to learn?
+## What are we going to learn?
 
 - How to create a web application that stores and manipulate the images in the cloud.
 - We will perform all the CRUD (create, read, update and delete) operations.
@@ -23,7 +23,7 @@ categories = ["programming","cloud"]
 
 ## High level overview
 
-- We will save `image url` in the database and image in the `storage account(blob container)`
+- We will save `image url` in the database and images in the `storage account(blob container)`
 
 ---
 
@@ -70,11 +70,11 @@ Add these lines in the `appsettings.json`
   }
 ```  
 
-**📢 Note:** Let's leave these things empty and set it in the `secrets-manager`. Secrets manage stores in the machine not in the project. In this way we can keep our secrets safe. In production, put those secrets in the environment variables of azure app services (where you web app is deployed).
+**📢 Note:** Let's leave these things empty and set it in the `secrets-manager`. Secrets manager stores secrets in the machine not in the project. In this way we can keep our secrets safe. In production, put those secrets in the environment variables of azure app services (where your web app is deployed).
 
-## Secret
+## Secrets
 
-Right click on project, click on "Manage Secrets". It will open secret.json file
+Right click on a project, click on "Manage Secrets". It will open the `secret.json` file
 
 ```js
 {
@@ -550,9 +550,9 @@ public async Task<IActionResult> DeletePerson(int id)
 
 ## Views for each controller method
 
-- Create a new folder/directory `Person` inside `Views`
+- Create a new folder/directory named `Person` inside `Views`
 - Create three views : `CreatePerson.cshtml`, `EditPerson.cshtml` and `Index.cshtml`
-- These view represents their coressponding controller methods
+- These views represents their coressponding controller methods
 
 Let's define each of them
 
@@ -608,7 +608,7 @@ Let's define each of them
 </div>
 ```
 
-### EditPIndexerson.cshtml
+### EditPerson.cshtml
 
 ```html
 @model PersonUpdateDto
