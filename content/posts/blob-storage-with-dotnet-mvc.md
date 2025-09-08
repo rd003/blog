@@ -8,7 +8,7 @@ categories = ["programming","cloud"]
 
 ![Azure blob storage crud operations with .net core mvc and sql server](/images/blobstorage/azure-blob-storage-crud.png)
 
-`Azure blob storage` is storage solution provided by microsoft. You can store data like images, audio, video, json files, zip files etc etc in the azure.
+`Azure blob storage` is a storage solution provided by microsoft. You can store data like images, audio, video, json files, zip files etc etc in the azure.
 
 ## What are we going to learn?
 
