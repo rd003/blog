@@ -53,9 +53,9 @@ We are done here.
 
 Create a new `ASP.NET Core MVC` project. I am not going to do it, please [follow this](ASP.NET Core MVC), if you don't know how to create one.
 
-📢 I migth be missing something in this blog post. If you find something missing please checkout the source code.
+📢 I might be missing something in this blog post. If you find something missing please checkout the source code.
 
-💻 [Sourc code](https://github.com/rd003/DotnetPracticeDemos/tree/master/AzureBlobDemo)
+💻 [Source code](https://github.com/rd003/DotnetPracticeDemos/tree/master/AzureBlobDemo)
 
 ## appsettings
 
