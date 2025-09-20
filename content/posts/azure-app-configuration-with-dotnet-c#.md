@@ -1,12 +1,20 @@
 +++
 date = '2025-09-20T16:56:26+05:30'
-draft = true
+draft = false
 title = 'Azure App Configuration With Dotnet(C#)'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
 +++
 
 ![Azure app configuration in c# dotnet](/images/appconfig/azure_app_configuration_csharp.png)
+
+- Azure `App Configuration` is a fully managed service, which provides you a way to store the configurations in a centralized store. You can store configurations of multiple apps in a single place.
+- It is really helpful for cloud native application (eg. Microservices), which runs on multiple virtual machines and use multiple external services.
+- It allows us to store Key-value pairs, manage feature flags, and organize configurations using labels and namespaces.
+- The main benefit is, it supports [dynamic refreshing](https://learn.microsoft.com/en-us/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core). Which means, you can change config values without restarting the app.
+- You can also add reference of azure key vault secret here.
+
+Let's see these things in action.
 
 ## Dontet core web api app
 
@@ -76,9 +84,9 @@ Click on three dots '...' of each key-value and edit its values.
 
 ![import/export](/images/appconfig/2_import_edit.png)
 
-## Configure app configuration in dotnet app
+## Configure the app configuration in a dotnet app
 
-### Package
+### Nuget Packages
 
 Add the following nuget package.
 
@@ -103,12 +111,12 @@ Add these lines in `Program.cs`
 
 ```cs
 string appConfigConnectionString = builder.Configuration.GetConnectionString("AppConfig")
-    ?? throw new InvalidOperationException("The connection string 'AppConfiguration' was not found.");
+    ?? throw new InvalidOperationException("The connection string 'AppConfig' was not found.");
 
 builder.Configuration.AddAzureAppConfiguration(appConfigConnectionString);
 ```
 
-Now, run the application and in the browser or postman, visit the root endpoint `eg. https://localhost:7040/` you will notice:
+Now, run the application and in the browser or postman, visit the root endpoint `eg. https://localhost:7040/` and you will notice:
 
 
 ```js
@@ -119,14 +127,15 @@ Now, run the application and in the browser or postman, visit the root endpoint 
 }
 ```
 
+These values are loaded from `App Configuration`.
+
 ## Loading keys with prefixes
 
-Since this can be a centralized config store, which may be shared with multiple apps. You want to name keys that make sense and you can easily identify them. Eg. `DotnetSample:Person:Name` and `DotnetSample:Color` says that these are the key of `Dotnet Sample app`. To retrieve this you have to change your configuration in `Program.cs`. 
+Since this can be a centralized config store, which may be shared with multiple apps. You want to name keys that make sense and you can easily identify them. Eg. `DotnetSample:Person:Name` and `DotnetSample:Color` says that these are the key of `Dotnet Sample app`. 
 
 ![import/export](/images/appconfig/KeyValueWithPrefix.png)
 
-
-In this ways you loads the configs that is only relevant to your application.
+To retrieve this you have to change your configuration in `Program.cs`. 
 
  ```cs
  builder.Configuration.AddAzureAppConfiguration(options =>
@@ -136,7 +145,9 @@ In this ways you loads the configs that is only relevant to your application.
 });
  ```
  
- It will load the config keys that starts with `DotnetSample:`.
+In this ways you loads the configs that is only relevant to your application.
+
+It will load the config keys that starts with `DotnetSample:`.
  
  Endpoint:
  
@@ -154,7 +165,7 @@ In this ways you loads the configs that is only relevant to your application.
 });
  ```
  
-You can also modify appsettings.json, if you want to load different config in devenvironment and different config in production. 
+You can also modify appsettings.json, if you want to load different config in dev environment and different config in production environment. 
  
 appsettings: 
  
@@ -180,4 +191,7 @@ if (builder.Environment.IsProduction())
 }
 ```
  
- 
+## More resources
+
+- [Quickstart: Create an ASP.NET Core app with Azure App Configuration](https://learn.microsoft.com/en-us/azure/azure-app-configuration/quickstart-aspnet-core-app?tabs=entra-id)
+- [Dynamic configuration](https://learn.microsoft.com/en-us/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core)
