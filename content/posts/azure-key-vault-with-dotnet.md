@@ -1,10 +1,12 @@
 +++
 date = '2025-09-22T10:25:42+05:30'
-draft = false
+draft = true
 title = 'Azure Key Vault With Dotnet'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
 +++
+
+![key vault](/images/keyvault/keyvault.png)
 
 First of all, let's see what are we going to achive? Let's say we have an dotnet 9 api application.
 
