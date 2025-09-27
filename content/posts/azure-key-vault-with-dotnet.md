@@ -8,7 +8,7 @@ categories = ["programming","cloud"]
 
 ![key vault](/images/keyvault/keyvault.png)
 
-First of all, let's see what are we going to achive? Let's say we have an dotnet 9 api application.
+First of all, let's see what are we going to achieve? Let's say we have an dotnet 9 api application.
 
 Its `appsettings.json` looks like:
 
@@ -133,7 +133,7 @@ If you run the application, your appsettings will be overriden by azure key vaul
 }
 ```
 
-Azure key vault is not only limite to `Secrets`. You can also add `Keys` and `Certificates`.
+Azure key vault is not only limited to `Secrets`. You can also add `Keys` and `Certificates`.
 
 Now we have seen what have we achieved with azure key vault. We can say:
 
