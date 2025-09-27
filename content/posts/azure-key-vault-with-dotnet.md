@@ -1,6 +1,6 @@
 +++
 date = '2025-09-22T10:25:42+05:30'
-draft = true
+draft = false
 title = 'Azure Key Vault With Dotnet'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
