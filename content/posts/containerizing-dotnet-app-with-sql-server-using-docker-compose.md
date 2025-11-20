@@ -1,5 +1,5 @@
 +++
-date = '2025-02-23T13:57:05+05:30'
+date = '2025-11-20T13:57:05+05:30'
 draft = false
 title = 'Containerizing Dotnet App With Sql Server Using Docker Compose'
 tags = ['dotnet','docker']
@@ -12,18 +12,18 @@ In this tutorial, we are going to containerize the .NET Web API application wit
 
 ## Last updated on:
 
-- 19-june-2025
+- 20-November-2025
 
 ### 🔨Tools needed
 
 - Visual Studio Code (Free)
-- .Net 9.0 SDK (Free)
+- .Net 10.0 SDK (Free)
 - Docker desktop (Free)
 
 ### 🧑‍💻Tech used
 
-- .Net 9.0 Web APIs (controller APIs)
-- Ms SQL Server 2022 (within a container)
+- .Net 10.0 Web APIs (controller APIs)
+- Ms SQL Server 2025 (within a container)
 - Docker compose
 
 **🍵Note:** I am using windows 11 operating system. However, I also have tested it in the Linux mint xia and it is working fine.
@@ -61,7 +61,7 @@ First and foremost, create a file named **‘Dockerfile’** in the root directo
 Add the following content in the docker file.
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -75,7 +75,7 @@ WORKDIR /source/DotnetDockerDemo.Api
 RUN dotnet publish -c release -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 COPY --from=build /app ./
 
@@ -96,10 +96,15 @@ services:
     image: people-api:1.0.0
     ports:
       - 8080:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__default=Server=db,1433;Database=DotnetDockerDemo;User Id=sa;Password=p@55w0rd;TrustServerCertificate=True
     depends_on:
-      - "sql"
-  sql:
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
+      db:
+        condition: service_healthy
+  db:
+    image: "mcr.microsoft.com/mssql/server:2025-latest"
     container_name: sql_server
     ports:
       - 1433:1433
@@ -108,6 +113,12 @@ services:
       - MSSQL_SA_PASSWORD=p@55w0rd
     volumes:
       - sql-server-data:/var/opt/mssql
+    healthcheck:
+      test: [ "CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "p@55w0rd", "-C", "-Q", "SELECT 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 
 volumes:
   sql-server-data:
@@ -116,10 +127,16 @@ volumes:
 
 In this file, we have defined two services.
 
-- First, it will build a docker image of .net application named `people-api:1.0.0`  and create a container for it, which will listen on the port 8080.
-- Second, it will pull the sql server image from the docker hub, create the container for it which will listen in the port 1433. The image will be pulled only once; if you already have a sql server image with similar tag, it won’t be pull again.
+1. **server:** It builds a docker image of .net application named `people-api:1.0.0`  and create a container for it, which will listen on the port `8080`.
+2. **db:** It pulls the `sql server` image from the `docker hub`, create the container for it which will listen in the port `1433`. The image will be pulled only once; if you already have a sql server image with similar tag, it won’t be pull again.
 
-I have created volume in sql server section.
+Let's discuss few more things.
+
+- `db` service performs health check. It ensures that the sql server is spun up and running.
+- Before running the server, we make sure that sql server is up and running.
+- `server` service depends on `db` and wait to finish the `db`. `db` must be in healthy condition. 
+- In `server` section, we also haved defined `environments`. In this way, we can override the `appsettings.json`. 
+- I also have created a `volume` in sql server section.
 
 ```yml
 volumes:
@@ -136,29 +153,7 @@ volumes:
 
 This line mounts `sql-server-data` volume to the path `/var/opt/mssql` . **By creating volumes our data persists outside the container.** If we remove the container or recreate it, our data (database, tables, procedures…everything) will persist.
 
-**Note:** The `dockerfile` and `compose.yaml` file is created at June,19,2025. The content present in **dockerfile** and **compose file** is valid as of now, but may not be valid if you are reading this blog post in distant future.
-
-#### Update the appsettings.json
-
-```json
-"ConnectionStrings": {
- "default": "Server=sql,1433;Database=DotnetDockerDemo;User Id=sa;Password=myStrong(!)Password;encrypt=false"
- }
-```
-
-You may have noticed, I have defined **‘server ’** as **‘sql,1433’.** Here’s what it means:
-
-- `sql` represents the name of service defined in `compose.yaml`. Look at the snippet below:
-
-```txt
-// compose.yaml
-
- sql:  <==== It is the name, I am refering in connection string
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
-    container_name: sql_server
-```
-
-- `1433` is the **port of sql server** which is running in a container. We have defined this port in the`compose.yaml` file.
+**Note:** The `dockerfile` and `compose.yaml` file is created at November,20,2025. The content present in **dockerfile** and **compose file** is valid as of now, but may not be valid if you are reading this blog post in distant future.
 
 #### Run docker compose
 
@@ -190,7 +185,7 @@ However, you can also verify it in the docker desktop.
 
 ### Testing the application
 
-To test the application, open a web browser and type the url `[http://localhost:8080/weatherforecast](http://localhost:8080/weatherforecast)`. As a result, you should see the following response in the browser.
+To test the application, open a web browser and type the url [http://localhost:8080/weatherforecast](http://localhost:8080/weatherforecast). As a result, you should see the following response in the browser.
 
 ![response1](/images/1_qKVhg2cNtjj26USci_lXeg.png)
 
@@ -198,13 +193,15 @@ This indicates that our application is working perfectly.
 
 ### Testing the endpoints using sql server
 
-Type the url `[http://localhost:8080/api/people/](http://localhost:8080/api/people/)` in the browser and as a result you might receive the person array.
+Type the url [http://localhost:8080/api/people/](http://localhost:8080/api/people/) in the browser and as a result you receives the person array.
 
 ## Removing composed containers
 
 ```bash
 docker compose down
 ```
+
+Then also remove the people api image and related volume for proper cleanup. 
 
 ## 💻 Code with Dockerfile and compose.yaml
 
