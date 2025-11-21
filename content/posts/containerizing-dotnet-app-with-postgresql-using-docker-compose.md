@@ -1,5 +1,5 @@
 +++
-date = '2025-02-23T15:55:14+05:30'
+date = '2025-11-21T13:33:14+05:30'
 draft = false
 title = 'Containerizing Dotnet App With PostgreSql Using Docker Compose'
 tags = ['dotnet','docker']
@@ -10,15 +10,17 @@ categories = ['programming']
 
 In this tutorial, we are going to **containerize the .NET Web API application with docker and postgres**. I am assuming you are familiar with docker. At least, you should have some understandings of how docker works. However, I have covered all the steps needed to create a docker container for your application, but I am not going to cover the [theoretical concepts](https://en.wikipedia.org/wiki/Docker_%28software%29) of docker.
 
+**📢Last updated : 21-Nov-2025** 
+
 ### 🔨Tools needed
 
 - Visual Studio Code (Free)
-- .Net 9.0 SDK (Free)
+- .Net 10.0 SDK (Free)
 - Docker desktop (Free)
 
 ### 🧑‍💻Tech used
 
-- .Net 9.0 Web APIs (controller APIs)
+- .Net 10.0 Web APIs (controller APIs)
 - Postgres (within a container)
 - Docker compose
 
@@ -56,12 +58,10 @@ First and foremost, create a file named **‘Dockerfile’** in the root directo
 
 ![dockerfile](/images/1_jmPUFggtbIG3WyKITNx67Q.jpg)
 
-A **dockerfile** in the root directory
-
 Add the following content in the docker file.
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -75,7 +75,7 @@ WORKDIR /source/DotnetApiPostgres.Api
 RUN dotnet publish -c release -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 COPY --from=build /app ./
 
@@ -96,12 +96,16 @@ services:
     image: people-api:1.0.0
     ports:
       - 8080:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__default=Host=db;Database=PersonDb;Username=postgres;Password=p@55w0rd
     depends_on:
       db:
         condition: service_healthy
         restart: true
   db:
-    image: postgres
+    image: postgres:16.9-bullseye
     container_name: postgres_db
     ports:
       - 5432:5432
@@ -117,37 +121,27 @@ services:
       timeout: 10s
 volumes:
   postgres_data:
+
 ```
 
 In this file, we have defined two services.
 
-- First, it will build a docker image of .net application and create a container for it, which will listen on the port 8080
-- Second, it will pull the postgres image from the docker hub, create the container for it which will listen in the port 5432. The image will be pulled only once; if you already have a postgres image, it won’t be pull again.
+1. **web_api:** It builds a docker image of .net application and create a container for it, which will listen on the port `8080`
+2. **db:** It pulls the postgres image from the docker hub, create the container for it which will listen in the port `5432`. The image will be pulled only once; if you already have a postgres image with similar tag it won’t be pulled again.
 
-In the service named `web_api` , I have defined a a property or key named `depends_on` with the value `db` . It means `web_api` service is depends on the service `db` . `web_api` will wait until `db` is up and running before starting.
+- To ensure that database is running, we have defined `healthcheck` in `db` service.
+- `web_api` service depends on the service `db` . `web_api` will wait until `db` is up and running before starting. `web_api` only runs when `db` is `healthy`.
 
 Service order will be:
 
-- db
-- web_api
+1. db 
+2. web_api
 
-I have one more property condition: `service_healthy` . It will do health check for the postgres data. `web_api` service won’t be created until health check of db is marked as healthy. We are basically checking, whether the postgres is running or not.
+- **environment:** With this we can override the properties of `appsettings.json`. We are basically overriding the `connection string` in this step. 
 
-You also have noticed, I have defined a `volume` with name `postgres_data` in `Volumes` section. I have linked this volume with my `db` service and bind the path `/var/lib/postgresql/data` to it. By doing so, our database has become persistent. If we delete the postgeress container, our database and all of its data still persists.
+- **volumes:** We have defined a `volume` with name `postgres_data` in `Volumes` section. We have linked this volume with my `db` service and bind the path `/var/lib/postgresql/data` to it. By doing so, our database has become persistent. If we delete the postgeress container, our database and all of its data still persists.
 
-**Note:** The `dockerfile` and `compose.yaml` file is created at `June,20,2025`. The content present in `dockerfile` and `compose file` is **valid as of now**, but may not be valid if you are reading this blog post in distant future.
-
-### Move Connectionstring
-
-Since container runs the published version of .net applcation, so you need to define connection string in the **appsettings.json**. In this application, the connection string is defined in the **appsettings.development.json.** Remove the connection string from the **appsettings.development.json** and add the connection string to the **appsettings.json**. Connection string should look like as follows.
-
-```cs
-"ConnectionStrings": {
-    "default": "Host=db;Port=5432;Database=PersonDb;Username=postgres;Password=p@55w0rd"
-  }
-```
-
-You may have noticed, I have defined `Host` as `db`. Which is the name of the service defined in the `compose.yaml`.
+**Note:** The `dockerfile` and `compose.yaml` file is created at `November,21,2025`. The content present in `dockerfile` and `compose file` is **valid as of now**, but may not be valid if you are reading this blog post in distant future.
 
 #### Run docker compose
 
