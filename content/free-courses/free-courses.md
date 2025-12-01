@@ -31,7 +31,11 @@ layout= "courses"
 
 ## CRUD Apps (Create, Read, Update, Delete)
 
+- [Fullstack app with dotnet9 and react 19](https://youtu.be/qcczkv-Hz5c?si=OIAmKJsnAT39Bo6m)
+- [Fullstack app with dotnet9 and angular 20](https://youtu.be/YblleP-QzEs?si=fpod9WovJ0CzoqnK)
+- [Fullstack dotnet mvc app with azure deployment](https://youtu.be/YfcispTgQYU?si=UvBx51N8GL9gPWrS)
 - [Creating RESTful APIs with dotnet 9, Dapper and PostgreSQL](https://youtu.be/w-cicwms-es)
+- [Minimal API CRUD](https://youtu.be/VZ9aoSeuVT8?si=4Dp4NeZdkFdAWAb7)
 - [.Net core Web Api CRUD With SQLite & Dapper](https://youtu.be/JDHaeDlNqOI)
 - [.net core web api crud with mysql & Dapper](https://youtu.be/iceJBFcWuM4)
 - [.Net core web api crud with mysql & EF Core](https://youtu.be/zJ4SZNKLAog)
