@@ -1,6 +1,6 @@
 +++
 date = '2025-12-04T11:00:49+05:30'
-draft = true
+draft = false
 title = 'How to run Sql Server 2025 in Docker'
 tags = ['sql','docker']
 categories = ['database']
