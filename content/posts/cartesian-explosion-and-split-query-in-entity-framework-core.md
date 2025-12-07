@@ -1,6 +1,6 @@
 +++
-date = '2025-12-06T11:00:37+05:30'
-draft = true
+date = '2025-12-07T20:03:37+05:30'
+draft = false
 title = 'Cartesian Explosion and Split Query in Entity Framework Core'
 tags = ['dotnet','efcore']
 categories = ['programming']
