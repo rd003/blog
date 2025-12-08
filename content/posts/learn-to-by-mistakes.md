@@ -2,7 +2,7 @@
 date = '2025-12-09T9:00:00+05:30'
 draft = false
 title = 'It is okay to learn code by mistakes'
-tags = ['advise']
+tags = ['advice']
 categories = ['programming']
 +++
 ![learn code with mistake](/images/learn_code_with_mistake.jpg)
