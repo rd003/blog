@@ -4,6 +4,7 @@ draft = false
 title = 'It is okay to learn code by mistakes'
 tags = ['advice']
 categories = ['programming']
+image = '/images/learn_code_with_mistake.jpg'
 +++
 ![learn code with mistake](/images/learn_code_with_mistake.jpg)
 
