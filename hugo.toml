@@ -58,6 +58,8 @@ theme = 'beautiful-hugo'
   socialShareReddit = true
   socialShareEmail = true
   rss=true
+  buymeacoffeeUsername = "ravindradevrani"
+  showRelatedPosts = true
   [Params.author]
     name = "Ravindra Devrani"
     github = "rd003"
@@ -65,4 +67,5 @@ theme = 'beautiful-hugo'
     youtube = "@ravindradevrani"
   giscusTheme="preferred_color_scheme"
   disableComments=false
+
   
