@@ -7,6 +7,12 @@ theme = 'beautiful-hugo'
   category = "categories"
   tag = "tags"
 
+[minify]
+  disableHTML = false
+  disableCSS = false
+  disableJS = false
+  disableJSON = false
+
 [menu]
   [[menu.main]]
     name = "Home"
