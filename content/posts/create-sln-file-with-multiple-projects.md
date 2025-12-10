@@ -4,9 +4,10 @@ draft = false
 title = 'Create Sln File With Multiple Projects'
 tags= ["dotnet"]
 categories = ["programming"]
+image = '/images/create_sln_with_multiple_files.png'
 +++
 
-![Create Sln File With Multiple Projects](/images/create_sln_with_multiple_files.png)
+<!-- ![Create Sln File With Multiple Projects](/images/create_sln_with_multiple_files.png) -->
 
 In this article we will learn how to create a .net core
 project with a Solution (sln file) that contains multiple projects. I

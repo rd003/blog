@@ -4,9 +4,10 @@ draft = false
 title = 'Abstract Factory Pattern With C#'
 tags = ['design-patterns']
 categories = ['programming']
+image = '/images/1_W32QuVMnpP6_DEGtHsk75Q.png'
 +++
 
-![Abstract factory pattern (with c# example)](/images/1_W32QuVMnpP6_DEGtHsk75Q.png)
+<!-- ![Abstract factory pattern (with c# example)](/images/1_W32QuVMnpP6_DEGtHsk75Q.png) -->
 
 The **Abstract Factory pattern** is a creational design pattern that **provides an interface for creating families of related or dependent objects without specifying their concrete classes**. It allows a client to create objects from a variety of related classes without needing to know the specifics of their implementations.
 

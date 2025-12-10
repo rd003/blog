@@ -4,9 +4,10 @@ draft = false
 title = 'Command Pattern With C#'
 tags = ['design-patterns']
 categories = ['programming']
+image = '/images/1_JoPgJdYKXe1o05IS23X0zA.png'
 +++
 
-![Command Pattern](/images/1_JoPgJdYKXe1o05IS23X0zA.png)
+<!-- ![Command Pattern](/images/1_JoPgJdYKXe1o05IS23X0zA.png) -->
 
 **The Command Pattern** is a behavioral design pattern that turns a request into a stand-alone object containing all the information about the request. This conversion allows you to parameterize methods with different requests, queue requests, and support undoable operations.
 

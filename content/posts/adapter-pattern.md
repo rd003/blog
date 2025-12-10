@@ -4,9 +4,10 @@ draft = false
 title = 'Adapter Pattern: Bridging the gap between incompatible interfaces'
 tags = ['design-patterns']
 categories = ['programming']
+image = '/images/1_8nYA7mo3pjhJZT1F2nBSOg.png'
 +++
 
-![The Adapter pattern in c#](/images/1_8nYA7mo3pjhJZT1F2nBSOg.png)
+<!-- ![The Adapter pattern in c#](/images/1_8nYA7mo3pjhJZT1F2nBSOg.png) -->
 
 **The Adapter pattern** is a structural design pattern that allows two incompatible interfaces to work together by converting the interface of one class into an interface expected by the clients. In other words, it acts as a bridge between two incompatible interfaces, enabling them to communicate with each other.
 

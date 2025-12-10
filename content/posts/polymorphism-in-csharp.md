@@ -3,10 +3,11 @@ date = '2025-02-20T19:49:29+05:30'
 draft = false
 title = 'Polymorphism in depth with C#'
 tags = ['oops']
-categories=['programming'] 
+categories=['programming']
+image = '/images/polymorphism.png'
 +++
 
-![polymorphism in csharp](/images/polymorphism.png)
+<!-- ![polymorphism in csharp](/images/polymorphism.png) -->
 
 Polymorphism is one of the core concept of object oriented programming. Word **polymorphism = poly (many) + morphism (forms)**. As its name suggesting polymorphism means, an entity can have multiple forms.
 

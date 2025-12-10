@@ -4,9 +4,10 @@ draft = false
 title = 'The Dependency Inversion Principle (DIP)'
 tags = ['design-patterns','SOLID']
 categories = ['programming']
+image = '/images/1_FjEBNQw1jozLAACTbGgs7w.webp'
 +++
 
-![Dependency Inversion Principle in c#](/images/1_FjEBNQw1jozLAACTbGgs7w.webp)
+<!-- ![Dependency Inversion Principle in c#](/images/1_FjEBNQw1jozLAACTbGgs7w.webp) -->
 
 The **Dependency Inversion Principle** states that:
 

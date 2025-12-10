@@ -4,9 +4,10 @@ draft = false
 title = 'Dotnet Core Api CRUD With Dapper and PostgreSql'
 tags = ['dotnet','dapper']
 categories = ['programming']
+image = '/images/1_rpGj8zPS6MI2E6ePNKFT0g.png'
 +++
 
-![dapper and postgres](/images/1_rpGj8zPS6MI2E6ePNKFT0g.png)
+<!-- ![dapper and postgres](/images/1_rpGj8zPS6MI2E6ePNKFT0g.png) -->
 
 #### 💻Source Code: [https://github.com/rd003/PostgressDapperDemo](https://github.com/rd003/PostgressDapperDemo)
 

@@ -4,9 +4,10 @@ draft = false
 title = 'Containerizing Dotnet App With PostgreSql Using Docker Compose'
 tags = ['dotnet','docker']
 categories = ['programming']
+image = '/images/1_L8Rtngz25d4SLhLZR7liaA.png'
 +++
 
-![Containerizing A .NET App With Postgres Using Docker Compose](/images/1_L8Rtngz25d4SLhLZR7liaA.png)
+<!-- ![Containerizing A .NET App With Postgres Using Docker Compose](/images/1_L8Rtngz25d4SLhLZR7liaA.png) -->
 
 In this tutorial, we are going to **containerize the .NET Web API application with docker and postgres**. I am assuming you are familiar with docker. At least, you should have some understandings of how docker works. However, I have covered all the steps needed to create a docker container for your application, but I am not going to cover the [theoretical concepts](https://en.wikipedia.org/wiki/Docker_%28software%29) of docker.
 

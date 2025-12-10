@@ -4,9 +4,10 @@ draft = false
 title = 'Decorator Pattern With C#'
 tags = ['design-patterns']
 categories = ['programming']
+image = '/images/1_2qpDUZpD1bTPd1-TkfbrUA.png'
 +++
 
-![decorator patter with c#](/images/1_2qpDUZpD1bTPd1-TkfbrUA.png)
+<!-- ![decorator patter with c#](/images/1_2qpDUZpD1bTPd1-TkfbrUA.png) -->
 
 The Decorator pattern is a structural pattern that enables you to wrap an object with additional behaviors or responsibilities without changing its external interface. It’s like adding layers of decorations to a gift — you can add or remove decorations without altering the gift itself.
 

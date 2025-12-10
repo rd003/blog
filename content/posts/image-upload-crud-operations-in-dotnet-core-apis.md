@@ -4,9 +4,10 @@ draft = false
 title = 'Image Upload CRUD Operations in .NET Core WebAPIs'
 tags = ['dotnet']
 categories=['programming']
+image = '/images/1_raTlXZDRoXEYN5Calq8q0Q.png'
 +++
 
-![how to upload images in .net core web api](/images/1_raTlXZDRoXEYN5Calq8q0Q.png)
+<!-- ![how to upload images in .net core web api](/images/1_raTlXZDRoXEYN5Calq8q0Q.png) -->
 
 Upload images in .net core apis
 

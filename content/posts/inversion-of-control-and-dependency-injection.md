@@ -4,9 +4,10 @@ draft = false
 title = 'Inversion of Control - Dependency Injection - Dependency Inversion Principle'
 tags = ['oops']
 categories= ['programming']
+image = '/images/ioc.webp'
 +++
 
-![inversion of control, dependency injection and dependency inversion principle](/images/ioc.webp)
+<!-- ![inversion of control, dependency injection and dependency inversion principle](/images/ioc.webp) -->
 
 - **Direct or traditional approach:** Object creates its own dependencies.
 

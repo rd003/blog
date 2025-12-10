@@ -4,9 +4,10 @@ draft = false
 title = 'IEnumerable Vs IQueryable In C#'
 tags= ["dotnet","csharp"]
 categories = ["programming"]
+image = '/images/ienumerable-vs-queryable.webp'
 +++
 
-![IEnumerable-vs-IQuerable](/images/ienumerable-vs-queryable.webp)
+<!-- ![IEnumerable-vs-IQuerable](/images/ienumerable-vs-queryable.webp) -->
 
 There has been a discussion around town about the difference between an `IEnumerable` and an `IQueryable`, especially in c# interviews. I won't be diving into the fact that `IEnumerable` is part of the `System.Collections` namespace and `IQueryable` belongs to `System.Linq` namespace (or did I???). Rather, I’ll focus on the practical usage of both—how they work, and when to use each.
 

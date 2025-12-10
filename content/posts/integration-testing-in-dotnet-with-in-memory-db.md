@@ -4,6 +4,7 @@ draft = false
 title = 'Integration Testing in Dotnet With InMemory Db'
 tags = ['dotnet','testing']
 categories = ['programming']
+image = '/images/1_uhcdlFi89dON8oTsiyE6uQ.jpg'
 +++
 
 **Integration testing** is a software testing technique, where individual units of a program are integrated together and tested as a group for interacting harmoniously with each other. It concerns the testing of interactions and interfaces between modules, components, or systems to see if they behave as expected once integrated.
@@ -44,7 +45,7 @@ Please do not forget to visit the branch **‘integration-test’**, I might add
 
 ### Folder structure
 
-![folder structure](/images/1_uhcdlFi89dON8oTsiyE6uQ.jpg)
+<!-- ![folder structure](/images/1_uhcdlFi89dON8oTsiyE6uQ.jpg) -->
 
 ### Let’s work with API Project
 

@@ -4,9 +4,10 @@ title = 'Write dapper effectively with generic methods'
 tags= ["dotnet","dapper"]
 categories = ["programming"]
 canonical_url = "https://medium.com/@ravindradevrani/write-dapper-effectively-with-generic-methods-f3aa257cc3a3"
+image = '/images/effective_dapper/dapper_dotnet7_feature_image.png'
 +++
 
-![Dapper tutorial with dotnet core](/images/effective_dapper/dapper_dotnet7_feature_image.png)
+<!-- ![Dapper tutorial with dotnet core](/images/effective_dapper/dapper_dotnet7_feature_image.png) -->
 
 **Dapper** is a micro ORM for database connectivity in
 dotnet and it's been around for quite a while. It is loved by most of

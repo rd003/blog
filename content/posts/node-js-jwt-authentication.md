@@ -4,9 +4,10 @@ draft = false
 title = 'Node Js: Jwt Authentication and refresh token'
 categories= ['programming']
 tags = ['nodejs','authentication']
+image = '/images/jwt.webp'
 +++
 
-![jwt auth in node js](/images/jwt.webp)
+<!-- ![jwt auth in node js](/images/jwt.webp) -->
 
 Please visit this [post](/posts/node-js-crud-with-sql-server/) first, where I have made this project from scratch and wrote CRUD APIs.
 

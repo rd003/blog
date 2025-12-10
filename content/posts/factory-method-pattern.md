@@ -4,9 +4,10 @@ draft = false
 title = 'Factory Method Pattern with c#'
 tags = ['design-patterns']
 categories = ['programming']
+image = '/images/1_5oURcquFv1Ch9ct5rf-yFw.png'
 +++
 
-![factory method pattern in c#](/images/1_5oURcquFv1Ch9ct5rf-yFw.png)
+<!-- ![factory method pattern in c#](/images/1_5oURcquFv1Ch9ct5rf-yFw.png) -->
 
 The **Factory Method Pattern** is a creational design pattern that provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created.
 

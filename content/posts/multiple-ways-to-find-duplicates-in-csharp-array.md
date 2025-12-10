@@ -4,9 +4,10 @@ draft = false
 title = 'Multiple Ways to Find Duplicates in Csharp Array'
 tags = ['csharp']
 categories=['programming']
+image = '/images/csharp-duplicates.png'
 +++
 
-![find duplicates in c# array](/images/csharp-duplicates.png)
+<!-- ![find duplicates in c# array](/images/csharp-duplicates.png) -->
 
 In C#, we can use various approaches to find duplicate elements in array. Each have pros and cons. We will use 3 approaches in this article.
 

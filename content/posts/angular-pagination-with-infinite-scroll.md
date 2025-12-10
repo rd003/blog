@@ -4,9 +4,10 @@ title = 'Angular pagination with infinite scroll (using ngx-infite-scroll)'
 tags= ["angular"]
 categories = ["programming"]
 canonical_url = "https://medium.com/@ravindradevrani/angular-pagination-with-infinite-scroll-using-ngx-infite-scroll-3545612eeec"
+image = '/images/infinite_scroll_preview.jpg'
 +++
 
-![angular infinite scroll](/images/infinite_scroll_preview.jpg)
+<!-- ![angular infinite scroll](/images/infinite_scroll_preview.jpg) -->
 
 **Photo by** [**_Ajda ATZ_**](https://unsplash.com/ko/@azinber?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) **on** [**_Unsplash_**](https://unsplash.com/photos/Dz4iJ3v4-X4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 

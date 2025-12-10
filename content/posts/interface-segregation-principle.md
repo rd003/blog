@@ -4,9 +4,10 @@ draft = false
 title = 'The Interface Segregation Principle (ISP)'
 tags = ['design-patterns','SOLID']
 categories = ['programming']
+image = '/images/ISP.jpg'
 +++
 
-![what is Interface Segregation Principle?](/images/ISP.jpg)
+<!-- ![what is Interface Segregation Principle?](/images/ISP.jpg) -->
 
 📢 Clients should not be forced to depend on interfaces they do not use.
 

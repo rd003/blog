@@ -4,9 +4,10 @@ draft = false
 title = 'Cosmos DB For NoSQL - CRUD With Dotnet'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
+image = '/images/cosmos/cosmos_db_for_no_sql.png'
 +++
 
-![Cosmos DB for NoSQL](/images/cosmos/cosmos_db_for_no_sql.png)
+<!-- ![Cosmos DB for NoSQL](/images/cosmos/cosmos_db_for_no_sql.png) -->
 
 `Azure Cosmos DB for NoSQL` is a fully managed and serverless `NoSQL` and `vector database` for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data. 
 

@@ -4,13 +4,14 @@ draft = false
 title = 'Covering Indexes In Sql Server'
 tags = ['sql']
 categories= ['database']
+image = '/images/total_number_of_books.jpg'
 +++
 
 ## Table structure and total records
 
 Let's look at our table structure as shown in the left panel of the picture
 
-![book_structure](/images/total_number_of_books.jpg)
+<!-- ![book_structure](/images/total_number_of_books.jpg) -->
 
 **Note:** There is a `non-clustered index` on the `Title` column of the `Book` table, which has a total of 1 million records.
 

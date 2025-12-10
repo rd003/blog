@@ -4,9 +4,10 @@ draft = false
 title = 'Azure Key Vault With Dotnet'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
+image = '/images/keyvault/keyvault.png'
 +++
 
-![key vault](/images/keyvault/keyvault.png)
+<!-- ![key vault](/images/keyvault/keyvault.png) -->
 
 First of all, let's see what are we going to achieve? Let's say we have an dotnet 9 api application.
 

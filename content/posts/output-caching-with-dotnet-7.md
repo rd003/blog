@@ -4,9 +4,10 @@ draft = false
 title = 'Output Caching With Dotnet 7'
 tags = ["dotnet","caching"]
 category = ["programming"]
+image = '/images/output-caching-dotnet7.png'
 +++
 
-![Output Caching middleware has introduced in .net 7 , that is used to apply caching in your application. It can be used in any .net core application like Minimal API, Web API with controllers, MVC, and Razor Page. But I am using controller APIs in this project.](/images/output-caching-dotnet7.png)
+<!-- ![Output Caching middleware has introduced in .net 7 , that is used to apply caching in your application. It can be used in any .net core application like Minimal API, Web API with controllers, MVC, and Razor Page. But I am using controller APIs in this project.](/images/output-caching-dotnet7.png) -->
 
 ### What is Caching?
 

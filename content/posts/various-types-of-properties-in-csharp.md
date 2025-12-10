@@ -4,9 +4,10 @@ draft = false
 title = "Let's dive into various types of properties in c#"
 tags = ['csharp']
 categories=['programming']
+image = '/images/1_6qVs2G138-DyPmnG2z_dyQ.png'
 +++
 
-![various types of properties in c#](/images/1_6qVs2G138-DyPmnG2z_dyQ.png)
+<!-- ![various types of properties in c#](/images/1_6qVs2G138-DyPmnG2z_dyQ.png) -->
 
 I assume you have some knowledge of C# properties. If not, here’s a quick definition: **A property is a class member that provides a flexible way to read, write, or compute the value of a private field.** Don’t worry if you’re new to properties; we’ll be using them in this blog, and I’ll explain them as we go along.
 

@@ -4,9 +4,10 @@ draft = false
 title = 'Uploading Images in Blazor Server'
 tags = ['dotnet','blazor']
 category=['programming']
+image = '/images/upload_files_in_blazor.png'
 +++
 
-![upload files in blazor server](/images/upload_files_in_blazor.png)
+<!-- ![upload files in blazor server](/images/upload_files_in_blazor.png) -->
 
 In this blog post we are going to learn how to upload files in the blazor server application. I am going to upload **images** in this tutorial but you can upload **any file** (i have created **reusable code**).
 

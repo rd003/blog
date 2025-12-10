@@ -3,10 +3,11 @@ date = '2025-02-20T19:09:36+05:30'
 draft = false
 title = 'Abstraction in C#'
 tags = ['oops']
-categories=['programming'] 
+categories=['programming']
+image = '/images/1_6CWERFGOQbJWr-R6wNi2oA.png'
 +++
 
-![abstraction in oops c#](/images/1_6CWERFGOQbJWr-R6wNi2oA.png)
+<!-- ![abstraction in oops c#](/images/1_6CWERFGOQbJWr-R6wNi2oA.png) -->
 
 📢 Updated and refinded at : 21-feb-2025
 

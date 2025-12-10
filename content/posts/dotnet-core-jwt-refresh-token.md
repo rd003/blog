@@ -4,9 +4,10 @@ draft = false
 title = 'Securing The .NET 9 App: Signup, Login, JWT, Refresh Tokens, and Role Based Access with PostgreSQL'
 tags = ["dotnet","authentication"]
 category = ["programming"]
+image = '/images/1_a8Tyi19200I2gFalCtwFEw.png'
 +++
 
-![refresh tokens in asp.net core](/images/1_a8Tyi19200I2gFalCtwFEw.png)
+<!-- ![refresh tokens in asp.net core](/images/1_a8Tyi19200I2gFalCtwFEw.png) -->
 
 REST APIs are stateless, so server does not store any information about the client. So we can not authorize the rest application in a traditional way. How does a server knows if the user is authenticated user or not? In this situation the **Json Web Token (JWT)** saves the day.
 

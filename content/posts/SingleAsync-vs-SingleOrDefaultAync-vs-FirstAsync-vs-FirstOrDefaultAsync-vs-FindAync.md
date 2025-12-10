@@ -4,9 +4,10 @@ draft = false
 title = 'SingleAsync vs SingleOrDefaultAync vs FirstAsync vs FirstOrDefaultAsync vs FindAync'
 tags = ['dotnet','csharp']
 categories = ['programming']
+image = '/images/1_X3XFl2jfkUpXfqbt6CtsQA.png'
 +++
 
-![SingleAsync() vs SingleOrDefaultAync() vs FirstAsync() vs FirstOrDefaultAsync() vs FindAync() in c#](/images/1_X3XFl2jfkUpXfqbt6CtsQA.png)
+<!-- ![SingleAsync() vs SingleOrDefaultAync() vs FirstAsync() vs FirstOrDefaultAsync() vs FindAync() in c#](/images/1_X3XFl2jfkUpXfqbt6CtsQA.png) -->
 
 I don’t think there is any need of introduction. Let’s jump to the code section. We coders understand with code more. Let’s understand the concept then you don’t need to remember any definition.
 

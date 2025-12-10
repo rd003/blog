@@ -4,9 +4,10 @@ draft = false
 title = 'Separating the DI Setup From Program.cs file'
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/1_h_LeJyZLYUaGtal9iEKFOg.png'
 +++
 
-![Separating the DI Setup From Program.cs file](/images/1_h_LeJyZLYUaGtal9iEKFOg.png)
+<!-- ![Separating the DI Setup From Program.cs file](/images/1_h_LeJyZLYUaGtal9iEKFOg.png) -->
 
 Let’s take a look at the **program.cs** file below.
 

@@ -4,9 +4,10 @@ draft = false
 title = 'How to run Sql Server 2025 in Docker'
 tags = ['sql','docker']
 categories = ['database']
+image = '/images/mssql_docker.webp'
 +++
 
-![sql server 2025 in Docker](/images/mssql_docker.webp)
+<!-- ![sql server 2025 in Docker](/images/mssql_docker.webp) -->
 
 To be honest, since I have started using docker I have never installed any database in my machine. I use multiple databases and keeping each database up and running takes a toll on resources of your machine. And... you can not install some database like "sql server" on "mac", then docker is only option for you. Any way, I think it is enough introduction. Let's get started.
 

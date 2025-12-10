@@ -4,6 +4,7 @@ draft = false
 title = 'Set Bearer Token to Each Request Automatically in Postman'
 tags = ['web-tools']
 categories = ['programming']
+image = '/images/1_PF58vCp4rkSMpbesRbW23Q.jpg'
 +++
 
 When we work with postman to test the endpoints, and those endpoints are authorized, each time (until it expires) we need to pass the token in the authorization header. To get the token, we need to call the login or authentication API . This process feels quite irritating , because we programmers hates this manual working. We always want an easy and automatic workflow. Let’s see how can we achieve this with postman.
@@ -14,7 +15,7 @@ When we work with postman to test the endpoints, and those endpoints are authori
 
 First and foremost we need to create an environment.
 
-![Set Bearer Token to Each Request Automatically in Postman](/images/1_PF58vCp4rkSMpbesRbW23Q.jpg)
+<!-- ![Set Bearer Token to Each Request Automatically in Postman](/images/1_PF58vCp4rkSMpbesRbW23Q.jpg) -->
 
 - Select the `Environments` tab in the left side.
 - Click on the `plus` icon, as shown in diagram 1.1 , create a new environment and give it a name.

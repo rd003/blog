@@ -4,8 +4,9 @@ draft = false
 title = 'Lazy Loading and N+1 Query Problem in Entity framework Core'
 tags= ["ef-core","dotnet"]
 categories = ["programming"]
+image = '/images/nplus1.jpg'
 +++
-![n+1 query problem in entit framework core](/images/nplus1.jpg)
+<!-- ![n+1 query problem in entit framework core](/images/nplus1.jpg) -->
 
 [💻Source code](https://github.com/rd003/DotnetPracticeDemos/tree/master/LazyLoadingExample) 
 

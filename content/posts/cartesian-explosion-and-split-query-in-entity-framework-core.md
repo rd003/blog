@@ -4,8 +4,9 @@ draft = false
 title = 'Cartesian Explosion and Split Query in Entity Framework Core'
 tags = ['dotnet','efcore']
 categories = ['programming']
+image = '/images/cartesian.jpg'
 +++
-![Cartesian explosion and split query in entity framework core](/images/cartesian.jpg)
+<!-- ![Cartesian explosion and split query in entity framework core](/images/cartesian.jpg) -->
 
 In this tutorial, we will understand what cartesian explosion is and how to solve that problem. Let's look at this query:
 

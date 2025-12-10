@@ -4,9 +4,10 @@ draft = false
 title = 'Single Responsibility Principle (SRP)'
 tags = ['design-patterns','SOLID']
 categories = ['programming']
+image = '/images/1_fMWZxD6bOsVnbkiwt1X4MA.webp'
 +++
 
-![Single Responsibility Principle in c#](/images/1_fMWZxD6bOsVnbkiwt1X4MA.webp)
+<!-- ![Single Responsibility Principle in c#](/images/1_fMWZxD6bOsVnbkiwt1X4MA.webp) -->
 
 The `Single Responsibility Principle (SRP)` is a cornerstone of object-oriented design, closely associated with the `SOLID principles`. It emphasizes that **a class should have only one reason to change**, meaning it should have a single responsibility or purpose.
 

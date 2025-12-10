@@ -4,9 +4,10 @@ draft = false
 title = 'Understanding Aggregation: How It Differs from Composition'
 tags = ['oops']
 categories=['programming']
+image = '/images/1_NYnlRXKiuSdrYvLcRGGchQ.png'
 +++
 
-![Aggregation in oops. Aggregation vs Composition.](/images/1_NYnlRXKiuSdrYvLcRGGchQ.png)
+<!-- ![Aggregation in oops. Aggregation vs Composition.](/images/1_NYnlRXKiuSdrYvLcRGGchQ.png) -->
 
 **Aggregation** is when an object is made up of one or more objects, but those objects can live outside the main object. It defines the **has-a** relationship.
 

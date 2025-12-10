@@ -4,9 +4,10 @@ draft = false
 title = 'Facade Pattern With C#'
 tags = ['design-patterns']
 categories = ['programming']
+image = 'https://cdn-images-1.medium.com/max/800/1*bz4k8n2SUByW5GfAmVJsVw.png'
 +++
 
-![Facade Design Pattern (with c# example)](https://cdn-images-1.medium.com/max/800/1*bz4k8n2SUByW5GfAmVJsVw.png)
+<!-- ![Facade Design Pattern (with c# example)](https://cdn-images-1.medium.com/max/800/1*bz4k8n2SUByW5GfAmVJsVw.png) -->
 
 The **Facade pattern** is a **structural design pattern** that provides a simplified interface to a complex system of classes or interfaces.
 

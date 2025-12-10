@@ -3,10 +3,11 @@ date = '2025-02-20T19:41:25+05:30'
 draft = false
 title = 'Encapsulation in C#'
 tags = ['oops']
-categories=['programming'] 
+categories=['programming']
+image = '/images/csharp-encapsulation.png'
 +++
 
-![encapsulation in c#](/images/csharp-encapsulation.png)
+<!-- ![encapsulation in c#](/images/csharp-encapsulation.png) -->
 
 📢 Updated and refinded at : 21-feb-2025
 
