@@ -6,7 +6,7 @@ tags = ['advice']
 categories = ['programming']
 image = '/images/learn_code_with_mistake.jpg'
 +++
-![learn code with mistake](/images/learn_code_with_mistake.jpg)
+<!-- ![learn code with mistake](/images/learn_code_with_mistake.jpg) -->
 
 I am sharing an incident when I was building my first project. I had a cs degree, I knew c# and .net but I've never built anything with it except few console and very small windows app. I was writing a code of uploading images and I needed to write the same image upload code in multiple places. It was fine when I've copied it in 2 or 3 places, but I was getting annoyed when I had to copy it in multiple places. I did not bother to refactor it. Honestly, I didn't even know about refactoring. But in future, I had to update the code and I had to update the code in multiple places. Then I got to know about utility or helper methods. Later I learned that it is a concept called `DRY (Do not repeat yourself)`. 
 
