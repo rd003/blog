@@ -4,11 +4,12 @@ draft = false
 title = 'Abstract Class in C#'
 tags = ['csharp']
 categories= ['programming']
+image = '/images/1_7nIXLfpui9Rj0eXs8Wk2-A.png'
 +++
 
 In c#, Abstract class is a class that can not be instantiated on its own
 
-![abstract class in c#](/images/1_7nIXLfpui9Rj0eXs8Wk2-A.png)
+<!-- ![abstract class in c#](/images/1_7nIXLfpui9Rj0eXs8Wk2-A.png) -->
 
 - In c#, `Abstract class` is a class that can not be instantiated on its own
 - It is typically used as a `base class` for other class.

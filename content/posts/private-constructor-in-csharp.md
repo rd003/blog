@@ -4,9 +4,10 @@ draft = false
 title = 'Private Constructor in C#'
 tags = ['csharp']
 categories = ['programming']
+image = '/images/1_pz1zZlr5MwRQYYQd0yCC4g.png'
 +++
 
-![private constructor in c#](/images/1_pz1zZlr5MwRQYYQd0yCC4g.png)
+<!-- ![private constructor in c#](/images/1_pz1zZlr5MwRQYYQd0yCC4g.png) -->
 
 In C#, a private constructor is a constructor method declared with the `private` access modifier (or without mentioning any modifier). If a class have only a private constructor and does not have any public constructor, then you are not able to create the instance of a class. Example 👇
 

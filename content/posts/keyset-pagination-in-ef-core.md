@@ -4,9 +4,10 @@ draft = false
 title = 'Keyset Pagination In Entity Framework Core'
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/keyset.webp'
 +++
 
-![keyset pagination in .net core](/images/keyset.webp)
+<!-- ![keyset pagination in .net core](/images/keyset.webp) -->
 
 First we need to know about the traditional offset based pagination and the problems it introduces.
 

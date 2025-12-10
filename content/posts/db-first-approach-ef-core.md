@@ -4,9 +4,10 @@ draft = false
 title = 'Database Firsts Approach In EF Core'
 tags = ['dotnet','ef-core']
 categories = ['programming']
+image = '/images/1_FCYljdej4D2tgcBhiEErAw.jpg'
 +++
 
-![Database first approach with DotNet Core](/images/1_FCYljdej4D2tgcBhiEErAw.jpg)
+<!-- ![Database first approach with DotNet Core](/images/1_FCYljdej4D2tgcBhiEErAw.jpg) -->
 
 I have used `database first` approach in the .NET Framework 4.X. But It is the first time I am trying to use Db First approach in the .NET Core (I am using .net 9). Microsoft refers it ['Scaffolding (Reverse Engineering)'](https://learn.microsoft.com/en-us/ef/core/managing-schemas/scaffolding/?tabs=dotnet-core-cli). Personally I prefer `Dapper` for DB First approach. May be you have an existing database and you want to use it with ENTITY FRAMEWORK, then this approach might be helpful. I am playing around it and documenting it and sharing that journey with you. Let's see what it offers.
 

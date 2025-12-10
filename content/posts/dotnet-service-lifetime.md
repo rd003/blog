@@ -4,9 +4,10 @@ draft = false
 title = 'Dotnet Service Lifetime : AddTransient(), AddScoped(), AddSingleton()'
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/transient.png'
 +++
 
-![AddTransient() AddScoped() AddSingleton() in dotnet core](/images/transient.png)
+<!-- ![AddTransient() AddScoped() AddSingleton() in dotnet core](/images/transient.png) -->
 
 ## Example Setup
 

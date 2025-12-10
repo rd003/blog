@@ -4,9 +4,10 @@ draft = false
 title = 'What Makes My Query Non Sargable?'
 tags = ['sql']
 categories= ['database']
+image = '/images/1_5lTNjjjTHX1VRCAZG0QFqQ.png'
 +++
 
-![Sargable queries](/images/1_5lTNjjjTHX1VRCAZG0QFqQ.png)
+<!-- ![Sargable queries](/images/1_5lTNjjjTHX1VRCAZG0QFqQ.png) -->
 
 A query is **SARGable (Search ARGument able)** if a database engine can take advantage of index.
 

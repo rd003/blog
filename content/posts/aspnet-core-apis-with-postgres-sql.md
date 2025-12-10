@@ -4,9 +4,10 @@ draft = false
 title = ".Net Core API CRUD With PostgreSql"
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/1_NnvApuXzGsE_9Q2TEJPjWA.png'
 +++
 
-![aspnet core apis crud](/images/1_NnvApuXzGsE_9Q2TEJPjWA.png)
+<!-- ![aspnet core apis crud](/images/1_NnvApuXzGsE_9Q2TEJPjWA.png) -->
 
 When we create an application with .NET, we tend to use the Microsoft tech stack like Visual Studio IDE, Microsoft SQL Server, Windows Operating System, and Azure. However, things have changed since the introduction of .NET Core. We are no longer bound to a specific operating system and database.
 

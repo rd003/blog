@@ -4,9 +4,10 @@ draft = false
 title = 'C# Dictionary and Its Use Cases'
 tags = ['csharp']
 categories=['programming']
+image = '/images/csharp-dictionary-and-its-use-cases.png'
 +++
 
-![Use cases of c# dictionary](/images/csharp-dictionary-and-its-use-cases.png)
+<!-- ![Use cases of c# dictionary](/images/csharp-dictionary-and-its-use-cases.png) -->
 
 ## What is dictionary?
 

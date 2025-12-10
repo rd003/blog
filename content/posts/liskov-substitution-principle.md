@@ -4,9 +4,10 @@ draft = false
 title = 'The Liskov Substitution Principle (LSP)'
 tags = ['design-patterns','SOLID']
 categories = ['programming']
+image = '/images/1_RdNrcbPpOQ1z5b9crorp2Q.webp'
 +++
 
-![What is Liskov substitution principle](/images/1_RdNrcbPpOQ1z5b9crorp2Q.webp)
+<!-- ![What is Liskov substitution principle](/images/1_RdNrcbPpOQ1z5b9crorp2Q.webp) -->
 
 The **Liskov Substitution Principle** states that a derived type should be completely replaceable for its base type.
 

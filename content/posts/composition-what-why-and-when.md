@@ -4,9 +4,10 @@ draft = false
 title = 'Composition:  What, Why And When?'
 tags = ['oops']
 categories=['programming']
+image = '/images/1_YArOSlj41qOCfuCBcvZ_5w.png'
 +++
 
-![what is composition?](/images/1_YArOSlj41qOCfuCBcvZ_5w.png)
+<!-- ![what is composition?](/images/1_YArOSlj41qOCfuCBcvZ_5w.png) -->
 
 **Composition** is when your class is composed of one or more objects from other classes. A simple example is a `Car` composed of `Engine` and `Wheel` objects. **Inheritance** defines an **"is-a"** relationship, while **composition** defines a **"has-a"** relationship.
 

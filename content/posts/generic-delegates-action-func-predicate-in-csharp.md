@@ -2,9 +2,10 @@
 date = '2025-02-21T09:54:50+05:30'
 draft = false
 title = 'Generic Delegates (Action, Func & Predicates) in C#'
+image = '/images/1_Fd96UK0xih85jyUlAiBDAg.png'
 +++
 
-![Generic delegate c#, action func predicate in c#](/images/1_Fd96UK0xih85jyUlAiBDAg.png)
+<!-- ![Generic delegate c#, action func predicate in c#](/images/1_Fd96UK0xih85jyUlAiBDAg.png) -->
 
 In C#, [**delegates**](/posts/delegates-anonymous-method-and-lambda-expression/) are used to refer to methods with a specific signature. `Generic delegates` extend this concept by allowing you to create delegates that can work with any method signature, rather than being tied to a specific signature.
 

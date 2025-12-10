@@ -4,9 +4,10 @@ draft = false
 title = 'How to run PostgreSql in Docker'
 tags = ['sql','docker']
 categories = ['database']
+image = '/images/pg_docker.webp'
 +++
 
-![Postgres in Docker](/images/pg_docker.webp)
+<!-- ![Postgres in Docker](/images/pg_docker.webp) -->
 
 To be honest, since I have started using docker I have never installed any database in my machine. I use multiple databases and keeping each database up and running takes a toll on resources of your machine. And... you can not install some database like "sql server" on "mac", then docker is only option for you. Any way, I think it is enough introduction. Let's get started.
 

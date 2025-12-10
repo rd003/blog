@@ -4,9 +4,10 @@ draft = false
 title = 'Curious Case of LINQ Group By'
 tags = ['csharp','linq']
 categories= ['programming']
+image = '/images/1_JfMz_6yLa8eisgi58OxNWQ.png'
 +++
 
-![curious case of linq group by](/images/1_JfMz_6yLa8eisgi58OxNWQ.png)
+<!-- ![curious case of linq group by](/images/1_JfMz_6yLa8eisgi58OxNWQ.png) -->
 
 ### Schema
 

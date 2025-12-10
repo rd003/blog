@@ -4,8 +4,9 @@ draft = false
 title = 'Content Negotiation in Dotnet Core Webapi'
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/content-negotiation.jpg'
 +++
-![content negotiation in dotnet web apis](/images/content-negotiation.jpg)
+<!-- ![content negotiation in dotnet web apis](/images/content-negotiation.jpg) -->
 
 As defined in [rfc2616](https://datatracker.ietf.org/doc/html/rfc2616#section-12) - **"Content nagotiation is the process of selecting the best representation for a given response when there are multiple representations available."**
 

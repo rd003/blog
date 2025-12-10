@@ -4,9 +4,10 @@ draft = false
 title = 'Higher Order Functions in C#'
 tags = ['csharp']
 categories=['programming']
+image = 'https://cdn-images-1.medium.com/max/800/1*y637ZiP8h1B5XyLgbFm-GQ.png'
 +++
 
-<!-- ![Higher-order functions in c#](https://cdn-images-1.medium.com/max/800/1*y637ZiP8h1B5XyLgbFm-GQ.png) -->
+<!-- <!-- ![Higher-order functions in c#](https://cdn-images-1.medium.com/max/800/1*y637ZiP8h1B5XyLgbFm-GQ.png) --> -->
 
 **Higher-order functions (HOF)** are functions that can take a function as an argument or return a function or both. In C#, higher-order functions are achieved using delegates, lambda expressions and expression trees.
 

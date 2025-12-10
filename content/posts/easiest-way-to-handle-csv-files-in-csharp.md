@@ -4,9 +4,10 @@ draft = false
 title = 'Easiest Way to Handle Csv Files in Csharp'
 tags = ['csharp','dotnet']
 categories= ['programming']
+image = '/images/csv_dotnet.png'
 +++
 
-![how to read and write to csv files in c#](/images/csv_dotnet.png)
+<!-- ![how to read and write to csv files in c#](/images/csv_dotnet.png) -->
 
 In this tutorial we will se how to read and write data to **csv** file. It is pretty much easy if you have some external library for that. We are definitely going to use a library and that will be **CsvHelper**.
 

@@ -4,9 +4,10 @@ draft = false
 title = 'Api Versioning in Dotnet Core'
 tags= ["dotnet"]
 categories = ["programming"]
+image = '/images/api_versioning_in_dotnet_core.jpg'
 +++
 
-![Api versioning in .net core](/images/api_versioning_in_dotnet_core.jpg)
+<!-- ![Api versioning in .net core](/images/api_versioning_in_dotnet_core.jpg) -->
 
 [Photo by Jan Loyde Cabrera at medium.com](https://unsplash.com/@thekidph?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 

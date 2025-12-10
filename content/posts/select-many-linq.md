@@ -4,9 +4,10 @@ draft = false
 title = 'LINQ: SelectMany()'
 tags = ['csharp','linq']
 categories= ['programming']
+image = '/images/1__maTUD1moRoBBMI2xmBV-Q.png'
 +++
 
-![select many operator in linq](/images/1__maTUD1moRoBBMI2xmBV-Q.png)
+<!-- ![select many operator in linq](/images/1__maTUD1moRoBBMI2xmBV-Q.png) -->
 
 NOTE: You can find the source code [here](https://github.com/rd003/DotnetPracticeDemos/tree/master/SelectManyDemo/SelectManyDemo "https://github.com/rd003/DotnetPracticeDemos/tree/master/SelectManyDemo/SelectManyDemo").
 

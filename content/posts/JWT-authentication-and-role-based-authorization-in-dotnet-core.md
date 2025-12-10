@@ -4,9 +4,10 @@ draft = false
 title = 'JWT Authentication and Role Based Authorization in Dotnet Core'
 tags = ["dotnet","authentication"]
 category = ["programming"]
+image = '/images/jwt_role_based_auth.png'
 +++
 
-![JWT Authentication in dotnet core](/images/jwt_role_based_auth.png)
+<!-- ![JWT Authentication in dotnet core](/images/jwt_role_based_auth.png) -->
 
 ## JWT
 

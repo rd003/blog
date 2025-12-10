@@ -4,9 +4,10 @@ title = 'Serilog in .NET'
 tags= ["dotnet"]
 categories = ["programming"]
 canonical_url = "https://medium.com/@ravindradevrani/serilog-in-net-6-and-7-a18cdedf21b8"
+image = '/images/serlilog_feature_image.webp'
 +++
 
-![serilog-in-dotnet](/images/serlilog_feature_image.webp)
+<!-- ![serilog-in-dotnet](/images/serlilog_feature_image.webp) -->
 
 In your development journey you have faced so many runtime exceptions. You have handled that with try catch block. But in the runtime you never know where that error has happened and you have to
 trace that whole section with putting breakpoints. Sometime you have thought that I wish.. I would get notified whenever that exception occur. Then the logging frameworks comes in the play.

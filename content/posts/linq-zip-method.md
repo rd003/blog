@@ -4,9 +4,10 @@ title = 'LINQ: Zip() operator'
 tags= ["csharp","linq"]
 categories = ["programming"]
 draft= false
+image = '/images/zip.png'
 +++
 
-![zip() operator in](/images/zip.png)
+<!-- ![zip() operator in](/images/zip.png) -->
 
 > There is also a [video version](https://youtu.be/p1SXSMe0wk8?si=8p2ZptMcPrI_fodS) of this tutorial.
 

@@ -4,9 +4,10 @@ draft = false
 title = 'Build a Node.js REST APIs with Express, Sequelize & SQL Server (2025 Guide)'
 categories= ['programming']
 tags = ['nodejs']
+image = '/images/node-sql-server.webp'
 +++
 
-![rest apis with node js and sql server](/images/node-sql-server.webp)
+<!-- ![rest apis with node js and sql server](/images/node-sql-server.webp) -->
 
 In this tutorial, you’ll learn how to build a simple **CRUD (Create, Read, Update, Delete) REST API** using **Node.js**, **Express.js**, **Sequelize**, and **SQL Server**. I have tried to make it a less verbose. It is more like a technical documentation to create the rest apis in this tech stack. However, I have tried to explain all the essential things. This is ideal if you're looking to integrate a SQL Server database with a Node.js backend using Sequelize as the ORM. We are using sql server in this tutorial but you can easily replace it with other sql databases.
 

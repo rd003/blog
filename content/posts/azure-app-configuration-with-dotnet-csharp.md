@@ -4,9 +4,10 @@ draft = false
 title = 'Azure App Configuration With Dotnet(C#)'
 tags= ["dotnet","azure"]
 categories = ["programming","cloud"]
+image = '/images/appconfig/azure_app_configuration_csharp.png'
 +++
 
-![Azure app configuration in c# dotnet](/images/appconfig/azure_app_configuration_csharp.png)
+<!-- ![Azure app configuration in c# dotnet](/images/appconfig/azure_app_configuration_csharp.png) -->
 
 - Azure `App Configuration` is a fully managed service, which provides you a way to store the configurations in a centralized store. You can store configurations of multiple apps in a single place.
 - It is really helpful for cloud native application (eg. Microservices), which runs on multiple virtual machines and use multiple external services.

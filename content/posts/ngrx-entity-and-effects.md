@@ -4,9 +4,10 @@ draft = false
 title = 'Ngrx Entity and Effects'
 tags= ["angular"]
 categories = ["programming"]
+image = '/images/ngrx_entity_and_effects.png'
 +++
 
-![ngrx entity and effects](/images/ngrx_entity_and_effects.png)
+<!-- ![ngrx entity and effects](/images/ngrx_entity_and_effects.png) -->
 
 `NGRX Entity` gives you an efficient and quick way to
 deal with ngrx store related operations, such as

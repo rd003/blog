@@ -4,9 +4,10 @@ draft = false
 title = 'Fluent Validation in Dotnet Core'
 tags = ['dotnet']
 categories=['programming']
+image = '/images/1_c2gndRKm-6SwqxruBvENFQ.png'
 +++
 
-![fluent validation in asp.net core](/images/1_c2gndRKm-6SwqxruBvENFQ.png)
+<!-- ![fluent validation in asp.net core](/images/1_c2gndRKm-6SwqxruBvENFQ.png) -->
 
 ## Fluent validation
 

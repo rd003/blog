@@ -4,9 +4,10 @@ draft = false
 title = 'Dotnet: All you need to know about middlewares'
 categories= ['programming']
 tags = ['dotnet']
+image = '/images/middleware-thumnail.webp'
 +++
 
-![Middlewares in .net core](/images/middleware-thumnail.webp)
+<!-- ![Middlewares in .net core](/images/middleware-thumnail.webp) -->
 
 - In dotnet, a `Middleware` is a piece of code that runs in the request pipeline. 
 - Middlewares are put together in a sequence, and their order matters. 

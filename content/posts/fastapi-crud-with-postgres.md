@@ -4,9 +4,10 @@ draft = false
 title = 'Fastapi CRUD  With Postgres'
 categories = ['programming']
 tags = ['python','fastapi']
+image = '/images/fastapi-pg.webp'
 +++
 
-![fast api with postgres sqlalchemy and alembic](/images/fastapi-pg.webp)
+<!-- ![fast api with postgres sqlalchemy and alembic](/images/fastapi-pg.webp) -->
 
 In this tutorial we learn to create REST Apis with `fastapi`. We are going to use:
 

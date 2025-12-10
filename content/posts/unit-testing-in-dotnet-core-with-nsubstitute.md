@@ -4,6 +4,7 @@ draft = false
 title = 'Unit Testing in Dotnet Core With Nsubstitute'
 tags = ['dotnet','testing']
 categories = ['programming']
+image = '/images/1_wxAcNpew2bhlVboDeN2EIw.jpg'
 +++
 
 As the name suggesting , Unit testing is a software testing where smallest units of the application such as methods are tested in the isolation, so that we can ensure our software is working as expected.
@@ -52,7 +53,7 @@ Please do not forget to visit the branch **‘unit-test’**, I might add some m
 
 ### Folder structure
 
-![unit testing with nsubstitute](/images/1_wxAcNpew2bhlVboDeN2EIw.jpg)
+<!-- ![unit testing with nsubstitute](/images/1_wxAcNpew2bhlVboDeN2EIw.jpg) -->
 
 Folder structure of the application
 

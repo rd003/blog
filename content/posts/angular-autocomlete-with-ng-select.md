@@ -4,9 +4,10 @@ draft = false
 title = 'Angular Autocomlete With Ng Select'
 tags= ["angular"]
 categories = ["programming"]
+image = '/images/augular_autocomplete_feature.jpg'
 +++
 
-![Angular Autocomlete With Ng Select](/images/augular_autocomplete_feature.jpg)
+<!-- ![Angular Autocomlete With Ng Select](/images/augular_autocomplete_feature.jpg) -->
 
 There are various packages available for implementing autocomplete in
 angular and we are going to use the simplest one (ng-select).

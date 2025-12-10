@@ -4,9 +4,10 @@ draft = false
 title = 'Handle Exceptions Globally in .NET Core With IExceptionHandler And IProblemDetailService'
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/1_vTmRaWCG2u3tyUqkbhl_KA.png'
 +++
 
-![Handle exceptions globally in .net](/images/1_vTmRaWCG2u3tyUqkbhl_KA.png)
+<!-- ![Handle exceptions globally in .net](/images/1_vTmRaWCG2u3tyUqkbhl_KA.png) -->
 
 **Problem details** is a standard way to communicate error details in **HttpResponse,** defined in [rfc 7807](https://datatracker.ietf.org/doc/html/rfc7807). Standard **ProblemDetails** Properties:
 

@@ -4,9 +4,10 @@ draft = false
 title = 'Understanding The Pure And Impure Functions in C#'
 tags = ['csharp']
 categories=['programming']
+image = '/images/1_zSzCvLdQ0Kjand1tBqwqGw.png'
 +++
 
-![What is pure function in c#?](/images/1_zSzCvLdQ0Kjand1tBqwqGw.png)
+<!-- ![What is pure function in c#?](/images/1_zSzCvLdQ0Kjand1tBqwqGw.png) -->
 
 ## Pure functions
 

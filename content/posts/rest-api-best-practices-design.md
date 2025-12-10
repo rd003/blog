@@ -4,13 +4,14 @@ draft = false
 title = 'Rest Api Designing Best Practices' 
 tags = ['dotnet']
 categories = ['programming']
+image = '/images/rest_api_design_practices.webp'
 +++
 
 There are some common practices one should take care of while designing REST APIs.
 
 > There is also a [video version](https://youtu.be/6vWdSQ3iZ2E?si=V3CBjc_ZHLz_4AKS) of this post.
 
-![rest_api_design_practices](/images/rest_api_design_practices.webp)
+<!-- ![rest_api_design_practices](/images/rest_api_design_practices.webp) -->
 
 ### 1. Use descriptive names for resources
 

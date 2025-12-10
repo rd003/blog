@@ -4,9 +4,10 @@ draft = false
 title = 'Delegates, Anonymous Method and Lambda Expression'
 tags = ['csharp']
 categories= ['programming']
+image = '/images/1_IjMrDe_CyuhXr3ZpddcOOg.png'
 +++
 
-![Delegates, anonymous method and lambda expression in c#](/images/1_IjMrDe_CyuhXr3ZpddcOOg.png)
+<!-- ![Delegates, anonymous method and lambda expression in c#](/images/1_IjMrDe_CyuhXr3ZpddcOOg.png) -->
 
 - Delegates in C# are essentially type-safe function pointers.
 - They allow you to treat methods as objects, enabling you to pass methods as parameters, store them in variables, and invoke them dynamically.

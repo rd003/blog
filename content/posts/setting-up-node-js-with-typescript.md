@@ -4,8 +4,9 @@ draft = false
 title = 'Setting Up Node Js With Typescript'
 categories= ['programming']
 tags = ['nodejs','typescript']
+image = '/images/node_typescript.webp'
 +++
-![node js with typescript](/images/node_typescript.webp)
+<!-- ![node js with typescript](/images/node_typescript.webp) -->
 (image credit: [Gemini](https://gemini.google.com/))
 
 We are going to create folders and install packages in this step. I don't have much to say for this tutorial. I have tried to explain necessary stuff through comments. In my opinion code is self-explanatory. So, let's execute these commands in a sequence.

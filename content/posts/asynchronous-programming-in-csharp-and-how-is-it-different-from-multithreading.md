@@ -4,9 +4,10 @@ draft = false
 title = 'Asynchronous Programming in C# - Comparing it with multi-threading'
 categories = ['programming']
 tags = ['csharp']
+image = '/images/async-csharp.webp'
 +++
 
-![async and await in c#](/images/async-csharp.webp)
+<!-- ![async and await in c#](/images/async-csharp.webp) -->
 
 `Asynchronous task` is a **non-blocking** task. Main thread goes back to the **thread pool** (and free to do other tasks) when it reaches to await -- and new thread is assigned when wait is complete.
 

@@ -4,10 +4,11 @@ draft = false
 title = 'Jwt Authention and role base authorization in Dotnet Core'
 tags = ["dotnet","authentication"]
 categories= ['programming']
+image = '/images/jwt-dotnet-9.webp'
 +++
 
 
-![jwt-authentication-in-dotnet](/images/jwt-dotnet-9.webp)
+<!-- ![jwt-authentication-in-dotnet](/images/jwt-dotnet-9.webp) -->
 
 ## Create a new web api project
 

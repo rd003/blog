@@ -4,9 +4,10 @@ draft = false
 title = 'Open Closed Principle (OCP)'
 tags = ['design-patterns','SOLID','oops']
 categories = ['programming']
+image = '/images/1_WDgbogkM-XrxUPlXfOX2Zg.webp'
 +++
 
-![open closed principle in c#](/images/1_WDgbogkM-XrxUPlXfOX2Zg.webp)
+<!-- ![open closed principle in c#](/images/1_WDgbogkM-XrxUPlXfOX2Zg.webp) -->
 
 The **Open-Closed Principle** is one of the five **SOLID** principles. It states that a class should be open for extension but closed for modification. In other words, you should be able to add new functionality without changing existing code.
 

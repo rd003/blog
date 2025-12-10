@@ -3,10 +3,11 @@ date = '2025-02-20T19:49:18+05:30'
 draft = false
 title = 'Inheritance in C#'
 tags = ['oops']
-categories=['programming'] 
+categories=['programming']
+image = '/images/1_8OZ9YKcL2dZb_z79HSS0cw.png'
 +++
 
-![inheritance csharp](/images/1_8OZ9YKcL2dZb_z79HSS0cw.png)
+<!-- ![inheritance csharp](/images/1_8OZ9YKcL2dZb_z79HSS0cw.png) -->
 
 📢 Updated and refinded at : 21-feb-2025
 

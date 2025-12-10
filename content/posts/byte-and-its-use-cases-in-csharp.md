@@ -4,9 +4,10 @@ draft = false
 title = 'C#: Byte and Its Use Cases'
 tags = ['csharp']
 categories= ['programming']
+image = '/images/byte-in-csharp.webp'
 +++
 
-![c# byte](/images/byte-in-csharp.webp)
+<!-- ![c# byte](/images/byte-in-csharp.webp) -->
 
 - `byte` is a value type in c#
 - `byte` is an unsigned integer which stores value from 0 to 255, which means it can not store negetive numbers.

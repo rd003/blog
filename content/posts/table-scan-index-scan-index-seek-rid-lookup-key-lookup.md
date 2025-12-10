@@ -4,9 +4,10 @@ draft = false
 title = 'SQL Server: Table Scan, Clustured Index Scan, Index Seek, RID Lookup, Key Lookup'
 tags = ['sql']
 categories= ['database']
+image = '/images/1_Rg2geLbskifn4WybsokpWw.png'
 +++
 
-![SQL SERVER: Table scan, clustered index scan, index seek, RID lookup, Key lookup](/images/1_Rg2geLbskifn4WybsokpWw.png)
+<!-- ![SQL SERVER: Table scan, clustered index scan, index seek, RID lookup, Key lookup](/images/1_Rg2geLbskifn4WybsokpWw.png) -->
 
 Initially, it was not intended to be an article. I was tinkering around sql and documenting few things, then I thought, it could turnout to a nice article. I have wrote lots of article and created lots of videos on c#, .net core and angular. But it is my first article on the SQL.
 

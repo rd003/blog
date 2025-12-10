@@ -4,9 +4,10 @@ draft = false
 title = 'Catch Exception Globally in Dotnet Core Apis'
 tags = ['dotnet']
 categories = ["programming"]
+image = 'https://cdn-images-1.medium.com/max/800/1*Hj2IaFBmE4fJrBN_MZ0q3Q.png'
 +++
 
-![Catch Exception Globally in Dotnet Core Apis](https://cdn-images-1.medium.com/max/800/1*Hj2IaFBmE4fJrBN_MZ0q3Q.png)
+<!-- ![Catch Exception Globally in Dotnet Core Apis](https://cdn-images-1.medium.com/max/800/1*Hj2IaFBmE4fJrBN_MZ0q3Q.png) -->
 
 There are to ways of catching exception in .net core, one is using try/catch and other one is catching them globally. Although there is nothing wrong with **try/catch** blog, it is an elegant way of exception handling. Although you can also catch exceptions globally, If you want to log errors in one place. There are various approaches to achieve this, but we will create the custom middleware to achieve it.
 
