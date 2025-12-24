@@ -30,14 +30,18 @@ docker run -d `
   mysql:8.0.44-debian
 ```
 
+📢 For mac silicon specific:
+
+`mysql:8.0.44-debian` does not support ARM architectureUse -- so use `mysql:latest` instead of `mysql:8.0.44-debian` or check [official docker hub](https://hub.docker.com/) for suitable image.
+
+Note that, this image is not at your local machine yet. So, it will be pulled from the docker hub first and pulled only once (unless you change the tag).
+
 - `--name` is the name of container.
 - `-d` means detached mode.
 - `-p` is a port. Its format is like [HOST_PORT]:[CONTAINER_PORT]. Host port is your machine's port. This container is running in port 3306 of your machine.
 - `-e` sets environment and we are setting the password here.
 - `-v` is a volume. It helps to persist the database even after the deletion of the container.
 - `mysql:8.0.44-debian` is the image with tag. `mysql` is image name and `8.0.44-debian` is image tag. Always visit the [docker hub](https://hub.docker.com/) to get a latest image.
-
-Note that, this image is not at your local machine yet. So, it will be pulled from the docker hub first and pulled only once (unless you change the tag).
 
 ## Verification
 
