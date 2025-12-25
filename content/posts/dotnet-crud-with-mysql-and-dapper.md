@@ -1,7 +1,7 @@
 +++
 date = '2025-12-25T11:19:51+05:30'
 draft = false
-title = 'Dotnet Crud With Mysql and Dapper'
+title = 'Dotnet Core API Crud With Mysql and Dapper'
 tags = ['dotnet','dapper']
 categories = ['programming']
 image = '/images/mysql_dapper.jpg'
