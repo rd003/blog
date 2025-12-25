@@ -9,6 +9,8 @@ image = '/images/mysql_dapper.jpg'
 
 In this tutorial, we are going to make dotnet core web api application and perform all the CRUD (create, read, update and delete). I have tried to keep it simple and avoided any complexities like repository pattern.
 
+[💻Source code](https://github.com/rd003/DotnetPracticeDemos/tree/master/BlogDemos/DapperMysql)
+
 ## Tech and tools used
 
 - Dotnet 10
