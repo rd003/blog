@@ -14,7 +14,7 @@ In this tutorial, we are going to make dotnet core web api application and perfo
 ## Tech and tools used
 
 - Dotnet 10
-- MySql 8+ (in docker container)
+- MySql 8+ (in docker container. Click [here](https://ravindradevrani.com/posts/mysql-in-docker/), if you want to create a MySql container in docker)
 - Dapper (ORM)
 - .NET CLI and VS Code (alternate Visual Studio 2025)
 
