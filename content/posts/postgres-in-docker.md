@@ -22,12 +22,12 @@ Anyway, docker desktop works on all of them.
 ## Pull the docker image of postgres
 
 ```bash
-docker pull postgres:16.9-bullseye
+docker pull postgres:18.1
 ```
 
 This step pulls the docker image from docker hub to you machine.
 
-Note that, `postgres` is the name of image and `16.9-bullseye` is a tag of image. If you want to select the latest or specific version of `postgres`, then you need to visit [docker hub](https://hub.docker.com/) and search for `postgres`.
+Note that, `postgres` is the name of image and `18.1` is a tag of image. You can also use `latest` tag. To select a specific version of `postgres`,you need to visit [docker hub](https://hub.docker.com/) and search for `postgres`.
 
 ## Run the container
 
@@ -36,7 +36,7 @@ Note that, `postgres` is the name of image and `16.9-bullseye` is a tag of image
  -e POSTGRES_PASSWORD=p@55w0rd \
  -p 5432:5432 \
  -v pgdata:/var/lib/postgresql/data \
- -d postgres:16.9-bullseye
+ -d postgres:18.1
 ```
 
 📢 Note: For `windows powershell`, replace `\` with ` (backtick) in above command.
