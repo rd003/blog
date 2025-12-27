@@ -105,3 +105,9 @@ drop database persondb;
 ```
 
 Type `exit` to exit from the shell.
+
+## DBeaver Errors
+
+- If you are getting an error `FATAL: invalid value for parameter "TimeZone": "Asia/Calcutta`.
+   - Window -> Preference -> User Interface -> Select `Timezone : Asia/Kolkata(UTC +5:30)`
+   - It is also mentioned in git hub [issue](https://github.com/dbeaver/dbeaver/issues/39205) 
