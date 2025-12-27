@@ -35,7 +35,7 @@ Note that, `postgres` is the name of image and `18.1` is a tag of image. You can
  docker run --name pg-dev \
  -e POSTGRES_PASSWORD=p@55w0rd \
  -p 5432:5432 \
- -v pgdata:/var/lib/postgresql/data \
+ -v pgdata:/var/lib/postgresql \
  -d postgres:18.1
 ```
 
