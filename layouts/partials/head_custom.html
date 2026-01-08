@@ -2,5 +2,11 @@
 If you want to include any custom html just before </head>, put it in /layouts/partials/head_custom.html
 Do not put anything in this file - it's only here so that hugo won't throw an error if /layouts/partials/head_custom.html doesn't exist.
 -->
+{{ if .IsHome }}
+<title>Ravindra Devrani | .NET, Typescript, Azure, OOP & Full Stack Development</title>
+<meta name="description"
+    content="Professional full-stack developer sharing insights on .NET, C#, TypeScript, Angular, React, Node.js, Azure, OOP principles and sql.">
+{{ end }}
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8303958953304574"
     crossorigin="anonymous"></script>

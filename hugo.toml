@@ -2,7 +2,6 @@ baseURL = 'https://ravindradevrani.com/'
 languageCode = 'en-us'
 title = 'Ravindra Devrani'
 theme = 'beautiful-hugo'
-
 [taxonomies]
   category = "categories"
   tag = "tags"
@@ -48,8 +47,8 @@ theme = 'beautiful-hugo'
     weight = 4
   
 [Params] 
-  subtitle="I write blog posts and make youtube videos on .NET, C#, SQL, Azure and OOA&D (mostly)"
-  readingTime=true
+  subtitle="Learn .NET, C#, Typescript, SQL, Azure, OOP and FullStack Development"
+    readingTime=true
   wordCount=true
   disclaimerText="My views are my own and not my employer's"
   logo= "images/myPic.png"
