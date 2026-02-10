@@ -24,7 +24,7 @@ This command creates an `MVC app` with `sqlite` database. If you want to use `SQ
 dotnet new mvc -au Individual -uld -o MvcAuth
 ```
 
-To change your database from sql server LocalDbb to your hosted sql server just change the connection string in `appsettings.json`. For example:
+To change your database from sql server LocalDb to your hosted sql server just change the connection string in `appsettings.json`. For example:
 
 ```js
  "DefaultConnection": "Server=localhost,1433;Database=MvcAuthDb;User Id=sa;Password=my_strong_password;Trust Server Certificate=true"
