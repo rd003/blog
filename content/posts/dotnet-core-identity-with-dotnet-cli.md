@@ -24,7 +24,13 @@ This command creates an `MVC app` with `sqlite` database. If you want to use `SQ
 dotnet new mvc -au Individual -uld -o MvcAuth
 ```
 
-To change your database from sql server local db to your hosted sql server just change the connection string in `appsettings.json`.
+To change your database from sql server LocalDbb to your hosted sql server just change the connection string in `appsettings.json`. For example:
+
+```js
+ "DefaultConnection": "Server=localhost,1433;Database=MvcAuthDb;User Id=sa;Password=my_strong_password;Trust Server Certificate=true"
+```
+
+I have replaced  SqlServer LocalDb connection string with docker hosted SqlServer.
 
 If you want to use other database like `MySql` or `PostgresDb`, you need to configure the code after creating this application. To be precise, remove `Microsoft.EntityFrameworkCore.SqlServer` or `Microsoft.EntityFrameworkCore.Sqlite` from `MvcAuth.csproj` file (or just uninstall this package). Then add the EntityFramework package of the the database provider (Eg. `Npgsql.EntityFrameworkCore.PostgreSQL` for postgresql and `MySql.EntityFrameworkCore` for MySql).
 
