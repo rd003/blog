@@ -12,13 +12,19 @@ This is a basic ecommerse app for selling books. I consider this video as one of
 
 (🎚️level: Beginner-Intermediate | 💻tech: .NET core mvc, sql server, html, bootstrap, vanilla js)
 
-### 2. [Chatroom app](https://youtu.be/XECRfpM3P4M?si=E3OGQEGj4EUiAL7L)
+### 2. [Inventory Management System (2026)](https://www.youtube.com/playlist?list=PLP8UhDwXI7f8rkphYIW1PDiqNtOyCr_f3)
+
+Manage categories, products, sales, purchase and inventory along with advance search filter. I built this tutorial around first week of may 2026.
+
+(🎚️level: Beginner-Intermediate | 💻tech: .NET core mvc, sql server, html, bootstrap, vanilla js)
+
+### 3. [Chatroom app](https://youtu.be/XECRfpM3P4M?si=E3OGQEGj4EUiAL7L)
 
 It is a chatroom application. Where multiple person can chat at one place. Chat server is built with SignalR and client is built with `html`, `css` and `js`.
 
 (🎚️level: Beginner | 💻tech: SignalR, html, css, js)
 
-### 3. [Activity Tracker](https://youtu.be/jofW-25Iews?si=zrpuqq2tf1oJarjC)
+### 4. [Activity Tracker](https://youtu.be/jofW-25Iews?si=zrpuqq2tf1oJarjC)
 
 It is a time tracking app, where you can track the time spent in your activities.
 
