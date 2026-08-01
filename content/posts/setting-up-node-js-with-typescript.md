@@ -32,7 +32,7 @@ npm install express cors
 
 # install the dev dependencies
 # these packages won't be shipped to your production bundle
-npm install -D typescript tsx @types/node @types/express @types/cors
+npm install -D typescript tsup tsx @types/node @types/express @types/cors
 
 # generate tsconfig.json file
 npx tsc --init
