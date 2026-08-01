@@ -6,7 +6,6 @@ categories= ['programming']
 tags = ['nodejs','typescript']
 image = '/images/node_typescript.webp'
 +++
-<!-- ![node js with typescript](/images/node_typescript.webp) -->
 (image credit: [Gemini](https://gemini.google.com/))
 
 We are going to create folders and install packages in this step. I don't have much to say for this tutorial. I have tried to explain necessary stuff through comments. In my opinion code is self-explanatory. So, let's execute these commands in a sequence.
@@ -63,7 +62,8 @@ Update the `tsconfig.json`:
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "target": "esnext",
     "types": [],
     // For nodejs:
@@ -105,10 +105,10 @@ Update these sections of `package.json` file.
 ```js
    "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "tsup src/index.ts --format esm --out-dir dist",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  }
   "type": "module",
 ```
 

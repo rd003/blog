@@ -1,7 +1,7 @@
 +++
 date = '2026-07-22T11:21:41+05:30'
 title = 'ReactJs CRUD with typescript and json server'
-tags= ["reactjs"]
+tags= ["reactjs","typescript"]
 categories = ["programming"]
 image = '/images/react_crud.jpg'
 draft = false
