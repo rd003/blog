@@ -16,6 +16,8 @@ image = '/images/node-jwt-with-ts-sqlite-prisma.webp'
 - `JWT` has a expiry date, it does not live forever.
 - Also need to note that, `JWT` is not saved in database.
 
+You can also check [react frontend](/posts/react-app-authentication-2026) for this app.
+
 ## What is the refresh token and why we need it?
 
 You are thinking that, if I can do authentication with `JWT`, then why do I bother to create a `refresh token`. Let me break it down
