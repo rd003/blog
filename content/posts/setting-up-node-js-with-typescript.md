@@ -10,6 +10,8 @@ image = '/images/node_typescript.webp'
 
 We are going to create folders and install packages in this step. I don't have much to say for this tutorial. I have tried to explain necessary stuff through comments. In my opinion code is self-explanatory. So, let's execute these commands in a sequence.
 
+You can also [clone the starter app.](https://github.com/rd003/node-ts-template)
+
 ```bash
 # create a directory
 mkdir backend
