@@ -1081,4 +1081,363 @@ Make sure this method have [Authorized] attribute, otherwise you won’t get the
 
 ---
 
+## Cookie based authentication
+
+The above approach works fine, but has some security issues with web apps. With this, you have to store cookies in `localStorage` which
+can be compromised easily.
+
+We are going to add cookie based authentication. Login endpoint will return the `accessToken` and `refreshToken` in response body (which is necessary for mobile apps, since they can not work with cookies)
+and also set the `accessToken` with cookies. These cookies can only be set by server so they are safe. Refresh token works as it is already working
+but it aslo set `accessToken` and `refreshToken` with cookies. We also need a `logout` endpoint which invalidate these cookies.
+
+## Updating Program class
+
+Most of these lines are already in `Program.cs`, replace those lines with these one. Here we have added cookie related configuration.
+
+```cs
+// Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+    };
+
+    // cokie related config
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = ctx =>
+        {
+            ctx.Request.Cookies.TryGetValue("accessToken", out var accessToken);
+            if (!string.IsNullOrEmpty(accessToken))
+                ctx.Token = accessToken;
+
+            return Task.CompletedTask;
+        }
+    };
+});
+```
+
+## cors setting
+
+```cs
+ services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.WithOrigins("http://localhost:4200").
+                AllowCredentials(). //for cookie
+                AllowAnyMethod().WithExposedHeaders("X-Pagination");
+
+            });
+        });
+
+// in middleware section
+// The call to UseCors must be placed after UseRouting, but before UseAuthorization.
+app.UseCors();
+```
+
+## TokenService: 
+
+```cs
+
+// Replace the existing GenerateRefreshToken method with this one
+public string GenerateRefreshToken()
+    {
+        return Guid.NewGuid().ToString("N");
+    }
+
+    public IEnumerable<Claim> GenerateClaims(string username, string[] roles)
+    {
+        List<Claim> claims = [
+            new (ClaimTypes.Name, username),  // claim to store name
+            new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        // unique identifier for jwt
+        ];
+
+        // adding role to claims
+
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+        return claims;
+    }
+
+public void SetTokenCookies(TokenModel tokenModel, HttpContext context)
+    {
+        context.Response.Cookies.Append("accessToken", tokenModel.AccessToken, new CookieOptions
+        {
+            Expires = DateTime.UtcNow.AddMinutes(1),  // TODO : set to 15 min
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            Path = "/",
+            SameSite = SameSiteMode.None // TODO: set it to strict or lax for production
+        });
+
+        context.Response.Cookies.Append("refreshToken", tokenModel.RefreshToken, new CookieOptions
+        {
+            Expires = DateTime.UtcNow.AddMinutes(2),  // TODO : set to atleast 7 days
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            Path = "/",
+            SameSite = SameSiteMode.None // TODO: set it to strict or lax for production
+        });
+    }
+```
+
+## Login method
+
+```cs
+[HttpPost("login")]
+    public async Task<IActionResult> Login(LoginModel model)
+    {
+
+        var user = await _userManager.FindByNameAsync(model.Username);
+        if (user == null)
+        {
+            throw new UnAuthorizedException("Invalid user");
+        }
+
+        bool isValidPassword = await _userManager.CheckPasswordAsync(user, model.Password);
+        if (!isValidPassword)
+        {
+            throw new UnAuthorizedException("Invalid user");
+        }
+
+        var userRoles = await _userManager.GetRolesAsync(user);
+
+        // new line
+        var authClaims = _tokenService.GenerateClaims(user.UserName, userRoles.ToArray());
+
+        // generating access token
+        var token = _tokenService.GenerateAccessToken(authClaims);
+
+        string refreshToken = _tokenService.GenerateRefreshToken();
+
+        //save refreshToken with exp date in the database
+        var tokenInfo = await _context.TokenInfos.
+                    SingleOrDefaultAsync(a => a.Username == user.UserName);
+
+        // If tokenInfo is null for the user, create a new one
+        if (tokenInfo == null)
+        {
+            var ti = new TokenInfo
+            {
+                Username = user.UserName,
+                RefreshToken = refreshToken,
+                ExpiredAt = DateTime.UtcNow.AddMinutes(2)
+            };
+            _context.TokenInfos.Add(ti);
+        }
+        // Else, update the refresh token and expiration
+        else
+        {
+            tokenInfo.RefreshToken = refreshToken;
+            tokenInfo.ExpiredAt = DateTime.UtcNow.AddMinutes(2);
+        }
+
+        await _context.SaveChangesAsync();
+
+        // new lines
+        // set token cookies
+        var tokenModel = new TokenModel
+        {
+            AccessToken = token,
+            RefreshToken = refreshToken
+        };
+        _tokenService.SetTokenCookies(tokenModel, HttpContext);
+
+        return Ok(tokenModel);
+    }
+```
+
+## refresh
+
+```cs
+[HttpPost("refresh")]
+    public async Task<IActionResult> Refresh(TokenModel tokenModel)
+    {
+        // Console.WriteLine("=== ALL COOKIES ===");
+        // foreach (var cookie in HttpContext.Request.Cookies)
+        // {
+        //     Console.WriteLine($"Cookie: {cookie.Key} = {cookie.Value}");
+        // }
+        // Console.WriteLine("===================");
+
+        // I can not do auto validation, since I don't need to pass any payload in req body, if I am using it http only cookies
+        // But, if this api is used by mobile app client, then we must both value in req body
+        tokenModel ??= new TokenModel();
+
+        HttpContext.Request.Cookies.TryGetValue("refreshToken", out var refreshToken);
+
+        if (!string.IsNullOrEmpty(refreshToken))
+        {
+            tokenModel.RefreshToken = refreshToken;
+        }
+        // If no cookies, tokenModel should have values from request body (mobile client)
+        else if (string.IsNullOrEmpty(tokenModel.RefreshToken))
+        {
+            throw new BadRequestException("No valid tokens found in cookies or request body");
+        }
+
+        var tokenInfo = await _context.TokenInfos.SingleOrDefaultAsync(a => a.RefreshToken == tokenModel.RefreshToken);
+
+        if (tokenInfo == null || tokenInfo.ExpiredAt <= DateTime.UtcNow)
+        {
+            throw new BadRequestException("Invalid refresh token. Please login again.");
+        }
+
+        var user = await _userManager.FindByNameAsync(tokenInfo.Username);
+
+        if (user == null)
+        {
+            throw new BadRequestException("Invalid refresh token. Please login again.");
+        }
+
+        var userRoles = await _userManager.GetRolesAsync(user);
+
+        var claims = _tokenService.GenerateClaims(user.UserName, userRoles.ToArray());
+
+        var newAccessToken = _tokenService.GenerateAccessToken(claims);
+        var newRefreshToken = _tokenService.GenerateRefreshToken();
+
+        tokenInfo.RefreshToken = newRefreshToken; // rotating the refresh token
+        await _context.SaveChangesAsync();
+
+        var newTokenData = new TokenModel
+        {
+            AccessToken = newAccessToken,
+            RefreshToken = newRefreshToken
+        };
+
+        // set token cookies
+
+        _tokenService.SetTokenCookies(newTokenData, HttpContext);
+
+        // also sending it as a response, because cookie don't work with mobile app clients
+        return Ok(newTokenData);
+
+    }
+
+```
+
+## Logout
+
+```cs
+[Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        string? username = User.Identity?.Name;
+        if (string.IsNullOrEmpty(username))
+        {
+            throw new UnAuthorizedException("You are not authorized.");
+        }
+
+        // remove token info from database
+        await _context.TokenInfos.Where(t => t.Username == username).ExecuteDeleteAsync();
+
+        // remove token cookies
+        Response.Cookies.Delete("accessToken", new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,
+            Path = "/",
+            SameSite = SameSiteMode.None // TODO: change to strict/lax in production
+        });
+
+        Response.Cookies.Delete("refreshToken", new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,
+            Path = "/",
+            SameSite = SameSiteMode.None // TODO: change to strict/lax in production
+        });
+
+        return NoContent();
+    }
+```
+
+## Testing in frontend
+
+### Angular
+
+```ts
+login(loginData: LoginModel) {
+  return this.http.post<TokenModel>(
+    this.apiUrl + "/login",
+    loginData,
+    {
+      withCredentials: true
+    }
+  );
+}
+```
+
+Note that, you have do the same, in every http request which intent to send or recieve the cookie. It is better to create an interceptor for it.
+
+```ts
+// http.interceptor.ts
+
+import { HttpInterceptorFn } from '@angular/common/http';
+
+export const httpInterceptor: HttpInterceptorFn = (req, next) => {
+  const newReq = req.clone({
+    withCredentials: true
+  });
+  return next(newReq);
+};
+
+// app.config.ts
+provideHttpClient(
+      withInterceptors([httpInterceptor])
+    )
+
+```
+
+JS fetch API
+
+```js
+fetch('https://your-api.com/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  credentials: 'include', // 👈 Important to include cookies
+  body: JSON.stringify({
+    username: 'user',
+    password: 'pass'
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(err => console.error(err));
+
+```
+
+AXIOS
+
+```js
+await axios.post('https://your-api.com/login', loginData, {
+                withCredentials: true
+            });
+
+```
+
 [Canonical link](https://medium.com/@ravindradevrani/securing-the-net-9-app-signup-login-jwt-refresh-tokens-and-role-based-access-with-postgresql-43df24fd0ba2)
