@@ -15,7 +15,7 @@ REST APIs are stateless, so server does not store any information about the clie
 
 💻 Source code : [https://github.com/rd003/NetRefreshTokenDemo](https://github.com/rd003/NetRefreshTokenDemo)
 
-Last update date: 25-August-2026
+**Last update date:** 25-August-2026
 
 ## Let’s understand how it works?
 
