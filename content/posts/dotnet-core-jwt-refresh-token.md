@@ -15,6 +15,8 @@ REST APIs are stateless, so server does not store any information about the clie
 
 💻 Source code : [https://github.com/rd003/NetRefreshTokenDemo](https://github.com/rd003/NetRefreshTokenDemo)
 
+Last update date: 25-August-2026
+
 ## Let’s understand how it works?
 
 First, user passes the valid credential to the server through the API(eg. Login api). Server generates the JWT and returns it to the client. JWT contains information like Name, Email, Role etc. about the User. To access the protected resource , user have to pass the JWT in the Authorization header.
@@ -1371,6 +1373,38 @@ public void SetTokenCookies(TokenModel tokenModel, HttpContext context)
         });
 
         return NoContent();
+    }
+```
+
+## Getting the logged-in users info.
+
+```cs
+    // Endpoint: api/auth/me (Also need to provide accessToken in Authorization header)
+
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<IActionResult> Me()
+    {
+        string? username = User.Identity?.Name;
+        if (string.IsNullOrEmpty(username))
+        {
+            throw new UnAuthorizedException("You are not authorized.");
+        }
+
+        var user = await _userManager.FindByNameAsync(username);
+        if (user == null)
+        {
+            throw new UnAuthorizedException("You are not authorized.");
+        }
+
+        var roles = await _userManager.GetRolesAsync(user);
+
+        return Ok(new
+        {
+            user.Email,
+            Username = user.Name,
+            Roles = roles
+        });
     }
 ```
 
